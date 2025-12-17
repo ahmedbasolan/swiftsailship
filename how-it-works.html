@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works - Swift Sail Shipping Process</title>
+<meta content="Learn how Swift Sail Shipping handles your cargo from start to finish. Our transparent process ensures smooth logistics, customs clearance, and delivery across the UAE and beyond."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#C5A47E",
+                        "primary-hover": "#B08D66",
+                        secondary: "#1A2E35",
+                        "background-light": "#FAFAF9",
+                        "background-dark": "#0F172A",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E293B",
+                        "text-light": "#334155",
+                        "text-dark": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .gold-gradient-text {
+            background: linear-gradient(to right, #C5A47E, #E5C59E, #C5A47E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-link {
+          position: relative;
+          transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #C5A47E;
+          transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        
+        .nav-link.active {
+          color: #C5A47E !important;
+          font-weight: bold;
+        }
+        
+        .nav-link.active::after {
+          width: 100%;
+        }
+        
+        .card-hover-effect {
+            transition: all 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Section hover animations */
+        .section-hover {
+          transition: all 0.3s ease;
+          transform: translateY(0);
+        }
+        
+        .section-hover:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+          transition: all 0.3s ease;
+          transform: translateY(0);
+        }
+        
+        .service-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          border-color: #C5A47E;
+        }
+        
+        .stat-item {
+          transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+          transform: scale(1.05);
+        }
+        
+        .global-reach-section {
+          transition: all 0.4s ease;
+        }
+        
+        .global-reach-section:hover {
+          transform: scale(1.02);
+        }
+    </style>
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+</head>
+<body class="font-sans text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark antialiased transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-gray-900 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-3">
+<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
+<span class="font-display font-bold text-xl text-white tracking-wider uppercase">Swift Sail</span>
+</div>
+<div class="hidden md:flex space-x-8">
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="index.html">Home</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="services.html">Services</a>
+<a class="nav-link active text-white hover:text-primary transition-colors text-sm font-medium" href="how-it-works.html">How It Works</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="about.html">About</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="get-quote.html">Contact</a>
+</div>
+<div>
+<a class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm" href="get-quote.html">
+                        Get Quote
+                    </a>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Abstract sand dunes and luxury texture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFfAEH4gHFyIhCTYy4gKKaRuhN8oUA49R-66z7rt7RzAsdMKNmbyw54InDH5JVbNJxbnaq8qJQp5xWe01yqBbSAVQLIzBSKDGHQbjX1Tyu-q4-YGxLNWydzXMvWDY1y9wiM4w3-VsomGEvciShgpVfsfI_miN9B94NPB03ZqwEoi9Ffnkq5osv507KfBOEs7W7PH45yYEXuTj_X_R6qZLpV8zGsBnHnZjXkRp0z5yyHn4QKPw1MDMMNUE7v2cU3VbuiwEDldEVDjE"/>
+<div class="absolute inset-0 bg-gradient-to-b from-secondary/60 to-secondary/40 dark:from-background-dark/85 dark:to-background-dark/70 mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<span class="inline-block py-1.5 px-4 rounded-sm border border-primary/60 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 backdrop-blur-md bg-secondary/30">
+                Transparent Process • Reliable Results
+            </span>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">
+                How It Works <br/>
+<span class="gold-gradient-text">Your Cargo Journey</span>
+</h1>
+<p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto font-light leading-relaxed mb-8 opacity-90">
+                From initial inquiry to final delivery, our streamlined process ensures your cargo moves efficiently through every stage. We handle the complexity so you can focus on your business.
+            </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto border-t border-white/20 pt-8">
+<div class="text-center group">
+<p class="text-4xl font-display font-bold text-primary mb-2 group-hover:scale-110 transition-transform">6</p>
+<p class="text-[0.65rem] text-white/80 uppercase tracking-[0.2em]">Simple Steps</p>
+</div>
+<div class="text-center group">
+<p class="text-4xl font-display font-bold text-primary mb-2 group-hover:scale-110 transition-transform">24-48</p>
+<p class="text-[0.65rem] text-white/80 uppercase tracking-[0.2em]">Hour Response</p>
+</div>
+<div class="text-center group">
+<p class="text-4xl font-display font-bold text-primary mb-2 group-hover:scale-110 transition-transform">100%</p>
+<p class="text-[0.65rem] text-white/80 uppercase tracking-[0.2em]">Transparent</p>
+</div>
+<div class="text-center group">
+<p class="text-4xl font-display font-bold text-primary mb-2 group-hover:scale-110 transition-transform">Dedicated</p>
+<p class="text-[0.65rem] text-white/80 uppercase tracking-[0.2em]">Support</p>
+</div>
+</div>
+</div>
+</header>
+<main class="relative z-20 -mt-16">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+<div class="bg-surface-light dark:bg-surface-dark rounded-none shadow-2xl border-t-4 border-primary p-8 md:p-16 mb-16 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -mr-48 -mt-48 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -ml-48 -mb-48 pointer-events-none"></div>
+<div class="text-center max-w-4xl mx-auto mb-20">
+<h2 class="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-4">Process Overview</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-secondary dark:text-white mb-6">Step-by-Step Journey</h3>
+<p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Our proven process ensures your cargo moves smoothly from origin to destination. Each step is carefully managed by our experienced team to guarantee efficiency and compliance.
+                </p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-handshake text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Initial Inquiry</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Share your cargo requirements and receive personalized consultation from our logistics experts.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Cargo specifications analysis</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Route planning consultation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Timeline assessment</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Cost estimation</li>
+</ul>
+</div>
+<!-- Step 2 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-file-contract text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Quote &amp; Agreement</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Receive detailed pricing and service terms. Review and confirm the agreement to proceed.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Detailed cost breakdown</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Service level agreement</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Timeline confirmation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Payment terms</li>
+</ul>
+</div>
+<!-- Step 3 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-file-alt text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Documentation</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Prepare and submit all necessary shipping documents with our expert guidance.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Commercial invoice preparation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Packing list verification</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Bill of lading processing</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Certificate of origin</li>
+</ul>
+</div>
+<!-- Step 4 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">4</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-ship text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Cargo Booking</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Secure vessel space and coordinate shipping schedules for optimal transit times.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Vessel selection</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Space reservation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Schedule confirmation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Loading coordination</li>
+</ul>
+</div>
+<!-- Step 5 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">5</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-shield-alt text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Customs Clearance</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Navigate customs procedures efficiently with our experienced brokers and compliance team.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Document submission</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Duty calculation</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Inspection coordination</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Release authorization</li>
+</ul>
+</div>
+<!-- Step 6 -->
+<div class="service-card bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8 relative">
+<div class="absolute -top-4 left-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">6</div>
+<div class="flex items-center gap-3 mb-4">
+<i class="fas fa-truck text-2xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">Final Delivery</h3>
+</div>
+<p class="text-gray-600 dark:text-gray-300 mb-6">Complete the journey with efficient last-mile delivery to your specified destination.</p>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Transport arrangement</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Delivery scheduling</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Unloading supervision</li>
+<li class="flex items-start"><i class="fas fa-check text-primary mt-1 mr-3"></i> Document handover</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Documents Required Section -->
+<section class="bg-gradient-to-br from-surface-light to-white dark:from-surface-dark dark:to-background-dark py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<span class="inline-block py-1.5 px-4 rounded-sm border border-primary/60 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">Documentation</span>
+<h2 class="text-4xl md:text-5xl font-display font-bold text-secondary dark:text-white mb-6">Essential Documents</h2>
+<p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Proper documentation is crucial for smooth customs clearance. We guide you through preparing all necessary paperwork for your shipment.
+                </p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<i class="fas fa-download text-3xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">For Imports</h3>
+</div>
+<ul class="space-y-4 text-gray-600 dark:text-gray-300">
+<li class="flex items-start gap-3">
+<i class="fas fa-file-invoice text-primary mt-1"></i>
+<div>
+<strong>Commercial Invoice:</strong> Detailed invoice with goods description, value, and terms
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-list text-primary mt-1"></i>
+<div>
+<strong>Packing List:</strong> Complete list of all packages with weights and dimensions
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-file-contract text-primary mt-1"></i>
+<div>
+<strong>Bill of Lading:</strong> Transport contract between shipper and carrier
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-certificate text-primary mt-1"></i>
+<div>
+<strong>Certificate of Origin:</strong> Document certifying the country where goods were produced
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-building text-primary mt-1"></i>
+<div>
+<strong>Trade License:</strong> Importer's valid trade license copy
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<i class="fas fa-upload text-3xl text-primary"></i>
+<h3 class="text-2xl font-bold text-secondary dark:text-white">For Exports</h3>
+</div>
+<ul class="space-y-4 text-gray-600 dark:text-gray-300">
+<li class="flex items-start gap-3">
+<i class="fas fa-file-invoice text-primary mt-1"></i>
+<div>
+<strong>Commercial Invoice:</strong> Detailed invoice with export terms and pricing
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-list text-primary mt-1"></i>
+<div>
+<strong>Packing List:</strong> Comprehensive packing details for export verification
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-file-contract text-primary mt-1"></i>
+<div>
+<strong>Bill of Lading:</strong> Export transport documentation
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-file-export text-primary mt-1"></i>
+<div>
+<strong>Export Declaration:</strong> Official export documentation
+</div>
+</li>
+<li class="flex items-start gap-3">
+<i class="fas fa-building text-primary mt-1"></i>
+<div>
+<strong>Trade License:</strong> Exporter's valid trade license copy
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Timeline Section -->
+<section class="py-20 bg-gradient-to-br from-secondary/5 to-primary/5 dark:from-secondary/10 dark:to-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<span class="inline-block py-1.5 px-4 rounded-sm border border-primary/60 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">Timeline</span>
+<h2 class="text-4xl md:text-5xl font-display font-bold text-secondary dark:text-white mb-6">Typical Timeframes</h2>
+<p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Understanding typical timeframes helps you plan your logistics effectively. Actual times may vary based on specific requirements.
+                </p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="w-20 h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-clock text-3xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Initial Response</h3>
+<p class="text-gray-600 dark:text-gray-300">24-48 hours</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Quote and consultation</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-file-alt text-3xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Documentation</h3>
+<p class="text-gray-600 dark:text-gray-300">2-3 days</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Document preparation</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-shield-alt text-3xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Customs Clearance</h3>
+<p class="text-gray-600 dark:text-gray-300">1-3 days</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Standard clearance</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-truck text-3xl text-primary"></i>
+</div>
+<h3 class="text-xl font-bold text-secondary dark:text-white mb-2">Final Delivery</h3>
+<p class="text-gray-600 dark:text-gray-300">1-2 days</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Last-mile delivery</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-20 bg-gradient-to-br from-surface-light to-white dark:from-surface-dark dark:to-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<span class="inline-block py-1.5 px-4 rounded-sm border border-primary/60 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">FAQs</span>
+<h2 class="text-4xl md:text-5xl font-display font-bold text-secondary dark:text-white mb-6">Common Questions</h2>
+<p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Get answers to frequently asked questions about our shipping process and services.
+                </p>
+</div>
+<div class="max-w-4xl mx-auto space-y-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors">
+<span>How long does the entire shipping process take?</span>
+<i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-300">
+                    Total transit time varies by destination. Typically, sea freight from Asia to UAE takes 10-20 days, while Europe to UAE takes 12-25 days. Add 2-5 days for customs clearance and local delivery.
+                </div>
+</details>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors">
+<span>What documents do I need for customs clearance?</span>
+<i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-300">
+                    Essential documents include commercial invoice, packing list, bill of lading, certificate of origin, and your trade license. Additional documents may be required based on cargo type and origin.
+                </div>
+</details>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors">
+<span>Can you handle hazardous materials?</span>
+<i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-300">
+                    Yes, we handle hazardous materials with proper certification and compliance. Additional documentation and handling procedures apply. Contact us for specific requirements.
+                </div>
+</details>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors">
+<span>Do you provide cargo insurance?</span>
+<i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-300">
+                    Yes, we offer comprehensive cargo insurance options to protect your shipment against loss, damage, or delays during transit. Coverage can be customized based on your needs.
+                </div>
+</details>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors">
+<span>How do I track my shipment?</span>
+<i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+</summary>
+<div class="mt-4 text-gray-600 dark:text-gray-300">
+                    We provide real-time tracking through our online portal and regular updates via email or WhatsApp. You'll receive notifications at key milestones throughout the shipping process.
+                </div>
+</details>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-secondary to-secondary/80">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Ready to Start Your Journey?</h2>
+<p class="text-xl text-gray-200 mb-12 leading-relaxed">
+                    Experience the Swift Sail difference. Our team is ready to guide you through every step of your cargo journey with expertise and care.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="get-quote.html" class="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-sm font-bold transition-all shadow-lg hover:shadow-primary/30 text-sm uppercase tracking-wider">
+                        Get Started
+                    </a>
+<a href="tel:+9714XXXXXXXX" class="bg-white/10 hover:bg-white/20 backdrop-blur text-white px-8 py-4 rounded-sm font-bold transition-all border border-white/20 text-sm uppercase tracking-wider">
+                        Call Us Now
+                    </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-background-dark pt-12 pb-6 border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div class="flex items-center space-x-3">
+<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
+<div class="flex flex-col">
+<span class="font-display font-bold text-xl text-secondary dark:text-white tracking-wider uppercase leading-none">Swift Sail</span>
+<span class="text-[0.6rem] text-primary uppercase tracking-[0.2em]">Shipping L.L.C.</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="get-quote.html">Get Quote</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Contact</h4>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li class="flex items-center gap-2">
+<i class="fas fa-phone text-primary"></i>
+<span>+971 55 342 4700</span>
+</li>
+<li class="flex items-center gap-2">
+<i class="fas fa-envelope text-primary"></i>
+<span>info@swiftsailship.com</span>
+</li>
+<li class="flex items-center gap-2">
+<i class="fas fa-map-marker-alt text-primary"></i>
+<span>Dubai, Abu Hail, Tanvi Business Centre, M - 101</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-center">
+<p class="text-gray-500 dark:text-gray-400 text-sm">
+                    &copy; 2006 Swift Sail Shipping L.L.C. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+
+<!-- Rest of the code remains the same -->
+</html>

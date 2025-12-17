@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Get Quote - Swift Sail Shipping</title>
+<meta content="Request a shipping quote from Swift Sail Shipping LLC. Fast response, competitive rates, and expert logistics solutions for your cargo needs."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#C5A47E",
+                        "primary-hover": "#B08D66",
+                        secondary: "#1A2E35",
+                        "background-light": "#FAFAF9",
+                        "background-dark": "#0F172A",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E293B",
+                        "text-light": "#334155",
+                        "text-dark": "#E2E8F0",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .nav-link {
+          position: relative;
+          transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #C5A47E;
+          transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        
+        .nav-link.active {
+          color: #C5A47E !important;
+          font-weight: bold;
+        }
+        
+        .nav-link.active::after {
+          width: 100%;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+</head>
+<body class="font-sans text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark antialiased transition-colors duration-300">
+<div class="relative flex min-h-screen flex-col">
+<nav class="fixed w-full z-50 bg-gray-900 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-3">
+<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
+<span class="font-display font-bold text-xl text-white tracking-wider uppercase">Swift Sail</span>
+</div>
+<div class="hidden md:flex space-x-8">
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="index.html">Home</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="services.html">Services</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="how-it-works.html">How It Works</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="about.html">About</a>
+<a class="nav-link active text-white hover:text-primary transition-colors text-sm font-medium" href="get-quote.html">Contact</a>
+</div>
+<div>
+<a class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm" href="get-quote.html">
+                        Get Quote
+                    </a>
+</div>
+</div>
+</div>
+</nav>
+<main class="flex-1 flex justify-center pt-32 pb-10 px-4 md:px-8 lg:px-40">
+<div class="flex flex-col max-w-[1200px] flex-1 w-full gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-4 pb-6 border-b border-gray-200 dark:border-gray-800">
+<h1 class="text-4xl md:text-5xl font-display font-bold text-secondary dark:text-white leading-tight">
+                        Connect with Swift Sail Shipping
+                    </h1>
+<p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                        Expert solutions for Cargo Loading, Freight Brokerage, and Sea Shipping. Our team is ready to move your business forward. How can we help you today?
+                    </p>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+<!-- Left Column: Contact Form -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="bg-white dark:bg-surface-dark rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+<h3 class="text-xl font-display font-bold text-secondary dark:text-white mb-6 flex items-center gap-2">
+<i class="fas fa-edit text-primary"></i>
+                                Send us a message
+                            </h3>
+<form class="flex flex-col gap-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Full Name</p>
+<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter your name"/>
+</label>
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Company Name</p>
+<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter company name"/>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Email Address</p>
+<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="name@company.com" type="email"/>
+</label>
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Phone Number</p>
+<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="+971 55 342 4700" type="tel"/>
+</label>
+</div>
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Service Interest</p>
+<div class="relative">
+<select class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base appearance-none">
+<option disabled="" selected="" value="">Select a service type</option>
+<option value="cargo">Cargo Loading &amp; Unloading</option>
+<option value="freight">Freight Brokerage</option>
+<option value="customs">Customs Broker</option>
+<option value="shipping">Sea Shipping Lines Agent</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+<i class="fas fa-chevron-down"></i>
+</div>
+</div>
+</label>
+<label class="flex flex-col flex-1">
+<p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Shipment Details / Message</p>
+<textarea class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 min-h-[160px] placeholder:text-gray-500 p-[15px] text-base resize-y" placeholder="Tell us about your cargo, origin, destination, and any specific requirements..."></textarea>
+</label>
+<button class="mt-2 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary hover:bg-primary/90 transition-all text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30" type="button">
+                                    Send Inquiry
+                                </button>
+</form>
+</div>
+</div>
+<!-- Right Column: Contact Info & Map -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Contact Details Card -->
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col gap-6">
+<h3 class="text-xl font-display font-bold text-secondary dark:text-white mb-2">Direct Contact</h3>
+<!-- Address -->
+<div class="flex gap-4 items-start">
+<div class="bg-primary/10 rounded-full p-3 text-primary shrink-0">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white mb-1">Headquarters</p>
+<p class="text-base text-gray-600 dark:text-gray-400">Dubai, Abu Hail, Tanvi Business Centre, M - 101</p>
+</div>
+</div>
+<!-- Phone -->
+<div class="flex gap-4 items-start">
+<div class="bg-primary/10 rounded-full p-3 text-primary shrink-0">
+<i class="fas fa-phone"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white mb-1">Phone</p>
+<p class="text-base text-gray-600 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="tel:+971553424700">+971 55 342 4700</a>
+</p>
+</div>
+</div>
+<!-- Email -->
+<div class="flex gap-4 items-start">
+<div class="bg-primary/10 rounded-full p-3 text-primary shrink-0">
+<i class="fas fa-envelope"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white mb-1">Email</p>
+<a class="text-base text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="mailto:info@swiftsailship.com">info@swiftsailship.com</a>
+<a class="block mt-1 text-base text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="mailto:support@swiftsailship.com">support@swiftsailship.com</a>
+</div>
+</div>
+<!-- Hours -->
+<div class="flex gap-4 items-start">
+<div class="bg-primary/10 rounded-full p-3 text-primary shrink-0">
+<i class="fas fa-clock"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white mb-1">Business Hours</p>
+<p class="text-base text-gray-600 dark:text-gray-400">Mon - Fri: 08:00 AM - 06:00 PM GST</p>
+<p class="text-base text-gray-600 dark:text-gray-400">Sat: 09:00 AM - 02:00 PM GST</p>
+</div>
+</div>
+</div>
+<!-- Map Module -->
+<div class="rounded-xl overflow-hidden h-64 w-full relative group">
+<div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse z-0"></div>
+<img alt="Map Location" class="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-110" data-alt="Map view showing coastal location of Swift Sail Shipping offices near a busy harbor" data-location="Dubai Harbor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWmapUlGMlnPKFM9G8eHRW7h8XJmns81KIz5E1kG0TaORqdhP_TnBC7KZMHm5TgEwkeArLJOpTabMwe5ewW816cXSPGs04DQ9vry34beJTzVTxS1pLpS5fiD8r0djPwCS_7E-moS0Jr26UD3we2235MSQR6YlH7tCORNKSPs3rxApc9zyXvBIUTe1qnFOZEyFnOSLIEKRAlpqrrGpm2gFDkYO0z4qJbb0UjgeSpDU7asUvIidVfSOSKck9Htf-Grjzk4a85a7vDZQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20 flex items-end p-4">
+<a class="text-white text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                                    View on Google Maps <i class="fas fa-external-link-alt text-sm"></i>
+</a>
+</div>
+</div>
+<!-- Trust Signals -->
+<div class="flex flex-wrap gap-4 mt-2">
+<div class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg">
+<i class="fas fa-certificate text-primary"></i>
+<span class="text-xs font-bold text-gray-700 dark:text-gray-300">ISO 9001 Certified</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg">
+<i class="fas fa-anchor text-primary"></i>
+<span class="text-xs font-bold text-gray-700 dark:text-gray-300">Port Auth. Member</span>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="mt-12 pt-12 border-t border-gray-200 dark:border-gray-800">
+<h2 class="text-2xl font-display font-bold text-secondary dark:text-white mb-8">Frequently Asked Questions</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-lg text-gray-900 dark:text-white">Do you handle hazardous materials?</h4>
+<p class="text-gray-600 dark:text-gray-400">Yes, we are fully certified to handle and transport hazardous classes 2 through 9. Please specify this in your inquiry.</p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-lg text-gray-900 dark:text-white">What regions do you serve?</h4>
+<p class="text-gray-600 dark:text-gray-400">We operate globally with a strong focus on GCC, European, and Asian shipping routes.</p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-lg text-gray-900 dark:text-white">How can I track my shipment?</h4>
+<p class="text-gray-600 dark:text-gray-400">Once your shipment is booked, you will receive a unique tracking ID to monitor progress via our client portal.</p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-bold text-lg text-gray-900 dark:text-white">Do you offer customs brokerage services?</h4>
+<p class="text-gray-600 dark:text-gray-400">Absolutely. Our in-house customs brokers ensure your goods clear borders smoothly and efficiently.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-background-dark pt-12 pb-6 border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div class="flex items-center space-x-3">
+<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
+<div class="flex flex-col">
+<span class="font-display font-bold text-xl text-secondary dark:text-white tracking-wider uppercase leading-none">Swift Sail</span>
+<span class="text-[0.6rem] text-primary uppercase tracking-[0.2em]">Shipping L.L.C.</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="services.html">Services</a></li>
+<li><a class="hover:text-primary transition-colors" href="how-it-works.html">How It Works</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Contact</h4>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li class="flex items-center gap-2">
+<i class="fas fa-phone text-primary"></i>
+<span>+971 55 342 4700</span>
+</li>
+<li class="flex items-center gap-2">
+<i class="fas fa-envelope text-primary"></i>
+<span>info@swiftsailship.com</span>
+</li>
+<li class="flex items-center gap-2">
+<i class="fas fa-map-marker-alt text-primary"></i>
+<span>Dubai, Abu Hail, Tanvi Business Centre, M - 101</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-center">
+<p class="text-gray-500 dark:text-gray-400 text-sm">
+                    © 2006 Swift Sail Shipping L.L.C. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
