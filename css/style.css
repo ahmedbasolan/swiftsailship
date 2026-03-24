@@ -31,6 +31,303 @@ img {
     top: 0;
 }
 
+/* ===== ANIMATION KEYFRAMES ===== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ===== SCROLL ANIMATION CLASSES ===== */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.animate-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-left.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-right.animate-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-scale-in {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in.animate-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered delays for grid children */
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+.stagger-delay-6 { transition-delay: 0.6s; }
+
+/* ===== ENHANCED HOVER EFFECTS ===== */
+
+.hover-lift {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px rgba(197, 164, 126, 0.2),
+                0 8px 16px -8px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(197, 164, 126, 0.25),
+                0 0 60px rgba(197, 164, 126, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Button shine effect */
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transition: left 0.6s ease;
+}
+
+.btn-shine:hover::before {
+    left: 100%;
+}
+
+/* ===== NAV SCROLL EFFECT ===== */
+
+nav.nav-scrolled {
+    background-color: rgba(17, 24, 39, 0.97) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== GOLDEN LINE DIVIDER ===== */
+
+.gold-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #C5A47E, #E5C59E);
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+/* ===== FLOATING ANIMATION ===== */
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* ===== FORM SUCCESS/ERROR STATES ===== */
+
+.form-success {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.form-success.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-error {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.form-error.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ===== BLOG STYLES ===== */
+
+.blog-card {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card:hover .blog-card-img {
+    transform: scale(1.08);
+}
+
+.blog-card-img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Blog article prose */
+.article-prose h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(197, 164, 126, 0.2);
+}
+
+.article-prose h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+}
+
+.article-prose ul, .article-prose ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.article-prose li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.article-prose blockquote {
+    border-left: 4px solid #C5A47E;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background: rgba(197, 164, 126, 0.05);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+/* Table of contents */
+.toc-link {
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.toc-link:hover {
+    color: #C5A47E;
+    padding-left: 0.5rem;
+}
+
+/* ===== PARALLAX HINT ===== */
+
+.parallax-bg {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
 /* Print styles */
 @media print {
     nav, footer, .bg-primary, button {
@@ -39,5 +336,12 @@ img {
     body {
         color: #000 !important;
         background: #fff !important;
+    }
+    .animate-on-scroll,
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-scale-in {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
