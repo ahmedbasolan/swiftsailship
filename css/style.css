@@ -202,7 +202,7 @@ img {
 /* ===== NAV SCROLL EFFECT ===== */
 
 nav.nav-scrolled {
-    background-color: rgba(17, 24, 39, 0.97) !important;
+    background-color: rgba(17, 24, 39, 0.97) !important; /* needed to override Tailwind bg-gray-900 */
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -227,27 +227,35 @@ nav.nav-scrolled {
 /* ===== FORM SUCCESS/ERROR STATES ===== */
 
 .form-success {
-    display: none;
+    display: flex;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
 }
 
 .form-success.show {
-    display: flex;
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
+    max-height: 500px;
 }
 
 .form-error {
-    display: none;
+    display: block;
     opacity: 0;
     transition: opacity 0.4s ease;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
 }
 
 .form-error.show {
-    display: block;
     opacity: 1;
+    pointer-events: auto;
+    max-height: 200px;
 }
 
 /* ===== BLOG STYLES ===== */

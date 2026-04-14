@@ -1,35 +1,77 @@
 // ===== Swift Sail Shipping - Enhanced Scripts =====
 
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
+    'use strict';
+
+    // ===== CONSTANTS =====
+    var SCROLL_THRESHOLD = 60;
+    var COUNTER_DURATION = 2000;
+    var COUNTER_K_THRESHOLD = 1000;
+    var OBSERVER_THRESHOLD = 0.12;
+    var OBSERVER_ROOT_MARGIN = '0px 0px -40px 0px';
+    var COUNTER_OBSERVER_THRESHOLD = 0.5;
+    var STAGGER_MAX = 6;
+    var FORM_SUBMIT_DELAY = 1500;
+    var NAV_OFFSET = 80;
 
     // ===== MOBILE NAVIGATION TOGGLE =====
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
+    function closeMobileMenu(btn, menu) {
+        if (!menu) return;
+        menu.classList.add('hidden');
+        if (!btn) return;
+        var spans = btn.querySelectorAll('span');
+        if (spans.length >= 3) {
+            spans[0].style.transform = '';
+            spans[1].style.opacity = '';
+            spans[2].style.transform = '';
+        }
+    }
+
+    function openMobileMenu(btn, menu) {
+        if (!menu) return;
+        menu.classList.remove('hidden');
+        if (!btn) return;
+        var spans = btn.querySelectorAll('span');
+        if (spans.length >= 3) {
+            spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+        }
+    }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
 
     if (btn && menu) {
         btn.addEventListener('click', function () {
-            menu.classList.toggle('hidden');
-            const spans = btn.querySelectorAll('span');
-            if (!menu.classList.contains('hidden')) {
-                spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+            if (menu.classList.contains('hidden')) {
+                openMobileMenu(btn, menu);
             } else {
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '';
-                spans[2].style.transform = '';
+                closeMobileMenu(btn, menu);
             }
         });
 
         // Close on link click
         menu.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
-                menu.classList.add('hidden');
-                const spans = btn.querySelectorAll('span');
-                spans[0].style.transform = '';
-                spans[1].style.opacity = '';
-                spans[2].style.transform = '';
+                closeMobileMenu(btn, menu);
             });
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu(btn, menu);
+            }
+        });
+
+        // Close on click outside
+        document.addEventListener('click', function (e) {
+            if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                closeMobileMenu(btn, menu);
+            }
         });
     }
 
@@ -42,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var target = document.querySelector(href);
             if (target) {
                 window.scrollTo({
-                    top: target.offsetTop - 80,
+                    top: target.offsetTop - NAV_OFFSET,
                     behavior: 'smooth'
                 });
             }
@@ -53,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var nav = document.querySelector('nav');
     if (nav) {
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 60) {
+            if (window.scrollY > SCROLL_THRESHOLD) {
                 nav.classList.add('nav-scrolled');
             } else {
                 nav.classList.remove('nav-scrolled');
@@ -67,22 +109,22 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     if (animateElements.length > 0 && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
+        var scrollObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-visible');
-                    observer.unobserve(entry.target);
+                    scrollObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: OBSERVER_THRESHOLD,
+            rootMargin: OBSERVER_ROOT_MARGIN
         });
 
         animateElements.forEach(function (el) {
-            observer.observe(el);
+            scrollObserver.observe(el);
         });
-    } else {
+    } else if (animateElements.length > 0) {
         // Fallback: show everything if IntersectionObserver not supported
         animateElements.forEach(function (el) {
             el.classList.add('animate-visible');
@@ -100,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     counterObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: COUNTER_OBSERVER_THRESHOLD });
 
         statElements.forEach(function (el) {
             counterObserver.observe(el);
@@ -108,11 +150,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function animateCounter(el) {
+        if (!el) return;
         var target = el.getAttribute('data-counter');
+        if (!target) return;
         var suffix = el.getAttribute('data-suffix') || '';
         var prefix = el.getAttribute('data-prefix') || '';
-        var duration = 2000;
-        var start = 0;
         var startTime = null;
 
         // Parse the numeric value
@@ -122,23 +164,20 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        var useKFormat = numericTarget >= COUNTER_K_THRESHOLD && !suffix;
+
         function easeOutExpo(t) {
             return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
         }
 
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
-            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var progress = Math.min((timestamp - startTime) / COUNTER_DURATION, 1);
             var easedProgress = easeOutExpo(progress);
             var current = Math.floor(easedProgress * numericTarget);
 
-            if (numericTarget >= 1000) {
-                // Format with 'k' suffix
-                if (current >= 1000) {
-                    el.textContent = prefix + Math.floor(current / 1000) + 'k' + suffix;
-                } else {
-                    el.textContent = prefix + current + suffix;
-                }
+            if (useKFormat && current >= COUNTER_K_THRESHOLD) {
+                el.textContent = prefix + Math.floor(current / COUNTER_K_THRESHOLD) + 'k' + suffix;
             } else {
                 el.textContent = prefix + current + suffix;
             }
@@ -158,36 +197,44 @@ document.addEventListener('DOMContentLoaded', function () {
     var grids = document.querySelectorAll('[data-stagger]');
     grids.forEach(function (grid) {
         var children = grid.children;
+        if (!children || children.length === 0) return;
         for (var i = 0; i < children.length; i++) {
             var child = children[i];
             if (!child.classList.contains('animate-on-scroll')) {
                 child.classList.add('animate-on-scroll');
             }
             // Add stagger delay class
-            var delayIndex = (i % 6) + 1;
+            var delayIndex = (i % STAGGER_MAX) + 1;
             child.classList.add('stagger-delay-' + delayIndex);
         }
     });
 
-    // Re-observe any newly added animate-on-scroll elements from stagger
-    if ('IntersectionObserver' in window) {
+    // Re-observe newly added animate-on-scroll elements from stagger (reuse scrollObserver)
+    if (scrollObserver) {
         var reObserveElements = document.querySelectorAll(
             '.animate-on-scroll:not(.animate-visible), .animate-slide-left:not(.animate-visible), .animate-slide-right:not(.animate-visible), .animate-scale-in:not(.animate-visible)'
         );
-        var reObserver = new IntersectionObserver(function (entries) {
+        reObserveElements.forEach(function (el) {
+            scrollObserver.observe(el);
+        });
+    } else if ('IntersectionObserver' in window) {
+        // scrollObserver wasn't created earlier (no initial elements), create one now
+        scrollObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-visible');
-                    reObserver.unobserve(entry.target);
+                    scrollObserver.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: OBSERVER_THRESHOLD,
+            rootMargin: OBSERVER_ROOT_MARGIN
         });
-
-        reObserveElements.forEach(function (el) {
-            reObserver.observe(el);
+        var reObserveElements2 = document.querySelectorAll(
+            '.animate-on-scroll:not(.animate-visible), .animate-slide-left:not(.animate-visible), .animate-slide-right:not(.animate-visible), .animate-scale-in:not(.animate-visible)'
+        );
+        reObserveElements2.forEach(function (el) {
+            scrollObserver.observe(el);
         });
     }
 
@@ -195,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var copyrightElements = document.querySelectorAll('[data-copyright-year]');
     var currentYear = new Date().getFullYear();
     copyrightElements.forEach(function (el) {
-        el.textContent = el.textContent.replace(/© \d{4}/, '© ' + currentYear);
+        el.textContent = el.textContent.replace(/[©&copy;]\s*\d{4}/, '© ' + currentYear);
     });
 
     // ===== FORM SUBMISSION FEEDBACK =====
@@ -203,6 +250,37 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
+            // Client-side validation
+            var requiredFields = contactForm.querySelectorAll('[required]');
+            var isValid = true;
+            requiredFields.forEach(function (field) {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('border-red-400');
+                    field.addEventListener('input', function handler() {
+                        field.classList.remove('border-red-400');
+                        field.removeEventListener('input', handler);
+                    });
+                }
+            });
+
+            // Email validation
+            var emailField = contactForm.querySelector('input[type="email"]');
+            if (emailField && emailField.value.trim()) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailField.value.trim())) {
+                    isValid = false;
+                    emailField.classList.add('border-red-400');
+                    emailField.addEventListener('input', function handler() {
+                        emailField.classList.remove('border-red-400');
+                        emailField.removeEventListener('input', handler);
+                    });
+                }
+            }
+
+            if (!isValid) return;
+
             var successEl = document.getElementById('form-success');
             var formEl = this;
 
@@ -217,8 +295,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (successEl) {
                     formEl.style.display = 'none';
                     successEl.classList.add('show');
+                } else if (submitBtn) {
+                    // No success element — reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message';
                 }
-            }, 1500);
+            }, FORM_SUBMIT_DELAY);
         });
     }
 
@@ -235,3 +317,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+})();
