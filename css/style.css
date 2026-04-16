@@ -451,3 +451,231 @@ nav.nav-scrolled {
         transform: none !important;
     }
 }
+
+/* ========================================================
+   EDITORIAL PRESTIGE HOMEPAGE — ep-* component styles
+   Prefixed ep- to avoid conflicts with existing classes.
+   ======================================================== */
+
+/* ----- BASE ----- */
+.ep-body {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    background-color: var(--ep-cream);
+    color: var(--ep-charcoal);
+    margin: 0;
+}
+
+/* ----- SHARED ----- */
+.ep-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ep-gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+}
+.ep-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--ep-gold);
+    flex-shrink: 0;
+}
+.ep-eyebrow--light { color: var(--ep-gold); }
+.ep-eyebrow-line {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ep-gold);
+    flex-shrink: 0;
+}
+
+.ep-btn-primary {
+    display: inline-block;
+    background: var(--ep-navy);
+    color: var(--ep-gold);
+    padding: 13px 28px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+}
+.ep-btn-primary:hover { background: var(--ep-navy-mid); transform: translateY(-1px); }
+
+.ep-btn-ghost {
+    display: inline-block;
+    color: var(--ep-navy);
+    padding: 13px 28px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ep-border);
+    background: transparent;
+    transition: border-color 0.25s, background 0.25s;
+}
+.ep-btn-ghost:hover { border-color: var(--ep-navy); background: rgba(15,22,35,0.04); }
+
+.ep-btn-outline {
+    display: inline-block;
+    color: var(--ep-navy);
+    padding: 11px 24px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ep-navy);
+    background: transparent;
+    transition: background 0.25s, color 0.25s;
+}
+.ep-btn-outline:hover { background: var(--ep-navy); color: var(--ep-gold); }
+
+/* ----- NAV ----- */
+.ep-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: var(--ep-cream);
+    border-bottom: 1px solid var(--ep-border);
+    transition: box-shadow 0.3s;
+}
+.ep-nav-stripe {
+    height: 2px;
+    background: linear-gradient(90deg, var(--ep-navy) 0%, var(--ep-gold) 50%, var(--ep-navy) 100%);
+}
+.ep-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.ep-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+.ep-nav-logo {
+    height: 48px;
+    width: auto;
+    mix-blend-mode: multiply;
+}
+.ep-nav-brand-text { line-height: 1.1; }
+.ep-nav-brand-name {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ep-navy);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.ep-nav-brand-sub {
+    display: block;
+    font-size: 7.5px;
+    color: var(--ep-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.ep-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+.ep-nav-link {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ep-charcoal);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+    position: relative;
+}
+.ep-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--ep-gold);
+    transition: width 0.3s;
+}
+.ep-nav-link:hover { opacity: 1; color: var(--ep-navy); }
+.ep-nav-link:hover::after { width: 100%; }
+
+.ep-nav-cta {
+    background: var(--ep-navy);
+    color: var(--ep-gold);
+    padding: 9px 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+.ep-nav-cta:hover { background: var(--ep-navy-mid); }
+
+.ep-nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 4px;
+    flex-shrink: 0;
+}
+.ep-nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ep-navy);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.ep-mobile-menu {
+    border-top: 1px solid var(--ep-border);
+    background: var(--ep-cream);
+    padding: 12px 32px 20px;
+    display: flex;
+    flex-direction: column;
+}
+/* "hidden" utility from tailwind.css sets display:none */
+.ep-mobile-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ep-charcoal);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ep-border);
+    transition: color 0.2s;
+}
+.ep-mobile-link:hover { color: var(--ep-navy); }
+.ep-mobile-cta {
+    margin-top: 16px;
+    background: var(--ep-navy);
+    color: var(--ep-gold);
+    padding: 13px 24px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
