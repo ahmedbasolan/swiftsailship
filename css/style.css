@@ -14,6 +14,19 @@ img {
     height: auto;
 }
 
+/* ===== EDITORIAL PRESTIGE — CSS VARIABLES ===== */
+:root {
+    --ep-cream: #f5f0e8;
+    --ep-cream-dark: #ede6d9;
+    --ep-navy: #0f1623;
+    --ep-navy-mid: #1a2236;
+    --ep-gold: #C5A47E;
+    --ep-gold-light: #d9bc99;
+    --ep-charcoal: #2c2c3a;
+    --ep-gray: #7a7a8a;
+    --ep-border: #ddd6c8;
+}
+
 /* Skip to content (accessibility) */
 .skip-link {
     position: absolute;
@@ -202,10 +215,10 @@ img {
 /* ===== NAV SCROLL EFFECT ===== */
 
 nav.nav-scrolled {
-    background-color: rgba(17, 24, 39, 0.97) !important; /* needed to override Tailwind bg-gray-900 */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background-color: rgba(245, 240, 232, 0.97) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(15, 22, 35, 0.08);
 }
 
 /* ===== GOLDEN LINE DIVIDER ===== */
@@ -327,6 +340,91 @@ nav.nav-scrolled {
 .toc-link:hover {
     color: #C5A47E;
     padding-left: 0.5rem;
+}
+
+/* ===== NAVIGATION LINK STYLES ===== */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #C5A47E;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #C5A47E !important;
+    font-weight: bold;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ===== GOLD GRADIENT TEXT ===== */
+.gold-gradient-text {
+    background: linear-gradient(to right, #C5A47E, #E5C59E, #C5A47E);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== HOW IT WORKS PAGE SPECIFIC STYLES ===== */
+.card-hover-effect {
+    transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.section-hover {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.section-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #C5A47E;
+}
+
+.stat-item {
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.global-reach-section {
+    transition: all 0.4s ease;
+}
+
+.global-reach-section:hover {
+    transform: scale(1.02);
 }
 
 /* ===== PARALLAX HINT ===== */
