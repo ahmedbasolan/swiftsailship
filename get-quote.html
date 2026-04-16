@@ -4,34 +4,22 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Get Quote - Swift Sail Shipping</title>
-<meta content="Request a shipping quote from Swift Sail Shipping LLC. Fast response, competitive rates, and expert logistics solutions for your cargo needs."/>
+<meta content="Request a shipping quote from Swift Sail Shipping LLC. Fast response, competitive rates, and expert logistics solutions for your cargo needs." name="description"/>
+<link rel="canonical" href="https://swiftsailship.com/get-quote.html"/>
+<meta property="og:title" content="Get Quote - Swift Sail Shipping"/>
+<meta property="og:description" content="Request a shipping quote from Swift Sail Shipping LLC. Fast response, competitive rates, and expert logistics solutions for your cargo needs."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://swiftsailship.com/get-quote.html"/>
+<meta property="og:site_name" content="Swift Sail Shipping"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Get Quote - Swift Sail Shipping"/>
+<meta name="twitter:description" content="Request a shipping quote from Swift Sail Shipping LLC. Fast response and competitive rates."/>
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<link rel="stylesheet" href="css/style.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-<script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#C5A47E",
-                        "primary-hover": "#B08D66",
-                        secondary: "#1A2E35",
-                        "background-light": "#FAFAF9",
-                        "background-dark": "#0F172A",
-                        "surface-light": "#FFFFFF",
-                        "surface-dark": "#1E293B",
-                        "text-light": "#334155",
-                        "text-dark": "#E2E8F0",
-                    },
-                    fontFamily: {
-                        display: ["Playfair Display", "serif"],
-                        sans: ["Inter", "sans-serif"],
-                    }
-                },
-            },
-        };
-    </script>
+<link rel="stylesheet" href="css/tailwind.css"/>
 <style>
         .nav-link {
           position: relative;
@@ -62,14 +50,32 @@
           width: 100%;
         }
     </style>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Swift Sail Shipping L.L.C.",
+  "description": "Premium freight forwarding, customs clearance, and logistics services in the UAE.",
+  "url": "https://swiftsailship.com",
+  "telephone": "+971553424700",
+  "email": "info@swiftsailship.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tanvi Business Centre, M - 101, Abu Hail",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
+  "sameAs": [
+    "https://www.linkedin.com/company/swift-sail-shipping",
+    "https://twitter.com/swiftsailship"
+  ]
+}
+</script>
 </head>
 <body class="font-sans text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark antialiased transition-colors duration-300">
 <div class="relative flex min-h-screen flex-col">
-<nav class="fixed w-full z-50 bg-gray-900 border-b border-gray-800">
+<nav class="fixed w-full z-50 bg-gray-900 border-b border-gray-800 transition-all duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between items-center h-16">
 <div class="flex items-center space-x-3">
@@ -81,13 +87,31 @@
 <a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="services.html">Services</a>
 <a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="how-it-works.html">How It Works</a>
 <a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="about.html">About</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
 <a class="nav-link active text-white hover:text-primary transition-colors text-sm font-medium" href="get-quote.html">Contact</a>
 </div>
-<div>
-<a class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm" href="get-quote.html">
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-block bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm btn-shine" href="get-quote.html">
                         Get Quote
                     </a>
+<button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Toggle menu">
+<span class="block w-6 h-0.5 bg-white transition-all"></span>
+<span class="block w-6 h-0.5 bg-white transition-all"></span>
+<span class="block w-6 h-0.5 bg-white transition-all"></span>
+</button>
 </div>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800 px-4 pb-4">
+<div class="flex flex-col space-y-3 pt-3">
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium py-2" href="index.html">Home</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium py-2" href="services.html">Services</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium py-2" href="how-it-works.html">How It Works</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium py-2" href="about.html">About</a>
+<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium py-2" href="blog.html">Blog</a>
+<a class="nav-link active text-white hover:text-primary transition-colors text-sm font-medium py-2" href="get-quote.html">Contact</a>
+<a class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm text-center sm:hidden" href="get-quote.html">Get Quote</a>
 </div>
 </div>
 </nav>
@@ -111,31 +135,31 @@
 <i class="fas fa-edit text-primary"></i>
                                 Send us a message
                             </h3>
-<form class="flex flex-col gap-5">
+<form class="flex flex-col gap-5" data-contact-form>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Full Name</p>
-<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter your name"/>
+<input name="full_name" required class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter your name"/>
 </label>
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Company Name</p>
-<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter company name"/>
+<input name="company" class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="Enter company name"/>
 </label>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Email Address</p>
-<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="name@company.com" type="email"/>
+<input name="email" required class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="name@company.com" type="email"/>
 </label>
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Phone Number</p>
-<input class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="+971 55 342 4700" type="tel"/>
+<input name="phone" class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base" placeholder="+971 55 342 4700" type="tel"/>
 </label>
 </div>
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Service Interest</p>
 <div class="relative">
-<select class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base appearance-none">
+<select name="service" class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-[15px] text-base appearance-none">
 <option disabled="" selected="" value="">Select a service type</option>
 <option value="cargo">Cargo Loading &amp; Unloading</option>
 <option value="freight">Freight Brokerage</option>
@@ -149,12 +173,21 @@
 </label>
 <label class="flex flex-col flex-1">
 <p class="text-gray-900 dark:text-gray-200 text-base font-medium leading-normal pb-2">Shipment Details / Message</p>
-<textarea class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 min-h-[160px] placeholder:text-gray-500 p-[15px] text-base resize-y" placeholder="Tell us about your cargo, origin, destination, and any specific requirements..."></textarea>
+<textarea name="message" required class="w-full rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 dark:border-gray-600 min-h-[160px] placeholder:text-gray-500 p-[15px] text-base resize-y" placeholder="Tell us about your cargo, origin, destination, and any specific requirements..."></textarea>
 </label>
-<button class="mt-2 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary hover:bg-primary/90 transition-all text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30" type="button">
+<button class="mt-2 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary hover:bg-primary/90 transition-all text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30" type="submit">
                                     Send Inquiry
                                 </button>
 </form>
+<!-- Success State -->
+<div id="form-success" class="form-success flex-col items-center justify-center text-center py-12">
+<div class="w-20 h-20 mx-auto bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6">
+<i class="fas fa-check-circle text-4xl text-green-500"></i>
+</div>
+<h3 class="text-2xl font-display font-bold text-secondary dark:text-white mb-3">Message Sent Successfully!</h3>
+<p class="text-gray-600 dark:text-gray-400 mb-6">Thank you for reaching out. Our team will respond within 24-48 hours.</p>
+<a href="index.html" class="text-primary hover:text-primary-hover font-medium transition-colors">← Back to Home</a>
+</div>
 </div>
 </div>
 <!-- Right Column: Contact Info & Map -->
@@ -212,7 +245,7 @@
 <div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse z-0"></div>
 <img alt="Map Location" class="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-110" data-alt="Map view showing coastal location of Swift Sail Shipping offices near a busy harbor" data-location="Dubai Harbor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWmapUlGMlnPKFM9G8eHRW7h8XJmns81KIz5E1kG0TaORqdhP_TnBC7KZMHm5TgEwkeArLJOpTabMwe5ewW816cXSPGs04DQ9vry34beJTzVTxS1pLpS5fiD8r0djPwCS_7E-moS0Jr26UD3we2235MSQR6YlH7tCORNKSPs3rxApc9zyXvBIUTe1qnFOZEyFnOSLIEKRAlpqrrGpm2gFDkYO0z4qJbb0UjgeSpDU7asUvIidVfSOSKck9Htf-Grjzk4a85a7vDZQ"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20 flex items-end p-4">
-<a class="text-white text-sm font-bold flex items-center gap-1 hover:underline" href="https://maps.google.com/?q=Dubai+Abu+Hail+Tanvi+Business+Centre" target="_blank">
+<a class="text-white text-sm font-bold flex items-center gap-1 hover:underline" href="https://maps.google.com/?q=Tanvi+Business+Centre+Abu+Hail+Dubai" target="_blank" rel="noopener noreferrer">
                                     View on Google Maps <i class="fas fa-external-link-alt text-sm"></i>
 </a>
 </div>
@@ -257,7 +290,7 @@
 <!-- Footer -->
 <footer class="bg-surface-light dark:bg-background-dark pt-12 pb-6 border-t border-gray-200 dark:border-gray-800">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
 <div class="flex items-center space-x-3">
 <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
 <div class="flex flex-col">
@@ -271,6 +304,13 @@
 <li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
 <li><a class="hover:text-primary transition-colors" href="services.html">Services</a></li>
 <li><a class="hover:text-primary transition-colors" href="how-it-works.html">How It Works</a></li>
+<li><a class="hover:text-primary transition-colors" href="about.html">About</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Resources</h4>
+<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-primary transition-colors" href="blog.html">Blog & Insights</a></li>
 </ul>
 </div>
 <div>
@@ -292,11 +332,12 @@
 </div>
 </div>
 <div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-center">
-<p class="text-gray-500 dark:text-gray-400 text-sm">
-                    © 2006 Swift Sail Shipping L.L.C. All rights reserved.
+<p class="text-gray-500 dark:text-gray-400 text-sm" data-copyright-year>
+                    © 2026 Swift Sail Shipping L.L.C. All rights reserved.
                 </p>
 </div>
 </div>
 </footer>
 </div>
+<script src="js/script.js"></script>
 </body></html>
