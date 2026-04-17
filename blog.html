@@ -1,178 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Blog - Swift Sail Shipping | Industry Insights & Logistics News</title>
-<meta content="Stay informed with Swift Sail Shipping's expert insights on global logistics, shipping trends, customs regulations, and supply chain strategies for UAE businesses." name="description"/>
-<link rel="canonical" href="https://swiftsailship.com/blog.html"/>
-<meta property="og:title" content="Blog - Swift Sail Shipping | Industry Insights & Logistics News"/>
-<meta property="og:description" content="Stay informed with Swift Sail Shipping's expert insights on global logistics, shipping trends, customs regulations, and supply chain strategies."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://swiftsailship.com/blog.html"/>
-<meta property="og:site_name" content="Swift Sail Shipping"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Blog - Swift Sail Shipping | Industry Insights"/>
-<meta name="twitter:description" content="Expert insights on global logistics, shipping trends, and supply chain strategies."/>
-<link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
-<link rel="stylesheet" href="css/style.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="css/tailwind.css"/>
-<style>
-    .gold-gradient-text { background: linear-gradient(to right, #C5A47E, #E5C59E, #C5A47E); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .nav-link { position: relative; transition: color 0.3s ease; }
-    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background-color: #C5A47E; transition: width 0.3s ease; }
-    .nav-link:hover::after { width: 100%; }
-    .nav-link.active { color: #C5A47E !important; font-weight: bold; }
-    .nav-link.active::after { width: 100%; }
-</style>
-<script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "Blog", "name": "Swift Sail Shipping Blog", "description": "Industry insights, logistics news, and supply chain strategies from Swift Sail Shipping LLC.", "url": "https://swiftsailship.com/blog.html", "publisher": { "@type": "Organization", "name": "Swift Sail Shipping L.L.C.", "url": "https://swiftsailship.com" } }
-</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Swift Sail Shipping L.L.C.</title>
+  <meta name="description" content="Insights on freight, customs, and logistics from the Swift Sail team in Dubai."/>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/tailwind.css"/>
 </head>
-<body class="font-sans text-text-light dark:text-text-dark bg-background-light dark:bg-background-dark antialiased transition-colors duration-300">
-<nav class="fixed w-full z-50 bg-gray-900 border-b border-gray-800 transition-all duration-300">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between items-center h-16">
-<div class="flex items-center space-x-3">
-<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
-<span class="font-display font-bold text-xl text-white tracking-wider uppercase">Swift Sail</span>
-</div>
-<div class="hidden md:flex space-x-8">
-<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="index.html">Home</a>
-<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="services.html">Services</a>
-<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="how-it-works.html">How It Works</a>
-<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="about.html">About</a>
-<a class="nav-link active text-white hover:text-primary transition-colors text-sm font-medium" href="blog.html">Blog</a>
-<a class="nav-link text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="get-quote.html">Contact</a>
-</div>
-<div class="flex items-center gap-3">
-<a class="hidden sm:inline-block bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-md font-medium transition-colors text-sm btn-shine" href="get-quote.html">Get Quote</a>
-<button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Toggle menu">
-<span class="block w-6 h-0.5 bg-white transition-all"></span><span class="block w-6 h-0.5 bg-white transition-all"></span><span class="block w-6 h-0.5 bg-white transition-all"></span>
-</button>
-</div>
-</div>
-</div>
-<div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800 px-4 pb-4">
-<div class="flex flex-col space-y-3 pt-3">
-<a class="nav-link text-gray-300 hover:text-primary text-sm font-medium py-2" href="index.html">Home</a>
-<a class="nav-link text-gray-300 hover:text-primary text-sm font-medium py-2" href="services.html">Services</a>
-<a class="nav-link text-gray-300 hover:text-primary text-sm font-medium py-2" href="how-it-works.html">How It Works</a>
-<a class="nav-link text-gray-300 hover:text-primary text-sm font-medium py-2" href="about.html">About</a>
-<a class="nav-link active text-white hover:text-primary text-sm font-medium py-2" href="blog.html">Blog</a>
-<a class="nav-link text-gray-300 hover:text-primary text-sm font-medium py-2" href="get-quote.html">Contact</a>
-</div>
-</div>
+<body style="font-family:'DM Sans',sans-serif;background:#fff;margin:0;">
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="ep-nav">
+  <div class="ep-nav-stripe"></div>
+  <div class="ep-nav-inner">
+    <a href="index.html" class="ep-nav-brand">
+      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <div class="ep-nav-brand-text">
+        <span class="ep-nav-brand-name">Swift Sail</span>
+        <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
+      </div>
+    </a>
+    <div class="ep-nav-links">
+      <a href="services.html" class="ep-nav-link">Services</a>
+      <a href="how-it-works.html" class="ep-nav-link">How It Works</a>
+      <a href="about.html" class="ep-nav-link">About</a>
+      <a href="blog.html" class="ep-nav-link" aria-current="page">Blog</a>
+      <a href="get-quote.html" class="ep-nav-cta">Get Quote</a>
+    </div>
+    <button id="mobile-menu-btn" class="ep-nav-hamburger" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="ep-mobile-menu hidden">
+    <a href="services.html" class="ep-mobile-link">Services</a>
+    <a href="how-it-works.html" class="ep-mobile-link">How It Works</a>
+    <a href="about.html" class="ep-mobile-link">About</a>
+    <a href="blog.html" class="ep-mobile-link">Blog</a>
+    <a href="get-quote.html" class="ep-mobile-cta">Get Quote</a>
+  </div>
 </nav>
 
-<!-- Hero -->
-<header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img alt="Shipping containers at a modern port" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFfAEH4gHFyIhCTYy4gKKaRuhN8oUA49R-66z7rt7RzAsdMKNmbyw54InDH5JVbNJxbnaq8qJQp5xWe01yqBbSAVQLIzBSKDGHQbjX1Tyu-q4-YGxLNWydzXMvWDY1y9wiM4w3-VsomGEvciShgpVfsfI_miN9B94NPB03ZqwEoi9Ffnkq5osv507KfBOEs7W7PH45yYEXuTj_X_R6qZLpV8zGsBnHnZjXkRp0z5yyHn4QKPw1MDMMNUE7v2cU3VbuiwEDldEVDjE"/>
-<div class="absolute inset-0 bg-gradient-to-b from-secondary/90 to-secondary/60"></div>
-</div>
-<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<span class="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-semibold tracking-widest uppercase mb-4 backdrop-blur-sm animate-on-scroll">Industry Insights</span>
-<h1 class="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight animate-on-scroll">
-Blog & <span class="gold-gradient-text">Insights</span>
-</h1>
-<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed animate-on-scroll">
-Expert analysis, industry trends, and actionable strategies to help your business navigate global shipping challenges.
-</p>
-</div>
-</header>
+<main id="main">
+  <section class="ep-page-hero">
+    <div class="ep-page-hero-inner">
+      <span class="ep-section-label">Insights</span>
+      <h1 class="ep-page-h1">Logistics Thinking<br/>from Dubai</h1>
+      <p class="ep-page-sub">Practical perspectives on freight, customs, trade regulations, and global supply chains from the Swift Sail team.</p>
+    </div>
+  </section>
 
-<!-- Blog Articles -->
-<main class="relative z-20 -mt-10">
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger>
+  <section class="ep-section-white">
+    <div class="ep-section-wrap">
+      <span class="ep-section-label">Latest Articles</span>
+      <h2 class="ep-section-h2">From the Blog</h2>
+      <hr class="ep-rule ep-rule--gold"/>
+      <div class="ep-blog-grid">
+        <a href="blog/navigating-global-shipping-challenges-2026.html" class="ep-blog-card">
+          <img src="assets/img/services-background.jpg" alt="Global shipping routes" class="ep-blog-card-img"/>
+          <div class="ep-blog-card-body">
+            <span class="ep-blog-card-tag">Industry Insight</span>
+            <h3 class="ep-blog-card-h">Navigating Global Shipping Challenges in 2026</h3>
+            <p class="ep-blog-card-p">Red Sea disruptions, port congestion, and rising fuel costs are reshaping trade routes. Here's how UAE importers and exporters can adapt.</p>
+            <span class="ep-blog-card-meta">April 2026 &nbsp;·&nbsp; 6 min read</span>
+          </div>
+        </a>
+        <div class="ep-blog-card" style="background:var(--ep-cream);border-style:dashed;justify-content:center;align-items:center;padding:48px 32px;text-align:center;cursor:default;">
+          <div>
+            <span class="ep-blog-card-tag" style="display:block;margin-bottom:12px;">Coming Soon</span>
+            <h3 class="ep-blog-card-h" style="color:var(--ep-gray);">More Articles on the Way</h3>
+            <p class="ep-blog-card-p" style="margin-top:8px;">We publish new guides and industry updates regularly. Check back soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Featured Article -->
-<a href="blog/navigating-global-shipping-challenges-2026.html" class="blog-card group lg:col-span-2 bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 animate-on-scroll">
-<div class="md:flex">
-<div class="md:w-1/2 overflow-hidden">
-<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuChpVPVjlp78-edT5vj490mtD7wbbhNqMAOAU27IYlwOCbZqdq3xM7EdTiOZYMedyrioAboaTQCmyAmnvI_aMXz3hI1I5yG53atbC1kXq8IYDXwtDnfyaVXLAqPYZtrQqYoGfgbNFzQGHL6HmX9Ici7fUogj5yKoHb3QRUPe0_f1MIIDJ-keqNz-1FfiS4gozr3GgAgDAO_IkHiWGXwO5spgYPgzxgGAwOp9F73_pLdyNjvO1tGpjO7AIFKTCWMl0RVktn9DXacr3o" alt="Global shipping port with containers" class="blog-card-img w-full h-64 md:h-full object-cover"/>
-</div>
-<div class="md:w-1/2 p-8 flex flex-col justify-center">
-<div class="flex items-center gap-3 mb-4">
-<span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Featured</span>
-<span class="text-gray-400 text-xs"><i class="far fa-clock mr-1"></i> 8 min read</span>
-</div>
-<h2 class="text-2xl font-display font-bold text-secondary dark:text-white mb-3 group-hover:text-primary transition-colors">Navigating Global Shipping Challenges in 2026: Strategies for Resilient Supply Chains</h2>
-<p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">From tariff volatility and Red Sea disruptions to rising freight costs—discover actionable strategies to build resilient supply chains in an uncertain global landscape.</p>
-<div class="flex items-center justify-between">
-<span class="text-gray-400 text-xs"><i class="far fa-calendar mr-1"></i> March 24, 2026</span>
-<span class="text-primary font-semibold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Read More <i class="fas fa-arrow-right text-xs"></i></span>
-</div>
-</div>
-</div>
-</a>
-
-<!-- More Articles Placeholder -->
-<div class="bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 flex flex-col justify-center items-center p-12 text-center animate-on-scroll">
-<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="fas fa-pen-nib text-2xl text-primary"></i>
-</div>
-<h3 class="text-xl font-display font-bold text-secondary dark:text-white mb-3">More Articles Coming Soon</h3>
-<p class="text-gray-500 dark:text-gray-400 text-sm mb-6">We're preparing expert insights on customs regulations, route optimization, and industry trends.</p>
-<span class="text-primary text-sm font-medium">Stay tuned</span>
-</div>
-
-</div>
-
-<!-- Newsletter CTA -->
-<div class="mt-16 bg-gradient-to-r from-secondary to-secondary/80 rounded-2xl p-8 md:p-12 text-center animate-on-scroll">
-<h3 class="text-3xl font-display font-bold text-white mb-4">Stay Informed</h3>
-<p class="text-gray-300 mb-8 max-w-2xl mx-auto">Get the latest industry insights and shipping strategies delivered to your inbox. Contact us to join our mailing list.</p>
-<a href="get-quote.html" class="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-sm font-medium transition-all shadow-lg hover:shadow-primary/30 text-sm uppercase tracking-wider btn-shine inline-flex items-center gap-2">
-Contact Us <i class="fas fa-arrow-right"></i>
-</a>
-</div>
-</section>
+  <div class="ep-cta-band">
+    <div class="ep-cta-band-inner">
+      <h2 class="ep-cta-band-h">Stay Ahead of Trade Changes</h2>
+      <p class="ep-cta-band-p">Get notified when we publish new guides on UAE customs, freight rates, and logistics strategy.</p>
+      <a href="get-quote.html" class="ep-btn ep-btn--gold">Contact Our Team</a>
+    </div>
+  </div>
 </main>
 
-<!-- Footer -->
-<footer class="bg-surface-light dark:bg-background-dark pt-12 pb-6 border-t border-gray-200 dark:border-gray-800">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-<div class="flex items-center space-x-3">
-<img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="h-14 w-auto">
-<div class="flex flex-col">
-<span class="font-display font-bold text-xl text-secondary dark:text-white tracking-wider uppercase leading-none">Swift Sail</span>
-<span class="text-[0.6rem] text-primary uppercase tracking-[0.2em]">Shipping L.L.C.</span>
-</div>
-</div>
-<div>
-<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
-<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-<li><a class="hover:text-primary transition-colors" href="index.html">Home</a></li>
-<li><a class="hover:text-primary transition-colors" href="services.html">Services</a></li>
-<li><a class="hover:text-primary transition-colors" href="how-it-works.html">How It Works</a></li>
-<li><a class="hover:text-primary transition-colors" href="about.html">About</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Resources</h4>
-<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-<li><a class="hover:text-primary transition-colors" href="blog.html">Blog & Insights</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-secondary dark:text-white mb-4 uppercase tracking-wider text-sm">Contact</h4>
-<ul class="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-<li class="flex items-center gap-2"><i class="fas fa-phone text-primary"></i><a href="tel:+971553424700" class="hover:text-primary transition-colors">+971 55 342 4700</a></li>
-<li class="flex items-center gap-2"><i class="fas fa-envelope text-primary"></i><a href="mailto:info@swiftsailship.com" class="hover:text-primary transition-colors">info@swiftsailship.com</a></li>
-<li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-primary"></i><span>Dubai, Abu Hail, Tanvi Business Centre, M - 101</span></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-gray-200 dark:border-gray-700 pt-6 text-center">
-<p class="text-gray-500 dark:text-gray-400 text-sm" data-copyright-year>&copy; 2026 Swift Sail Shipping L.L.C. All rights reserved.</p>
-</div>
-</div>
+<footer class="ep-footer">
+  <div class="ep-footer-inner">
+    <div class="ep-footer-grid">
+      <div class="ep-footer-brand">
+        <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
+          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <div class="ep-nav-brand-text">
+            <span class="ep-nav-brand-name">Swift Sail</span>
+            <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
+          </div>
+        </a>
+        <p class="ep-footer-brand-p">Licensed freight forwarding and customs brokerage headquartered in Dubai, UAE.</p>
+      </div>
+      <div class="ep-footer-col">
+        <h4 class="ep-footer-heading">Services</h4>
+        <ul class="ep-footer-list">
+          <li><a href="cargo-loading-unloading.html" class="ep-footer-link">Cargo Loading &amp; Unloading</a></li>
+          <li><a href="freight-broker.html" class="ep-footer-link">Freight Brokerage</a></li>
+          <li><a href="customs-broker.html" class="ep-footer-link">Customs Brokerage</a></li>
+          <li><a href="sea-shipping-lines-agent.html" class="ep-footer-link">Sea Shipping Agent</a></li>
+        </ul>
+      </div>
+      <div class="ep-footer-col">
+        <h4 class="ep-footer-heading">Company</h4>
+        <ul class="ep-footer-list">
+          <li><a href="about.html" class="ep-footer-link">About Us</a></li>
+          <li><a href="how-it-works.html" class="ep-footer-link">How It Works</a></li>
+          <li><a href="blog.html" class="ep-footer-link">Blog</a></li>
+          <li><a href="get-quote.html" class="ep-footer-link">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="ep-footer-col">
+        <h4 class="ep-footer-heading">Contact</h4>
+        <ul class="ep-footer-list">
+          <li class="ep-footer-link">Dubai, United Arab Emirates</li>
+          <li><a href="tel:+971XXXXXXXX" class="ep-footer-link">+971 XX XXX XXXX</a></li>
+          <li><a href="mailto:info@swiftsailshipping.com" class="ep-footer-link">info@swiftsailshipping.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ep-footer-bottom">
+      <span class="ep-footer-copy">&copy; <span id="footer-year"></span> Swift Sail Shipping L.L.C. All rights reserved.</span>
+    </div>
+  </div>
 </footer>
 <script src="js/script.js"></script>
 </body>
