@@ -2,43 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://swiftsailship.com/</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/services.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://swiftsailship.com/cargo-loading-unloading.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://swiftsailship.com/freight-broker.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://swiftsailship.com/customs-broker.html</loc>
+        <lastmod>2026-04-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://swiftsailship.com/sea-shipping-lines-agent.html</loc>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/how-it-works.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/about.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/get-quote.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/blog.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://swiftsailship.com/blog/navigating-global-shipping-challenges-2026.html</loc>
-        <lastmod>2026-03-24</lastmod>
+        <lastmod>2026-04-17</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.6</priority>
     </url>

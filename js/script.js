@@ -40,7 +40,7 @@
     }
 
 document.addEventListener('DOMContentLoaded', function () {
-
+    var scrollObserver = null;
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     if (animateElements.length > 0 && 'IntersectionObserver' in window) {
-        var scrollObserver = new IntersectionObserver(function (entries) {
+        scrollObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-visible');
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var copyrightElements = document.querySelectorAll('[data-copyright-year]');
     var currentYear = new Date().getFullYear();
     copyrightElements.forEach(function (el) {
-        el.textContent = el.textContent.replace(/[©&copy;]\s*\d{4}/, '© ' + currentYear);
+        el.textContent = el.textContent.replace(/(?:©|&copy;)\s*\d{4}/g, '© ' + currentYear);
     });
 
     // ===== FORM SUBMISSION FEEDBACK =====
