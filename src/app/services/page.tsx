@@ -12,40 +12,28 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   const services = [
     {
-      icon: "fa-ship",
-      title: "Sea Freight",
-      description: "Reliable ocean shipping worldwide with competitive rates and flexible scheduling.",
-      features: ["FCL & LCL options", "Door-to-door delivery", "Real-time tracking"]
+      icon: "fa-boxes-stacked",
+      title: "Cargo Loading & Unloading",
+      description: "Professional and safe handling of your cargo at ports and warehouses.",
+      features: ["Heavy Lift Operations", "Container Stuffing", "Fragile Goods Handling"]
     },
     {
-      icon: "fa-plane",
-      title: "Air Freight",
-      description: "Fast air cargo delivery for time-sensitive shipments.",
-      features: ["Express delivery", "Customs handling", "Priority routing"]
+      icon: "fa-handshake",
+      title: "Freight Broker",
+      description: "Connecting your cargo with the most efficient transport routes globally.",
+      features: ["Air Freight", "Sea Freight", "Land Transport"]
     },
     {
       icon: "fa-file-contract",
-      title: "Customs Brokerage",
-      description: "Expert customs clearance and documentation services.",
-      features: ["Document preparation", "Duty calculation", "Compliance management"]
+      title: "Customs Broker",
+      description: "Navigating complex customs regulations for smooth border crossing.",
+      features: ["Document Preparation", "Duty Calculation", "Clearance Processing"]
     },
     {
-      icon: "fa-warehouse",
-      title: "Warehousing",
-      description: "Secure storage solutions with inventory management.",
-      features: ["Climate control", "24/7 security", "Inventory tracking"]
-    },
-    {
-      icon: "fa-truck",
-      title: "Last-Mile Delivery",
-      description: "Efficient final mile delivery to your doorstep.",
-      features: ["Flexible scheduling", "Real-time updates", "Proof of delivery"]
-    },
-    {
-      icon: "fa-globe",
-      title: "Global Logistics",
-      description: "End-to-end supply chain management across continents.",
-      features: ["Multi-modal transport", "Risk management", "Cost optimization"]
+      icon: "fa-anchor",
+      title: "Sea Shipping Lines Agent",
+      description: "Direct representation for major shipping lines ensuring priority booking.",
+      features: ["Vessel Handling", "Port Operations", "Crew Change Support"]
     }
   ];
 
@@ -142,24 +130,78 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Global Reach Section */}
+        <section className="py-24 bg-swift-secondary text-white relative overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img 
+              alt="Global shipping routes" 
+              className="w-full h-full object-cover opacity-40 mix-blend-screen" 
+              src="/assets/img/global_shipping_1776261498445.png"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-swift-secondary to-swift-secondary/40"></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-sm font-bold text-swift-primary uppercase tracking-widest mb-3">Global Reach, Local Expertise</h2>
+                <h3 className="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">Operating in Major Ports Across the Globe</h3>
+                <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                  Our extensive network of international partners and agents worldwide allows us to offer seamless logistics solutions, regardless of origin or destination.
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-center text-gray-200">
+                    <div className="w-8 h-8 rounded-full bg-swift-primary/20 flex items-center justify-center mr-4">
+                      <i className="fas fa-check text-swift-primary text-sm"></i>
+                    </div>
+                    Dedicated trade routes to Asia, Europe, and the Americas
+                  </li>
+                  <li className="flex items-center text-gray-200">
+                    <div className="w-8 h-8 rounded-full bg-swift-primary/20 flex items-center justify-center mr-4">
+                      <i className="fas fa-check text-swift-primary text-sm"></i>
+                    </div>
+                    Strong compliance with international shipping laws
+                  </li>
+                  <li className="flex items-center text-gray-200">
+                    <div className="w-8 h-8 rounded-full bg-swift-primary/20 flex items-center justify-center mr-4">
+                      <i className="fas fa-check text-swift-primary text-sm"></i>
+                    </div>
+                    Integrated multi-modal transport options
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Tracking Section */}
         <section className="bg-swift-background-light dark:bg-swift-surface-dark py-16 border-t border-gray-200 dark:border-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
-              <div className="relative z-10 lg:w-2/3">
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-swift-secondary dark:text-white mb-2">
-                  Need Custom Shipping Solutions?
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-12 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-swift-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+              <div className="relative z-10 lg:w-1/2">
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-swift-secondary dark:text-white mb-4">
+                  Track Your Shipment
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Our team of experts will create a tailored logistics plan for your specific requirements.
+                <p className="text-gray-500 dark:text-gray-400 mb-6">
+                  Enter your tracking number or Bill of Lading to get real-time updates on your cargo's status.
                 </p>
+                <form className="flex flex-col sm:flex-row gap-4" data-track-form>
+                  <input 
+                    type="text" 
+                    required 
+                    className="flex-1 rounded-lg text-gray-900 dark:text-white dark:bg-gray-900 focus:outline-0 focus:ring-2 focus:ring-swift-primary/20 border border-gray-300 dark:border-gray-600 h-14 placeholder:text-gray-500 p-4" 
+                    placeholder="Enter Container or B/L Number"
+                  />
+                  <button type="submit" className="bg-swift-primary hover:bg-swift-primary-hover text-white px-8 py-0 rounded-lg h-14 font-medium transition-all shadow-lg shadow-swift-primary/30 uppercase tracking-wide text-sm whitespace-nowrap">
+                    Track Now
+                  </button>
+                </form>
               </div>
-              <div className="relative z-10 lg:w-1/3 w-full">
-                <Link
-                  href="/get-quote"
-                  className="block w-full bg-swift-primary hover:bg-swift-primary-hover text-white px-6 py-3 rounded-md font-medium transition-all shadow-lg hover:shadow-swift-primary/30 uppercase tracking-wide text-sm text-center"
-                >
-                  Get Custom Quote
+              <div className="relative z-10 lg:w-1/3 w-full text-center lg:text-left border-t lg:border-t-0 lg:border-l border-gray-200 dark:border-gray-700 pt-8 lg:pt-0 lg:pl-12">
+                <h4 className="text-lg font-bold text-swift-secondary dark:text-white mb-2">Need Custom Solutions?</h4>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">Contact our sales team for tailored logistics plans.</p>
+                <Link href="/get-quote" className="inline-block border border-swift-primary text-swift-primary hover:bg-swift-primary hover:text-white px-6 py-2.5 rounded-md font-medium transition-all text-sm uppercase tracking-wide">
+                  Get a Quote
                 </Link>
               </div>
             </div>
