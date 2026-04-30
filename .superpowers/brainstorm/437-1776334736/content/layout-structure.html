@@ -1,0 +1,267 @@
+<style>
+  .layouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+  .layout-card { border-radius: 10px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s, transform 0.15s; background: #1a1a2e; }
+  .layout-card:hover { transform: translateY(-3px); }
+  .layout-card.selected { border-color: #C5A47E; }
+  .layout-label { padding: 12px 14px; background: #111827; }
+  .layout-label h3 { margin: 0 0 3px; font-size: 13px; font-weight: 700; color: #fff; }
+  .layout-label p { margin: 0; font-size: 11px; color: #888; line-height: 1.4; }
+
+  /* Wireframe styles */
+  .wf { background: #f5f0e8; padding: 8px; display: flex; flex-direction: column; gap: 5px; height: 340px; overflow: hidden; }
+  .wf-nav { background: #1a1a2e; height: 22px; border-radius: 2px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; flex-shrink: 0; }
+  .wf-logo { width: 40px; height: 6px; background: #C5A47E; border-radius: 1px; }
+  .wf-nav-links { display: flex; gap: 6px; }
+  .wf-nav-dot { width: 18px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 1px; }
+  .wf-nav-cta { width: 22px; height: 12px; background: #C5A47E; border-radius: 1px; }
+
+  .wf-section { border-radius: 2px; flex-shrink: 0; }
+  .wf-label { font-size: 7px; color: rgba(0,0,0,0.3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; font-weight: 600; }
+
+  /* Layout A blocks */
+  .wf-a-hero { background: #1a1a2e; height: 65px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 8px; }
+  .wf-a-hero-h { width: 120px; height: 8px; background: rgba(255,255,255,0.8); border-radius: 1px; }
+  .wf-a-hero-sub { width: 80px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 1px; }
+  .wf-a-hero-btn { width: 50px; height: 12px; background: #C5A47E; border-radius: 1px; margin-top: 3px; }
+  .wf-stats { background: #fff; height: 22px; display: flex; align-items: center; justify-content: space-around; border: 1px solid #e8e0d0; }
+  .wf-stat { text-align: center; }
+  .wf-stat-n { width: 18px; height: 6px; background: #C5A47E; border-radius: 1px; margin: 0 auto 2px; }
+  .wf-stat-l { width: 24px; height: 3px; background: #ccc; border-radius: 1px; margin: 0 auto; }
+  .wf-services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .wf-service { background: #fff; border: 1px solid #e8e0d0; padding: 6px; border-radius: 2px; }
+  .wf-service-icon { width: 12px; height: 12px; background: rgba(197,164,126,0.2); border-radius: 50%; margin-bottom: 4px; }
+  .wf-service-h { width: 40px; height: 4px; background: #333; border-radius: 1px; margin-bottom: 2px; }
+  .wf-service-p { width: 55px; height: 3px; background: #ccc; border-radius: 1px; }
+  .wf-why { background: #1a1a2e; height: 36px; display: flex; align-items: center; justify-content: space-around; padding: 0 8px; }
+  .wf-why-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .wf-why-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(197,164,126,0.3); }
+  .wf-why-line { width: 28px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 1px; }
+  .wf-cta { background: #C5A47E; height: 26px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .wf-cta-h { width: 60px; height: 5px; background: rgba(255,255,255,0.8); border-radius: 1px; }
+  .wf-cta-btn { width: 35px; height: 12px; background: #1a1a2e; border-radius: 1px; }
+
+  /* Layout B blocks */
+  .wf-b-hero { background: #1a1a2e; height: 55px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .wf-b-hero-left { padding: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; border-right: 1px solid rgba(197,164,126,0.2); }
+  .wf-b-hero-h { height: 5px; background: rgba(255,255,255,0.8); border-radius: 1px; }
+  .wf-b-hero-h2 { height: 5px; background: rgba(255,255,255,0.8); border-radius: 1px; width: 75%; }
+  .wf-b-hero-sub { height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; }
+  .wf-b-hero-btn { width: 40px; height: 10px; background: #C5A47E; border-radius: 1px; margin-top: 2px; }
+  .wf-b-hero-right { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 3px; }
+  .wf-b-hero-num { width: 30px; height: 14px; background: rgba(197,164,126,0.5); border-radius: 1px; }
+  .wf-b-hero-lbl { width: 24px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 1px; }
+  .wf-b-services-featured { background: #fff; border: 1px solid #e8e0d0; padding: 8px; }
+  .wf-b-services-title { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+  .wf-b-services-title-line { width: 12px; height: 2px; background: #C5A47E; }
+  .wf-b-services-title-text { width: 50px; height: 5px; background: #333; border-radius: 1px; }
+  .wf-b-services-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .wf-b-svc { background: #f5f0e8; padding: 5px; border-radius: 2px; border-bottom: 2px solid #C5A47E; }
+  .wf-b-svc-i { width: 10px; height: 10px; background: rgba(197,164,126,0.3); border-radius: 1px; margin-bottom: 3px; }
+  .wf-b-svc-h { width: 30px; height: 4px; background: #333; border-radius: 1px; margin-bottom: 2px; }
+  .wf-b-svc-p { width: 36px; height: 3px; background: #ccc; border-radius: 1px; }
+  .wf-b-about { background: #fff; border: 1px solid #e8e0d0; display: grid; grid-template-columns: 1fr 1fr; height: 50px; }
+  .wf-b-about-text { padding: 8px; display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .wf-b-about-img { background: #1a1a2e; display: flex; align-items: center; justify-content: center; }
+  .wf-b-about-img-ph { width: 40px; height: 20px; background: rgba(197,164,126,0.2); border-radius: 1px; }
+  .wf-b-process { background: #1a1a2e; height: 30px; display: flex; align-items: center; justify-content: space-around; padding: 0 8px; }
+  .wf-b-step { display: flex; align-items: center; gap: 4px; }
+  .wf-b-step-n { width: 10px; height: 10px; border-radius: 50%; background: rgba(197,164,126,0.4); border: 1px solid #C5A47E; display: flex; align-items: center; justify-content: center; }
+  .wf-b-step-t { width: 28px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; }
+  .wf-b-step-arrow { width: 8px; height: 1px; background: rgba(197,164,126,0.4); }
+  .wf-b-cta { background: #f5f0e8; border-top: 2px solid #1a1a2e; height: 26px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; }
+  .wf-b-cta-text { width: 60px; height: 5px; background: #333; border-radius: 1px; }
+  .wf-b-cta-btns { display: flex; gap: 4px; }
+  .wf-b-cta-btn1 { width: 35px; height: 12px; background: #1a1a2e; border-radius: 1px; }
+  .wf-b-cta-btn2 { width: 28px; height: 12px; background: transparent; border: 1px solid #1a1a2e; border-radius: 1px; }
+
+  /* Layout C blocks */
+  .wf-c-hero { background: #1a1a2e; height: 80px; padding: 10px; display: flex; flex-direction: column; justify-content: center; }
+  .wf-c-eyebrow { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+  .wf-c-eyebrow-line { width: 16px; height: 1px; background: #C5A47E; }
+  .wf-c-eyebrow-text { width: 50px; height: 3px; background: rgba(197,164,126,0.6); border-radius: 1px; }
+  .wf-c-hero-h { height: 7px; background: rgba(255,255,255,0.85); border-radius: 1px; margin-bottom: 4px; }
+  .wf-c-hero-h2 { height: 7px; background: rgba(255,255,255,0.85); border-radius: 1px; width: 70%; margin-bottom: 4px; }
+  .wf-c-hero-sub { height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; margin-bottom: 3px; }
+  .wf-c-hero-sub2 { height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; width: 60%; margin-bottom: 8px; }
+  .wf-c-hero-btns { display: flex; gap: 5px; }
+  .wf-c-btn1 { width: 40px; height: 11px; background: #C5A47E; border-radius: 1px; }
+  .wf-c-btn2 { width: 33px; height: 11px; border: 1px solid rgba(255,255,255,0.3); border-radius: 1px; }
+  .wf-c-services-big { background: #fff; border: 1px solid #e8e0d0; padding: 8px; }
+  .wf-c-svc-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .wf-c-svc-title-h { width: 60px; height: 5px; background: #1a1a2e; border-radius: 1px; }
+  .wf-c-svc-title-link { width: 30px; height: 3px; background: #C5A47E; border-radius: 1px; }
+  .wf-c-svc-big-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5px; }
+  .wf-c-svc-big { background: #1a1a2e; padding: 8px; border-radius: 2px; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; }
+  .wf-c-svc-big-icon { width: 14px; height: 14px; background: rgba(197,164,126,0.3); border-radius: 50%; margin-bottom: 4px; }
+  .wf-c-svc-big-h { height: 5px; background: rgba(255,255,255,0.7); border-radius: 1px; }
+  .wf-c-svc-big-p { height: 3px; background: rgba(255,255,255,0.25); border-radius: 1px; }
+  .wf-c-svc-sm { background: #f5f0e8; padding: 5px; border-radius: 2px; display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; border-left: 2px solid #C5A47E; }
+  .wf-c-svc-sm-h { height: 4px; background: #333; border-radius: 1px; }
+  .wf-c-svc-sm-p { height: 3px; background: #ccc; border-radius: 1px; }
+  .wf-c-trust { background: #f5f0e8; border: 1px solid #e8e0d0; height: 30px; display: flex; align-items: center; gap: 0; }
+  .wf-c-trust-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; border-right: 1px solid #e8e0d0; padding: 4px; }
+  .wf-c-trust-item:last-child { border-right: none; }
+  .wf-c-trust-n { width: 20px; height: 6px; background: #C5A47E; border-radius: 1px; }
+  .wf-c-trust-l { width: 28px; height: 3px; background: #ccc; border-radius: 1px; }
+  .wf-c-quote-strip { background: #1a1a2e; height: 40px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 0; }
+  .wf-c-quote-field { border-right: 1px solid rgba(255,255,255,0.1); padding: 8px; display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .wf-c-quote-label { width: 24px; height: 3px; background: rgba(197,164,126,0.5); border-radius: 1px; }
+  .wf-c-quote-input { height: 5px; background: rgba(255,255,255,0.15); border-radius: 1px; }
+  .wf-c-quote-submit { background: #C5A47E; display: flex; align-items: center; justify-content: center; padding: 0 12px; }
+  .wf-c-submit-text { width: 28px; height: 5px; background: rgba(255,255,255,0.9); border-radius: 1px; }
+</style>
+
+<h2>Which homepage structure fits best?</h2>
+<p class="subtitle">All three use the Editorial Prestige aesthetic (cream + charcoal + gold). The difference is how they guide the visitor through the journey.</p>
+
+<div class="layouts">
+
+  <!-- Layout A: Classic Narrative -->
+  <div class="layout-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="wf">
+      <div class="wf-nav">
+        <div class="wf-logo"></div>
+        <div class="wf-nav-links"><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div></div>
+        <div class="wf-nav-cta"></div>
+      </div>
+      <div class="wf-section wf-a-hero">
+        <div class="wf-a-hero-h"></div>
+        <div class="wf-a-hero-sub"></div>
+        <div class="wf-a-hero-btn"></div>
+      </div>
+      <div class="wf-section wf-stats">
+        <div class="wf-stat"><div class="wf-stat-n"></div><div class="wf-stat-l"></div></div>
+        <div class="wf-stat"><div class="wf-stat-n"></div><div class="wf-stat-l"></div></div>
+        <div class="wf-stat"><div class="wf-stat-n"></div><div class="wf-stat-l"></div></div>
+        <div class="wf-stat"><div class="wf-stat-n"></div><div class="wf-stat-l"></div></div>
+      </div>
+      <div class="wf-section">
+        <div class="wf-label">Services</div>
+        <div class="wf-services-grid">
+          <div class="wf-service"><div class="wf-service-icon"></div><div class="wf-service-h"></div><div class="wf-service-p"></div></div>
+          <div class="wf-service"><div class="wf-service-icon"></div><div class="wf-service-h"></div><div class="wf-service-p"></div></div>
+          <div class="wf-service"><div class="wf-service-icon"></div><div class="wf-service-h"></div><div class="wf-service-p"></div></div>
+          <div class="wf-service"><div class="wf-service-icon"></div><div class="wf-service-h"></div><div class="wf-service-p"></div></div>
+        </div>
+      </div>
+      <div class="wf-section wf-why">
+        <div class="wf-why-item"><div class="wf-why-dot"></div><div class="wf-why-line"></div></div>
+        <div class="wf-why-item"><div class="wf-why-dot"></div><div class="wf-why-line"></div></div>
+        <div class="wf-why-item"><div class="wf-why-dot"></div><div class="wf-why-line"></div></div>
+      </div>
+      <div class="wf-section wf-cta">
+        <div class="wf-cta-h"></div>
+        <div class="wf-cta-btn"></div>
+      </div>
+    </div>
+    <div class="layout-label">
+      <h3>A — Classic Narrative</h3>
+      <p>Hero → Stats → Services (4-grid) → Why Us → CTA. Familiar flow, easy to scan, proven conversion pattern.</p>
+    </div>
+  </div>
+
+  <!-- Layout B: Editorial Split -->
+  <div class="layout-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="wf">
+      <div class="wf-nav">
+        <div class="wf-logo"></div>
+        <div class="wf-nav-links"><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div></div>
+        <div class="wf-nav-cta"></div>
+      </div>
+      <div class="wf-section wf-b-hero">
+        <div class="wf-b-hero-left">
+          <div class="wf-b-hero-h"></div>
+          <div class="wf-b-hero-h2"></div>
+          <div class="wf-b-hero-sub"></div>
+          <div class="wf-b-hero-btn"></div>
+        </div>
+        <div class="wf-b-hero-right">
+          <div class="wf-b-hero-num"></div>
+          <div class="wf-b-hero-lbl"></div>
+        </div>
+      </div>
+      <div class="wf-section wf-b-services-featured">
+        <div class="wf-b-services-title"><div class="wf-b-services-title-line"></div><div class="wf-b-services-title-text"></div></div>
+        <div class="wf-b-services-row">
+          <div class="wf-b-svc"><div class="wf-b-svc-i"></div><div class="wf-b-svc-h"></div><div class="wf-b-svc-p"></div></div>
+          <div class="wf-b-svc"><div class="wf-b-svc-i"></div><div class="wf-b-svc-h"></div><div class="wf-b-svc-p"></div></div>
+          <div class="wf-b-svc"><div class="wf-b-svc-i"></div><div class="wf-b-svc-h"></div><div class="wf-b-svc-p"></div></div>
+          <div class="wf-b-svc"><div class="wf-b-svc-i"></div><div class="wf-b-svc-h"></div><div class="wf-b-svc-p"></div></div>
+        </div>
+      </div>
+      <div class="wf-section wf-b-about">
+        <div class="wf-b-about-text">
+          <div style="width:40px;height:4px;background:#C5A47E;border-radius:1px;margin-bottom:4px;"></div>
+          <div style="width:80px;height:5px;background:#333;border-radius:1px;margin-bottom:3px;"></div>
+          <div style="width:90px;height:3px;background:#ccc;border-radius:1px;"></div>
+          <div style="width:75px;height:3px;background:#ccc;border-radius:1px;margin-top:2px;"></div>
+        </div>
+        <div class="wf-b-about-img"><div class="wf-b-about-img-ph"></div></div>
+      </div>
+      <div class="wf-section wf-b-process">
+        <div class="wf-b-step"><div class="wf-b-step-n"></div><div class="wf-b-step-t"></div></div>
+        <div class="wf-b-step-arrow"></div>
+        <div class="wf-b-step"><div class="wf-b-step-n"></div><div class="wf-b-step-t"></div></div>
+        <div class="wf-b-step-arrow"></div>
+        <div class="wf-b-step"><div class="wf-b-step-n"></div><div class="wf-b-step-t"></div></div>
+        <div class="wf-b-step-arrow"></div>
+        <div class="wf-b-step"><div class="wf-b-step-n"></div><div class="wf-b-step-t"></div></div>
+      </div>
+      <div class="wf-section wf-b-cta">
+        <div class="wf-b-cta-text"></div>
+        <div class="wf-b-cta-btns">
+          <div class="wf-b-cta-btn1"></div>
+          <div class="wf-b-cta-btn2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-label">
+      <h3>B — Editorial Split</h3>
+      <p>Split hero → Services (4-col) → About strip → How It Works → CTA. Tells the story while showcasing services early.</p>
+    </div>
+  </div>
+
+  <!-- Layout C: Services-First with Inline Quote -->
+  <div class="layout-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="wf">
+      <div class="wf-nav">
+        <div class="wf-logo"></div>
+        <div class="wf-nav-links"><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div><div class="wf-nav-dot"></div></div>
+        <div class="wf-nav-cta"></div>
+      </div>
+      <div class="wf-section wf-c-hero">
+        <div class="wf-c-eyebrow"><div class="wf-c-eyebrow-line"></div><div class="wf-c-eyebrow-text"></div></div>
+        <div class="wf-c-hero-h"></div>
+        <div class="wf-c-hero-h2"></div>
+        <div class="wf-c-hero-sub"></div>
+        <div class="wf-c-hero-sub2"></div>
+        <div class="wf-c-hero-btns"><div class="wf-c-btn1"></div><div class="wf-c-btn2"></div></div>
+      </div>
+      <div class="wf-section wf-c-trust">
+        <div class="wf-c-trust-item"><div class="wf-c-trust-n"></div><div class="wf-c-trust-l"></div></div>
+        <div class="wf-c-trust-item"><div class="wf-c-trust-n"></div><div class="wf-c-trust-l"></div></div>
+        <div class="wf-c-trust-item"><div class="wf-c-trust-n"></div><div class="wf-c-trust-l"></div></div>
+        <div class="wf-c-trust-item"><div class="wf-c-trust-n"></div><div class="wf-c-trust-l"></div></div>
+      </div>
+      <div class="wf-section wf-c-services-big">
+        <div class="wf-c-svc-title"><div class="wf-c-svc-title-h"></div><div class="wf-c-svc-title-link"></div></div>
+        <div class="wf-c-svc-big-row">
+          <div class="wf-c-svc-big"><div class="wf-c-svc-big-icon"></div><div class="wf-c-svc-big-h"></div><div class="wf-c-svc-big-p"></div></div>
+          <div class="wf-c-svc-sm"><div class="wf-c-svc-sm-h"></div><div class="wf-c-svc-sm-p"></div></div>
+          <div class="wf-c-svc-sm"><div class="wf-c-svc-sm-h"></div><div class="wf-c-svc-sm-p"></div></div>
+        </div>
+      </div>
+      <div class="wf-section wf-c-quote-strip">
+        <div class="wf-c-quote-field"><div class="wf-c-quote-label"></div><div class="wf-c-quote-input"></div></div>
+        <div class="wf-c-quote-field"><div class="wf-c-quote-label"></div><div class="wf-c-quote-input"></div></div>
+        <div class="wf-c-quote-field"><div class="wf-c-quote-label"></div><div class="wf-c-quote-input"></div></div>
+        <div class="wf-c-quote-submit"><div class="wf-c-submit-text"></div></div>
+      </div>
+    </div>
+    <div class="layout-label">
+      <h3>C — Services-First + Inline Quote</h3>
+      <p>Hero → Trust bar → Featured services (asymmetric) → Embedded mini-quote form. Maximizes conversion without a separate page visit.</p>
+    </div>
+  </div>
+
+</div>
