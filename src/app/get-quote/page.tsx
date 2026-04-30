@@ -86,6 +86,33 @@ export default function GetQuotePage() {
                 </div>
               </div>
 
+              {/* Map Module */}
+              <div className="rounded-xl overflow-hidden h-64 w-full relative group">
+                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse z-0" />
+                <img 
+                  alt="Map Location" 
+                  className="w-full h-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-110" 
+                  src="/assets/img/dubai_map_location_1776261655983.png"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20 flex items-end p-4">
+                  <a className="text-white text-sm font-bold flex items-center gap-1 hover:underline" href="https://maps.google.com/?q=Tanvi+Business+Centre+Abu+Hail+Dubai" target="_blank" rel="noopener noreferrer">
+                    View on Google Maps <i className="fas fa-external-link-alt text-sm ml-1" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Trust Signals */}
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <i className="fas fa-certificate text-swift-primary" />
+                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">ISO 9001 Certified</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-2 bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <i className="fas fa-anchor text-swift-primary" />
+                  <span className="text-xs font-bold text-gray-700 dark:text-gray-300">Port Auth. Member</span>
+                </div>
+              </div>
+
               <div className="bg-swift-secondary rounded-xl p-8 text-center">
                 <h3 className="text-xl font-display font-bold text-white mb-4">
                   Need Immediate Assistance?
@@ -100,6 +127,29 @@ export default function GetQuotePage() {
                   <i className="fas fa-phone mr-2" />
                   Call Now
                 </a>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-24 pt-16 border-t border-gray-200 dark:border-gray-800">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-swift-secondary dark:text-white mb-10 text-center">Frequently Asked Questions</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-lg text-gray-900 dark:text-white">Do you handle hazardous materials?</h4>
+                <p className="text-gray-600 dark:text-gray-400">Yes, we are fully certified to handle and transport hazardous classes 2 through 9. Please specify this in your inquiry.</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-lg text-gray-900 dark:text-white">What regions do you serve?</h4>
+                <p className="text-gray-600 dark:text-gray-400">We operate globally with a strong focus on GCC, European, and Asian shipping routes.</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-lg text-gray-900 dark:text-white">How can I track my shipment?</h4>
+                <p className="text-gray-600 dark:text-gray-400">Once your shipment is booked, you will receive a unique tracking ID to monitor progress via our client portal.</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-lg text-gray-900 dark:text-white">Do you offer customs brokerage services?</h4>
+                <p className="text-gray-600 dark:text-gray-400">Absolutely. Our in-house customs brokers ensure your goods clear borders smoothly and efficiently.</p>
               </div>
             </div>
           </div>
