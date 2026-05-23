@@ -1648,3 +1648,490 @@ nav.nav-scrolled {
     .ep-cta-band { padding: 48px 24px; }
     .ep-article-wrap { padding: 40px 20px; }
 }
+
+/* ===== PREMIUM UX/UI EXTENSIONS ===== */
+
+/* 1. DYNAMIC INTERACTIVE CARGO TRACKING ENGINE */
+.ep-tracking {
+    background: #fff;
+    border-top: 1px solid var(--ep-border);
+    border-bottom: 1px solid var(--ep-border);
+    padding: 64px 0;
+    position: relative;
+}
+.ep-tracking-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 64px;
+}
+.ep-tracking-card {
+    background: #faf7f2;
+    border: 1px solid var(--ep-border);
+    border-top: 4px solid var(--ep-navy);
+    padding: 40px;
+    margin-top: 28px;
+    box-shadow: 0 16px 40px -10px rgba(15,22,35,0.06);
+    position: relative;
+    overflow: hidden;
+}
+.ep-tracking-search-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    max-width: 580px;
+    margin: 0 auto 36px;
+}
+.ep-tracking-input-wrapper {
+    position: relative;
+}
+.ep-tracking-input-wrapper svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--ep-gray);
+}
+.ep-tracking-input {
+    background: #fff;
+    border: 1px solid var(--ep-border);
+    border-bottom: 2px solid var(--ep-navy);
+    color: var(--ep-navy);
+    padding: 14px 14px 14px 46px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-bottom-color 0.2s, background 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+.ep-tracking-input:focus {
+    border-bottom-color: var(--ep-gold);
+}
+.ep-tracking-search-btn {
+    background: var(--ep-navy);
+    color: var(--ep-gold);
+    border: none;
+    padding: 14px 28px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.2s;
+}
+.ep-tracking-search-btn:hover {
+    background: var(--ep-navy-mid);
+    transform: translateY(-1px);
+}
+.ep-tracking-result {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.ep-tracking-result.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Timeline visual design */
+.ep-tracking-timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 36px;
+    padding: 0 40px;
+}
+.ep-tracking-timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: var(--ep-border);
+    z-index: 0;
+    transform: translateY(-50%);
+}
+.ep-tracking-timeline-progress {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    height: 3px;
+    background: var(--ep-gold);
+    z-index: 1;
+    transform: translateY(-50%);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.ep-tracking-timeline-node {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ep-tracking-node-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--ep-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ep-gray);
+    font-size: 10px;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.ep-tracking-timeline-node.active .ep-tracking-node-dot {
+    border-color: var(--ep-gold);
+    background: var(--ep-gold);
+    color: var(--ep-navy);
+    box-shadow: 0 0 15px rgba(184, 146, 42, 0.4);
+}
+.ep-tracking-timeline-node.completed .ep-tracking-node-dot {
+    border-color: var(--ep-navy);
+    background: var(--ep-navy);
+    color: #fff;
+}
+.ep-tracking-node-dot svg {
+    width: 14px;
+    height: 14px;
+}
+.ep-tracking-node-label {
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ep-gray);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    transition: color 0.4s ease;
+}
+.ep-tracking-timeline-node.active .ep-tracking-node-label {
+    color: var(--ep-navy);
+    font-weight: 700;
+}
+.ep-tracking-timeline-node.completed .ep-tracking-node-label {
+    color: var(--ep-navy-mid);
+}
+
+/* Shipment info card */
+.ep-tracking-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #fff;
+    border: 1px solid var(--ep-border);
+    padding: 24px;
+    border-radius: 2px;
+}
+.ep-tracking-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.ep-tracking-info-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ep-gray);
+}
+.ep-tracking-info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ep-navy);
+}
+
+/* Pulse animation for active node */
+@keyframes nodePulse {
+    0% { box-shadow: 0 0 0 0 rgba(184, 146, 42, 0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(184, 146, 42, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(184, 146, 42, 0); }
+}
+.ep-tracking-timeline-node.active .ep-tracking-node-dot {
+    animation: nodePulse 2s infinite;
+}
+
+/* 2. INFINITE HARDWARE-ACCELERATED CARRIER MARQUEE */
+.ep-carrier-marquee {
+    background: #faf7f2;
+    border-bottom: 1px solid var(--ep-border);
+    padding: 36px 0;
+    overflow: hidden;
+}
+.ep-carrier-marquee-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 64px;
+}
+.ep-carrier-title {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ep-gray);
+    margin-bottom: 24px;
+}
+.ep-carrier-marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Soft visual fade on sides */
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+.ep-carrier-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 80px;
+    animation: marqueeMove 32s linear infinite;
+}
+.ep-carrier-marquee-wrapper:hover .ep-carrier-marquee-track {
+    animation-play-state: paused;
+}
+.ep-carrier-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    opacity: 0.45;
+    transition: opacity 0.3s ease;
+}
+.ep-carrier-item:hover {
+    opacity: 0.9;
+}
+.ep-carrier-logo {
+    height: 100%;
+    width: auto;
+    filter: brightness(0) contrast(1.2);
+    object-fit: contain;
+}
+
+@keyframes marqueeMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* 3. PREMIUM TESTIMONIALS SLIDER WITH GLASSMORPHISM STYLES */
+.ep-testimonials {
+    background: var(--ep-navy);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--ep-border);
+}
+.ep-testimonials::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(184, 146, 42, 0.07) 0%, transparent 60%);
+    pointer-events: none;
+}
+.ep-testimonials-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 64px;
+    position: relative;
+    z-index: 1;
+}
+.ep-testimonials-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.ep-testimonials-h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(26px, 2.5vw, 34px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin: 8px 0 0;
+}
+.ep-testimonial-slider-container {
+    max-width: 780px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.ep-testimonial-slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.ep-testimonial-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 48px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(197, 164, 126, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 2px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.ep-testimonial-quote-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--ep-gold);
+    opacity: 0.3;
+}
+.ep-testimonial-quote-icon svg {
+    width: 100%;
+    height: 100%;
+}
+.ep-testimonial-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(16px, 1.8vw, 20px);
+    line-height: 1.6;
+    color: var(--ep-cream);
+    font-style: italic;
+}
+.ep-testimonial-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.ep-testimonial-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.ep-testimonial-title {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ep-gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.ep-testimonial-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+.ep-testimonial-arrow {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(197, 164, 126, 0.2);
+    color: var(--ep-cream);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.ep-testimonial-arrow:hover {
+    background: var(--ep-gold);
+    color: var(--ep-navy);
+    border-color: var(--ep-gold);
+}
+.ep-testimonial-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+.ep-testimonial-dots {
+    display: flex;
+    gap: 8px;
+}
+.ep-testimonial-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.ep-testimonial-dot.active {
+    background: var(--ep-gold);
+    width: 14px;
+    border-radius: 3px;
+}
+
+/* RESPONSIVE UPGRADES FOR NEW UX */
+@media (max-width: 1024px) {
+    .ep-tracking-inner,
+    .ep-carrier-marquee-inner,
+    .ep-testimonials-inner {
+        padding: 0 40px;
+    }
+    .ep-tracking-info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ep-tracking-inner,
+    .ep-carrier-marquee-inner,
+    .ep-testimonials-inner {
+        padding: 0 24px;
+    }
+    .ep-tracking-card {
+        padding: 24px;
+    }
+    .ep-tracking-search-box {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .ep-tracking-search-btn {
+        width: 100%;
+    }
+    .ep-tracking-timeline {
+        flex-direction: column;
+        gap: 32px;
+        align-items: flex-start;
+        padding-left: 20px;
+        margin: 28px 0;
+    }
+    .ep-tracking-timeline-line {
+        left: 36px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        height: auto;
+        transform: none;
+    }
+    .ep-tracking-timeline-progress {
+        left: 36px;
+        top: 0;
+        width: 3px;
+        height: 0%;
+        transform: none;
+        transition: height 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .ep-tracking-timeline-node {
+        flex-direction: row;
+        gap: 16px;
+        align-items: center;
+    }
+    .ep-tracking-node-label {
+        margin-top: 0;
+        text-align: left;
+    }
+    .ep-tracking-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .ep-testimonial-slide {
+        padding: 32px 24px;
+    }
+}
