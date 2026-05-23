@@ -304,16 +304,187 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== TRACKING FORM FEEDBACK =====
-    var trackingForm = document.querySelector('form[data-tracking-form]');
-    if (trackingForm) {
-        trackingForm.addEventListener('submit', function (e) {
+    // ===== INTERACTIVE CARGO TRACKING ENGINE =====
+    var trackerForm = document.getElementById('tracking-simulator-form');
+    var trackerResult = document.getElementById('tracking-result-panel');
+    var trackingDb = {
+        'SS-98745': {
+            cargo: 'Medical Equipment & PPE',
+            vessel: 'Al Sharqi Express - V12',
+            loc: 'In Transit - Arabian Sea',
+            eta: '2 Days (May 25, 2026)',
+            step: 3
+        },
+        'SS-12345': {
+            cargo: 'Premium Organic Dates',
+            vessel: 'Emirates SkyCargo EK-99',
+            loc: 'London Heathrow (LHR)',
+            eta: 'Delivered & Signed',
+            step: 5
+        },
+        'SS-54321': {
+            cargo: 'High-Pressure Industrial Valves',
+            vessel: 'MSC Hamburg - V204',
+            loc: 'Customs Clearance - Jebel Ali Port',
+            eta: '1 Day (May 24, 2026)',
+            step: 4
+        },
+        'SS-88888': {
+            cargo: 'Consolidated B2B Electronics',
+            vessel: 'COSCO Horizon - V088',
+            loc: 'Origin Port Loading - Hong Kong (HKG)',
+            eta: '5 Days (May 28, 2026)',
+            step: 2
+        }
+    };
+
+    if (trackerForm && trackerResult) {
+        trackerForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            var input = this.querySelector('input');
-            if (input && input.value.trim()) {
-                alert('Tracking feature coming soon! Please contact us at +971 55 342 4700 for real-time tracking.');
-            }
+            var inputField = document.getElementById('tracking-num-input');
+            if (!inputField) return;
+            var rawCode = inputField.value.trim();
+            var code = rawCode.toUpperCase();
+            if (!code) return;
+
+            var submitBtn = trackerForm.querySelector('button[type="submit"]');
+            var originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="animate-spin mr-2 h-4 w-4 inline-block text-gold" fill="none" viewBox="0 0 24 24" style="animation: spin 1s linear infinite; width: 14px; height: 14px; margin-right: 6px;"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Retrieving...';
+
+            // Find shipment in simulator db, or fallback to auto-simulation
+            var shipment = trackingDb[code] || {
+                cargo: 'General Cargo (Ref: ' + code + ')',
+                vessel: 'Pending Assignment',
+                loc: 'Dubai Distribution Hub (DXB)',
+                eta: 'Pending Route Confirmation',
+                step: 1
+            };
+
+            setTimeout(function () {
+                // Restore button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+
+                // Show result container
+                trackerResult.classList.add('show');
+
+                // Bind text values
+                document.getElementById('track-val-cargo').textContent = shipment.cargo;
+                document.getElementById('track-val-vessel').textContent = shipment.vessel;
+                document.getElementById('track-val-loc').textContent = shipment.loc;
+                document.getElementById('track-val-eta').textContent = shipment.eta;
+
+                // Animate Timeline progress fill bar width
+                var progressFill = document.getElementById('tracking-progress-fill');
+                var nodes = trackerResult.querySelectorAll('.ep-tracking-timeline-node');
+                
+                var percent = 0;
+                if (shipment.step > 1) {
+                    percent = ((shipment.step - 1) / (nodes.length - 1)) * 100;
+                }
+                
+                // Adjust for horizontal vs vertical layout on responsive devices
+                var isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    progressFill.style.width = '3px';
+                    progressFill.style.height = percent + '%';
+                } else {
+                    progressFill.style.height = '3px';
+                    progressFill.style.width = percent + '%';
+                }
+
+                // Highlight nodes step-by-step
+                nodes.forEach(function (node) {
+                    var stepNum = parseInt(node.getAttribute('data-step'));
+                    node.classList.remove('active', 'completed');
+                    
+                    if (stepNum < shipment.step) {
+                        node.classList.add('completed');
+                    } else if (stepNum === shipment.step) {
+                        node.classList.add('active');
+                    }
+                });
+
+            }, 1000);
         });
+    }
+
+    // ===== TESTIMONIALS SLIDER ENGINE =====
+    var testTrack = document.getElementById('testimonial-slider-track');
+    var testPrev = document.getElementById('testimonial-prev');
+    var testNext = document.getElementById('testimonial-next');
+    var testDotsContainer = document.getElementById('testimonial-dots');
+    
+    if (testTrack && testDotsContainer) {
+        var currentSlide = 0;
+        var slides = testTrack.querySelectorAll('.ep-testimonial-slide');
+        var dots = testDotsContainer.querySelectorAll('.ep-testimonial-dot');
+        var slideCount = slides.length;
+        var slideInterval = null;
+
+        function goToSlide(index) {
+            if (index < 0) {
+                index = slideCount - 1;
+            } else if (index >= slideCount) {
+                index = 0;
+            }
+            currentSlide = index;
+            
+            // Apply CSS transform translate slide transition
+            testTrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            
+            // Sync dot active state
+            dots.forEach(function (dot, i) {
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function startAutoPlay() {
+            stopAutoPlay();
+            slideInterval = setInterval(function () {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+        }
+
+        function stopAutoPlay() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        }
+
+        if (testPrev && testNext) {
+            testPrev.addEventListener('click', function () {
+                goToSlide(currentSlide - 1);
+                startAutoPlay(); // Reset timer
+            });
+            testNext.addEventListener('click', function () {
+                goToSlide(currentSlide + 1);
+                startAutoPlay(); // Reset timer
+            });
+        }
+
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+                var idx = parseInt(this.getAttribute('data-index'));
+                goToSlide(idx);
+                startAutoPlay(); // Reset timer
+            });
+        });
+
+        // Pause timer on hover
+        var container = document.querySelector('.ep-testimonial-slider-container');
+        if (container) {
+            container.addEventListener('mouseenter', stopAutoPlay);
+            container.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        startAutoPlay();
     }
 
 });
