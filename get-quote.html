@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Get a Quote — Swift Sail Shipping L.L.C.</title>
   <meta name="description" content="Request a freight quote from Swift Sail Shipping. Fast response, transparent pricing, UAE-based team."/>
+  <meta property="og:title" content="Get a Quote — Swift Sail Shipping L.L.C."/>
+  <meta property="og:description" content="Request a freight quote from Swift Sail Shipping. Fast response, transparent pricing, UAE-based team."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://swiftsailship.com/assets/img/og-share.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Get a Quote — Swift Sail Shipping L.L.C."/>
+  <meta name="twitter:image" content="https://swiftsailship.com/assets/img/og-share.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png"/>
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon"/>
@@ -20,7 +27,7 @@
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -60,7 +67,7 @@
       <div class="ep-contact-grid">
         <div class="ep-contact-form-panel">
           <h2 class="ep-section-h2" style="margin-bottom:24px;">Your Shipment Details</h2>
-          <form name="quote" method="POST" data-netlify="true" novalidate>
+          <form name="quote" method="POST" data-contact-form data-netlify="true" novalidate>
             <div class="ep-form-grid">
               <div class="ep-form-group">
                 <label for="fullname" class="ep-form-label">Full Name *</label>
@@ -96,6 +103,13 @@
             </div>
             <button type="submit" class="ep-form-submit">Send Enquiry</button>
           </form>
+          <div id="form-success">
+            <div class="ep-form-success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="ep-form-success-title">Proposal Request Received</h3>
+            <p class="ep-form-success-p">Thank you for contacting Swift Sail Shipping. Our dedicated logistics desk is already reviewing your details. A representative will reach out to you within the next 24 hours at the contact details provided.</p>
+          </div>
         </div>
         <div class="ep-contact-info">
           <div>
@@ -171,7 +185,7 @@
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -212,5 +226,63 @@
   </div>
 </footer>
 <script src="js/script.js"></script>
+<script>
+// Pre-fill quote form fields based on homepage URL query params
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var origin = params.get('origin');
+  var destination = params.get('destination');
+  var cargo = params.get('cargo');
+  var contact = params.get('contact');
+
+  if (origin || destination || cargo || contact) {
+    var details = [];
+    if (origin) details.push("Origin: " + origin);
+    if (destination) details.push("Destination: " + destination);
+    
+    var cargoTypeLabel = {
+      'general': 'General Cargo',
+      'dangerous': 'Dangerous Goods',
+      'perishables': 'Perishables',
+      'project': 'Project Cargo',
+      'vehicles': 'Vehicles'
+    }[cargo] || cargo;
+    
+    if (cargo) details.push("Cargo Type: " + (cargoTypeLabel || 'Not specified'));
+
+    var messageField = document.getElementById('message');
+    if (messageField) {
+      messageField.value = details.join('\n') + "\n\nPlease provide any other details or dimensions of your cargo here.";
+    }
+
+    if (contact) {
+      // Intelligent routing: check if email or phone
+      if (contact.indexOf('@') > -1) {
+        var emailInput = document.getElementById('email');
+        if (emailInput) emailInput.value = contact;
+      } else {
+        var phoneInput = document.getElementById('phone');
+        if (phoneInput) phoneInput.value = contact;
+      }
+    }
+
+    // Set default service select
+    var serviceSelect = document.getElementById('service');
+    if (serviceSelect) {
+      if (cargo === 'project' || cargo === 'dangerous') {
+        serviceSelect.value = 'other';
+      } else {
+        // default to freight brokerage or other
+        serviceSelect.value = 'freight';
+      }
+    }
+  }
+}());
+</script>
+
+<!-- Floating WhatsApp FAB -->
+<a href="https://wa.me/971553424700" class="ep-whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.49-4.22c1.677.995 3.32 1.547 5.46 1.548 5.454 0 9.895-4.373 9.899-9.75.002-2.605-1.01-5.053-2.853-6.89C17.21 2.85 14.766 1.838 12.16 1.838c-5.46 0-9.902 4.375-9.906 9.75-.002 2.03.541 4.02 1.568 5.793l-1.026 3.748 3.761-1.002zM17.487 14.39c-.3-.15-1.774-.875-2.048-.975-.274-.1-.474-.15-.674.15-.2.3-.774.975-.95 1.175-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.413-1.487-.893-.795-1.495-1.778-1.67-1.978-.175-.2-.019-.307.13-.456.136-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.625-.924-2.225-.244-.588-.492-.51-.674-.52-.174-.007-.374-.007-.574-.007-.2 0-.524.075-.798.375-.274.3-1.048 1.025-1.048 2.5 0 1.475 1.074 2.9 1.224 3.1.15.2 2.11 3.22 5.116 4.52 1.018.44 1.815.7 2.435.897 1.02.324 1.95.277 2.68.168.815-.12 1.774-.725 2.023-1.39.248-.665.248-1.238.174-1.39-.075-.15-.275-.25-.575-.4z"/></svg>
+</a>
 </body>
 </html>

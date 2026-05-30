@@ -57,7 +57,7 @@
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -85,7 +85,7 @@
 ```
 
 ### Nav HTML (blog subdirectory — `../` on all hrefs and src)
-Same as above but: `href="../index.html"`, `src="../assets/img/Untitled design.png"`, `href="../services.html"`, etc.
+Same as above but: `href="../index.html"`, `src="../assets/img/swift-sail-logo.png"`, `href="../services.html"`, etc.
 
 ### Footer HTML (root-level pages)
 ```html
@@ -94,7 +94,7 @@ Same as above but: `href="../index.html"`, `src="../assets/img/Untitled design.p
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -780,7 +780,7 @@ Write the complete file:
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -918,7 +918,7 @@ Write the complete file:
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1002,7 +1002,7 @@ git commit -m "feat(about): apply EP design system"
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1106,7 +1106,7 @@ git commit -m "feat(about): apply EP design system"
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1190,7 +1190,7 @@ git commit -m "feat(services): apply EP design system"
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1346,7 +1346,7 @@ git commit -m "feat(services): apply EP design system"
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1430,7 +1430,7 @@ git commit -m "feat(get-quote): apply EP design system"
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1602,7 +1602,7 @@ git commit -m "feat(get-quote): apply EP design system"
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1686,7 +1686,7 @@ git commit -m "feat(how-it-works): apply EP design system"
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1730,7 +1730,7 @@ git commit -m "feat(how-it-works): apply EP design system"
       <hr class="ep-rule ep-rule--gold"/>
       <div class="ep-blog-grid">
         <a href="blog/navigating-global-shipping-challenges-2026.html" class="ep-blog-card">
-          <img src="assets/img/services-background.jpg" alt="Global shipping routes" class="ep-blog-card-img"/>
+          <img src="assets/img/services-background.png" alt="Global shipping routes" class="ep-blog-card-img"/>
           <div class="ep-blog-card-body">
             <span class="ep-blog-card-tag">Industry Insight</span>
             <h3 class="ep-blog-card-h">Navigating Global Shipping Challenges in 2026</h3>
@@ -1764,7 +1764,7 @@ git commit -m "feat(how-it-works): apply EP design system"
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1857,7 +1857,7 @@ Write the complete file, wrapping existing article content in EP article classes
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="../index.html" class="ep-nav-brand">
-      <img src="../assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="../assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -1911,7 +1911,7 @@ Write the complete file, wrapping existing article content in EP article classes
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <a href="../index.html" class="ep-nav-brand" style="margin-bottom:12px;display:inline-flex;">
-          <img src="../assets/img/Untitled design.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
+          <img src="../assets/img/swift-sail-logo.png" alt="Swift Sail Logo" class="ep-nav-logo"/>
           <div class="ep-nav-brand-text">
             <span class="ep-nav-brand-name">Swift Sail</span>
             <span class="ep-nav-brand-sub">Shipping L.L.C.</span>

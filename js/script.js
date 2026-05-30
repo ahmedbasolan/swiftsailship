@@ -257,9 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
             requiredFields.forEach(function (field) {
                 if (!field.value.trim()) {
                     isValid = false;
-                    field.classList.add('border-red-400');
+                    field.style.borderColor = 'var(--ep-error)';
                     field.addEventListener('input', function handler() {
-                        field.classList.remove('border-red-400');
+                        field.style.borderColor = '';
                         field.removeEventListener('input', handler);
                     });
                 }
@@ -271,9 +271,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(emailField.value.trim())) {
                     isValid = false;
-                    emailField.classList.add('border-red-400');
+                    emailField.style.borderColor = 'var(--ep-error)';
                     emailField.addEventListener('input', function handler() {
-                        emailField.classList.remove('border-red-400');
+                        emailField.style.borderColor = '';
                         emailField.removeEventListener('input', handler);
                     });
                 }
@@ -286,9 +286,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Simulate submission (replace with real endpoint later)
             var submitBtn = formEl.querySelector('button[type="submit"]');
+            var originalBtnText = "";
             if (submitBtn) {
+                originalBtnText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+                submitBtn.innerHTML = '<svg class="animate-spin" viewBox="0 0 24 24" fill="none" style="animation: spin 1s linear infinite; width: 14px; height: 14px; display: inline-block; margin-right: 8px; vertical-align: middle; color: currentColor;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity: 0.25;"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" style="opacity: 0.75;"></path></svg> Sending...';
             }
 
             setTimeout(function () {
@@ -298,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (submitBtn) {
                     // No success element — reset button state
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.innerHTML = originalBtnText;
                 }
             }, FORM_SUBMIT_DELAY);
         });
@@ -482,6 +484,31 @@ document.addEventListener('DOMContentLoaded', function () {
         if (container) {
             container.addEventListener('mouseenter', stopAutoPlay);
             container.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        // Touch / Swipe support for mobile devices
+        var touchStartX = 0;
+        var touchEndX = 0;
+        
+        testTrack.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        testTrack.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+        
+        function handleSwipe() {
+            var diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) { // Threshold of 50px
+                if (diff > 0) {
+                    goToSlide(currentSlide + 1); // Swipe left -> Next
+                } else {
+                    goToSlide(currentSlide - 1); // Swipe right -> Prev
+                }
+                startAutoPlay(); // Reset timer
+            }
         }
 
         startAutoPlay();

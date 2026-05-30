@@ -132,7 +132,7 @@ git commit -m "feat(styles): add EP CSS variables and update nav-scrolled for cr
   <div class="ep-nav-stripe"></div>
   <div class="ep-nav-inner">
     <a href="index.html" class="ep-nav-brand">
-      <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
+      <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping Logo" class="ep-nav-logo"/>
       <div class="ep-nav-brand-text">
         <span class="ep-nav-brand-name">Swift Sail</span>
         <span class="ep-nav-brand-sub">Shipping L.L.C.</span>
@@ -361,7 +361,7 @@ git commit -m "feat(styles): add EP CSS variables and update nav-scrolled for cr
     <div class="ep-footer-grid">
       <div class="ep-footer-brand">
         <div class="ep-footer-brand-logo">
-          <img src="assets/img/Untitled design.png" alt="Swift Sail Shipping" class="ep-footer-logo"/>
+          <img src="assets/img/swift-sail-logo.png" alt="Swift Sail Shipping" class="ep-footer-logo"/>
           <div>
             <span class="ep-footer-brand-name">Swift Sail</span>
             <span class="ep-footer-brand-sub">Shipping L.L.C.</span>
