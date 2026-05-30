@@ -2,6 +2,28 @@
 
 \> This file is mirrored across CLAUDE.md, AGENTS.md, and GEMINI.md so the same instructions load in any AI environment.
 
+\#\# ⚡ Campaign Session Start — MANDATORY
+
+If the session involves LinkedIn content, posters, or anything related to the Swift Sail "Trade Without Borders" campaign, **read these files before doing anything else:**
+
+1. `_campaign/campaign-rules.md` — master rules, voice, what never gets posted, strict checklist
+2. `_campaign/weekN/linkedin-posts.md` — existing approved copy for the active week (never rewrite already-approved posts)
+
+Skills for this campaign live in `_skills/`:
+- `_skills/swiftsail-linkedin/SKILL.md` — full SOP for writing LinkedIn posts
+- `_skills/swiftsail-poster/SKILL.md` — full SOP for generating posters (with mandatory self-review)
+
+Poster generation script: `execution/generate_poster.py`
+
+**Non-negotiable rules (from campaign-rules.md):**
+- Never post without Ahmed's explicit approval
+- Never present a poster without viewing it yourself first and confirming it looks premium
+- Never claim git push succeeded — it cannot work from sandbox (GitKraken holds .git/index.lock)
+- Arabic text always uses arabic_reshaper + python-bidi + DejaVu Sans
+- Hook-first on every post — Line 1 must stop the scroll
+
+---
+
 You operate within a 3-layer architecture that separates concerns to maximize reliability. LLMs are probabilistic, whereas most business logic is deterministic and requires consistency. This system fixes that mismatch.
 
 \#\# The 3-Layer Architecture

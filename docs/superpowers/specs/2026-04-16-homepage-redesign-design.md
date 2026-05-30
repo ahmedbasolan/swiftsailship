@@ -32,7 +32,7 @@
 
 **Signature detail:** A 2px gradient stripe across the very top of the nav (`navy → gold → navy`) acts as the brand signature and page-entry moment.
 
-**Logo:** Use `assets/img/Untitled design.png` (gold yacht SVG-style mark). The PNG has a white background — apply `mix-blend-mode: multiply` on cream sections so the white becomes transparent. In the footer (navy background), apply a CSS filter to render it in gold/white.
+**Logo:** Use `assets/img/swift-sail-logo.png` (gold yacht SVG-style mark). The PNG has a white background — apply `mix-blend-mode: multiply` on cream sections so the white becomes transparent. In the footer (navy background), apply a CSS filter to render it in gold/white.
 
 ---
 
