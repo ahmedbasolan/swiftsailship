@@ -244,6 +244,83 @@ document.addEventListener('DOMContentLoaded', function () {
     copyrightElements.forEach(function (el) {
         el.textContent = el.textContent.replace(/(?:©|&copy;)\s*\d{4}/g, '© ' + currentYear);
     });
+    var footerYearElements = document.querySelectorAll('#footer-year');
+    footerYearElements.forEach(function (el) {
+        el.textContent = currentYear;
+    });
+
+    // ===== READING PROGRESS BAR =====
+    var progressBar = document.querySelector('.ep-reading-progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight > 0) {
+                var scrolled = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            }
+        }, { passive: true });
+    }
+
+    // ===== FAQ SMOOTH TRANSITION =====
+    var faqs = document.querySelectorAll('.ep-faq-item');
+    faqs.forEach(function (details) {
+        var summary = details.querySelector('summary');
+        var content = details.querySelector('.ep-faq-body');
+        if (!summary || !content) return;
+
+        // Ensure overflow is hidden on content for smooth sizing animation
+        content.style.overflow = 'hidden';
+
+        summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (details.classList.contains('animating')) return;
+
+            if (details.open) {
+                // Shrink
+                details.classList.add('animating');
+                var startHeight = content.scrollHeight;
+                content.style.height = startHeight + 'px';
+                
+                // Force repaint
+                content.offsetHeight;
+                
+                content.style.height = '0px';
+                content.style.transition = 'height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+                content.style.opacity = '0';
+                
+                setTimeout(function () {
+                    details.open = false;
+                    details.classList.remove('animating');
+                    content.style.height = '';
+                    content.style.transition = '';
+                    content.style.opacity = '';
+                }, 300);
+            } else {
+                // Expand
+                details.open = true;
+                details.classList.add('animating');
+                var endHeight = content.scrollHeight;
+                content.style.height = '0px';
+                content.style.opacity = '0';
+                
+                // Force repaint
+                content.offsetHeight;
+                
+                content.style.height = endHeight + 'px';
+                content.style.transition = 'height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+                content.style.opacity = '1';
+                
+                setTimeout(function () {
+                    details.classList.remove('animating');
+                    content.style.height = '';
+                    content.style.transition = '';
+                    content.style.opacity = '';
+                }, 300);
+            }
+        });
+    });
+
 
     // ===== FORM SUBMISSION FEEDBACK =====
     var contactForm = document.querySelector('form[data-contact-form]');
