@@ -122,12 +122,19 @@ Week 1 post copy: `_campaign/week1/linkedin-posts.md`
 
 ---
 
-## 7. LINKEDIN POSTING WORKFLOW (Postiz)
+## 7. LINKEDIN POSTING WORKFLOW (Chrome — manual, NOT Postiz)
+
+**We do NOT use Postiz. All LinkedIn posts are done manually via Claude in Chrome.**
 
 1. Write copy → show Ahmed for approval → get explicit "go ahead"
-2. Load poster image from workspace (Windows path: `C:\\Users\\ahmed\\OneDrive\\Desktop\\My Projects\\business-website\\...`)
-3. Post to personal profile AND company page — both in same session
-4. Confirm both posts live before closing
+2. Load the Claude in Chrome MCP tools (`mcp__Claude_in_Chrome__*`)
+3. Navigate to personal profile first: linkedin.com/in/zubair-basolan-a0007576/
+   - Click "Start a post", paste copy, attach poster image, post
+   - Add blog URL as first comment on Monday posts (NOT in caption)
+4. Then navigate to company page: linkedin.com/company/122024764/admin/
+   - Click "Create a post", paste copy (include blog URL in caption on Monday), attach poster, post
+5. Confirm both posts are live before reporting done
+6. Poster image Windows path format: `C:\\Users\\ahmed\\OneDrive\\Desktop\\My Projects\\business-website\\_campaign\\weekN\\poster.png`
 
 ---
 
