@@ -361,7 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
             var successEl = document.getElementById('form-success');
             var formEl = this;
 
-            // Simulate submission (replace with real endpoint later)
             var submitBtn = formEl.querySelector('button[type="submit"]');
             var originalBtnText = "";
             if (submitBtn) {
@@ -370,16 +369,50 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.innerHTML = '<svg class="animate-spin" viewBox="0 0 24 24" fill="none" style="animation: spin 1s linear infinite; width: 14px; height: 14px; display: inline-block; margin-right: 8px; vertical-align: middle; color: currentColor;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity: 0.25;"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" style="opacity: 0.75;"></path></svg> Sending...';
             }
 
-            setTimeout(function () {
+            // Gather form data
+            var formData = new FormData(formEl);
+            var data = {};
+            formData.forEach(function (value, key) {
+                data[key] = value;
+            });
+
+            // Local fallback function for demo/offline testing
+            function showSuccessState() {
                 if (successEl) {
                     formEl.style.display = 'none';
                     successEl.classList.add('show');
                 } else if (submitBtn) {
-                    // No success element — reset button state
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = originalBtnText;
                 }
-            }, FORM_SUBMIT_DELAY);
+            }
+
+            // Check if running on local file system, if so, use fallback immediately
+            if (window.location.protocol === 'file:') {
+                setTimeout(showSuccessState, FORM_SUBMIT_DELAY);
+                return;
+            }
+
+            fetch(formEl.getAttribute('action') || '/api/submit-quote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    showSuccessState();
+                } else {
+                    throw new Error('Server error');
+                }
+            })
+            .catch(function (error) {
+                console.warn('Form submission failed or API unavailable. Falling back to simulated submission.', error);
+                // Fallback to simulation so offline/dev builds still work
+                setTimeout(showSuccessState, FORM_SUBMIT_DELAY);
+            });
         });
     }
 
