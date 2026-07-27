@@ -11,13 +11,15 @@
     var OBSERVER_ROOT_MARGIN = '0px 0px -40px 0px';
     var COUNTER_OBSERVER_THRESHOLD = 0.5;
     var STAGGER_MAX = 6;
-    var FORM_SUBMIT_DELAY = 1500;
     var NAV_OFFSET = 80;
 
     // ===== MOBILE NAVIGATION TOGGLE =====
     function closeMobileMenu(btn, menu) {
         if (!menu) return;
         menu.classList.add('hidden');
+        if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+        }
         if (!btn) return;
         var spans = btn.querySelectorAll('span');
         if (spans.length >= 3) {
@@ -30,6 +32,9 @@
     function openMobileMenu(btn, menu) {
         if (!menu) return;
         menu.classList.remove('hidden');
+        if (btn) {
+            btn.setAttribute('aria-expanded', 'true');
+        }
         if (!btn) return;
         var spans = btn.querySelectorAll('span');
         if (spans.length >= 3) {
@@ -45,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var menu = document.getElementById('mobile-menu');
 
     if (btn && menu) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', 'mobile-menu');
         btn.addEventListener('click', function () {
             if (menu.classList.contains('hidden')) {
                 openMobileMenu(btn, menu);
@@ -91,14 +98,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== NAV SCROLL EFFECT =====
+    // ===== NAV SCROLL EFFECT + SCROLL HINT FADE =====
     var nav = document.querySelector('nav');
-    if (nav) {
+    var scrollHint = document.querySelector('.ep-hero-scroll-hint');
+    if (nav || scrollHint) {
         window.addEventListener('scroll', function () {
-            if (window.scrollY > SCROLL_THRESHOLD) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
+            var scrolled = window.scrollY > SCROLL_THRESHOLD;
+            if (nav) {
+                nav.classList.toggle('nav-scrolled', scrolled);
+            }
+            if (scrollHint) {
+                scrollHint.classList.toggle('is-scrolled', scrolled);
             }
         }, { passive: true });
     }
@@ -359,7 +369,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!isValid) return;
 
             var successEl = document.getElementById('form-success');
+            var errorEl = document.getElementById('form-error');
             var formEl = this;
+
+            if (errorEl) {
+                errorEl.classList.remove('show');
+                errorEl.textContent = '';
+            }
 
             var submitBtn = formEl.querySelector('button[type="submit"]');
             var originalBtnText = "";
@@ -369,14 +385,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.innerHTML = '<svg class="animate-spin" viewBox="0 0 24 24" fill="none" style="animation: spin 1s linear infinite; width: 14px; height: 14px; display: inline-block; margin-right: 8px; vertical-align: middle; color: currentColor;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity: 0.25;"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" style="opacity: 0.75;"></path></svg> Sending...';
             }
 
-            // Gather form data
-            var formData = new FormData(formEl);
-            var data = {};
-            formData.forEach(function (value, key) {
-                data[key] = value;
-            });
+            function showErrorState(message) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
+                if (errorEl) {
+                    errorEl.textContent = message;
+                    errorEl.classList.add('show');
+                }
+            }
 
-            // Local fallback function for demo/offline testing
             function showSuccessState() {
                 if (successEl) {
                     formEl.style.display = 'none';
@@ -387,9 +406,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Check if running on local file system, if so, use fallback immediately
+            // Gather form data
+            var formData = new FormData(formEl);
+            var data = {};
+            formData.forEach(function (value, key) {
+                data[key] = value;
+            });
+
             if (window.location.protocol === 'file:') {
-                setTimeout(showSuccessState, FORM_SUBMIT_DELAY);
+                showErrorState('Form submission requires the live website. Please deploy or contact us at info@swiftsailship.com.');
                 return;
             }
 
@@ -402,16 +427,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(data)
             })
             .then(function (response) {
-                if (response.ok) {
+                return response.json().then(function (payload) {
+                    return { ok: response.ok, payload: payload };
+                }).catch(function () {
+                    return { ok: response.ok, payload: {} };
+                });
+            })
+            .then(function (result) {
+                if (result.ok && result.payload.success) {
                     showSuccessState();
-                } else {
-                    throw new Error('Server error');
+                    return;
                 }
+
+                var message = (result.payload && result.payload.error)
+                    || 'We could not send your enquiry. Please email info@swiftsailship.com or call +971 55 342 4700.';
+                showErrorState(message);
             })
             .catch(function (error) {
-                console.warn('Form submission failed or API unavailable. Falling back to simulated submission.', error);
-                // Fallback to simulation so offline/dev builds still work
-                setTimeout(showSuccessState, FORM_SUBMIT_DELAY);
+                console.error('Form submission failed:', error);
+                showErrorState('Network error — please try again or contact us directly at info@swiftsailship.com.');
             });
         });
     }
