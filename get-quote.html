@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get a Quote — Swift Sail Shipping L.L.C.</title>
+  <title>Get a Freight Quote in 24 Hours | Swift Sail Shipping Dubai</title>
   <meta name="description" content="Request a freight quote from Swift Sail Shipping. Fast response, transparent pricing, UAE-based team."/>
   <meta property="og:title" content="Get a Quote — Swift Sail Shipping L.L.C."/>
   <meta property="og:description" content="Request a freight quote from Swift Sail Shipping. Fast response, transparent pricing, UAE-based team."/>
@@ -28,7 +28,7 @@
     "addressLocality": "Dubai",
     "addressCountry": "AE"
   },
-  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-14:00"],
+  "openingHours": ["Su-Th 08:00-18:00", "Sa 09:00-14:00"],
   "sameAs": ["https://www.linkedin.com/company/swift-sail-shipping"]
 }
 </script>
@@ -37,8 +37,9 @@
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon"/>
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
   <link rel="stylesheet" href="css/style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/tailwind.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 </head>
 <body class="ep-body">
 
@@ -92,7 +93,11 @@
       <div class="ep-contact-grid">
         <div class="ep-contact-form-panel animate-slide-left">
           <h2 class="ep-section-h2" style="margin-bottom:24px;">Your Shipment Details</h2>
-          <form name="quote" method="POST" data-contact-form action="/api/submit-quote" data-netlify="true" novalidate>
+          <form name="quote" method="POST" data-contact-form action="/api/submit-quote" novalidate>
+            <div class="ep-form-honeypot" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+            </div>
             <div class="ep-form-grid">
               <div class="ep-form-group">
                 <label for="fullname" class="ep-form-label">Full Name *</label>
@@ -127,7 +132,9 @@
               </div>
             </div>
             <button type="submit" class="ep-form-submit">Send Enquiry</button>
+            <p class="ep-form-privacy-note">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>. We use your details only to respond to this enquiry.</p>
           </form>
+          <div id="form-error" class="ep-form-error" role="alert" aria-live="polite"></div>
           <div id="form-success">
             <div class="ep-form-success-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -247,10 +254,13 @@
     </div>
     <div class="ep-footer-bottom">
       <span class="ep-footer-copy">&copy; <span id="footer-year"></span> Swift Sail Shipping L.L.C. All rights reserved.</span>
+      <div class="ep-footer-bottom-links">
+        <a href="privacy.html" class="ep-footer-link">Privacy Policy</a>
+      </div>
     </div>
   </div>
 </footer>
-<script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 <script>
 // Pre-fill quote form fields based on homepage URL query params
 (function () {
