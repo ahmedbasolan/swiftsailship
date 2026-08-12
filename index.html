@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Freight Forwarding &amp; Customs Clearance in Dubai | Swift Sail Shipping</title>
+<title>Dubai Freight Forwarding &amp; Customs Clearance | Swift Sail</title>
 <meta content="UAE-licensed freight forwarder in Dubai. Sea, air &amp; land freight, customs clearance, and cargo handling to 50+ countries. Quotes answered within 24 hours." name="description"/>
 <link rel="canonical" href="https://swiftsailship.com/"/>
-<meta property="og:title" content="Freight Forwarding &amp; Customs Clearance in Dubai | Swift Sail Shipping"/>
+<meta property="og:title" content="Dubai Freight Forwarding &amp; Customs Clearance | Swift Sail"/>
 <meta property="og:description" content="UAE-licensed freight forwarder in Dubai. Sea, air &amp; land freight, customs clearance, and cargo handling to 50+ countries. Quotes answered within 24 hours."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://swiftsailship.com/"/>
 <meta property="og:image" content="https://swiftsailship.com/assets/img/og-share.png"/>
 <meta property="og:site_name" content="Swift Sail Shipping"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Freight Forwarding &amp; Customs Clearance in Dubai | Swift Sail Shipping"/>
+<meta name="twitter:title" content="Dubai Freight Forwarding &amp; Customs Clearance | Swift Sail"/>
 <meta name="twitter:description" content="UAE-licensed freight forwarder in Dubai. Sea, air &amp; land freight, customs clearance, and cargo handling to 50+ countries."/>
 <meta name="twitter:image" content="https://swiftsailship.com/assets/img/og-share.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" as="image" href="assets/img/hero-background.jpg"/>
+<link rel="preload" as="image" href="assets/img/hero-background.jpg" fetchpriority="high"/>
 <link rel="stylesheet" href="css/style.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
 <script type="application/ld+json">
@@ -185,6 +185,12 @@
           <button type="submit" class="ep-tracking-search-btn">Preview Tracking &rarr;</button>
         </form>
         <p id="tracking-demo-note" class="ep-tracking-demo-note">Interactive preview only — not connected to live carrier data. Contact us for updates on your shipment.</p>
+        <div class="ep-tracking-demo-chips">
+          <span class="ep-tracking-chips-label">Quick Try:</span>
+          <button type="button" class="ep-tracking-chip" data-code="SS-98745">SS-98745 (In Transit)</button>
+          <button type="button" class="ep-tracking-chip" data-code="SS-12345">SS-12345 (Delivered)</button>
+          <button type="button" class="ep-tracking-chip" data-code="SS-54321">SS-54321 (Customs)</button>
+        </div>
 
         <!-- Result panel (hidden initially) -->
         <div id="tracking-result-panel" class="ep-tracking-result" aria-live="polite" role="region" aria-label="Tracking results">
@@ -323,15 +329,15 @@
       <form class="ep-quote-form animate-on-scroll" id="homepage-quote-form" novalidate>
         <div class="ep-quote-field">
           <label for="q-origin">Origin</label>
-          <input type="text" id="q-origin" name="origin" placeholder="e.g. Dubai, UAE" required/>
+          <input type="text" id="q-origin" name="origin" placeholder="e.g. Dubai, UAE" aria-label="Shipment origin city or port" required/>
         </div>
         <div class="ep-quote-field">
           <label for="q-destination">Destination</label>
-          <input type="text" id="q-destination" name="destination" placeholder="e.g. London, UK" required/>
+          <input type="text" id="q-destination" name="destination" placeholder="e.g. London, UK" aria-label="Shipment destination city or port" required/>
         </div>
         <div class="ep-quote-field">
           <label for="q-cargo">Cargo Type</label>
-          <select id="q-cargo" name="cargo_type" required>
+          <select id="q-cargo" name="cargo_type" aria-label="Select cargo type" required>
             <option value="">Select type&hellip;</option>
             <option value="general">General Cargo</option>
             <option value="dangerous">Dangerous Goods</option>
@@ -342,7 +348,7 @@
         </div>
         <div class="ep-quote-field">
           <label for="q-contact">Your Contact</label>
-          <input type="text" id="q-contact" name="contact" placeholder="Phone or email" required/>
+          <input type="text" id="q-contact" name="contact" placeholder="Phone or email" aria-label="Phone or email contact" required/>
         </div>
         <button type="submit" class="ep-quote-submit">Get Quote &rarr;</button>
       </form>
@@ -533,5 +539,12 @@
 <a href="https://wa.me/971553424700" class="ep-whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.49-4.22c1.677.995 3.32 1.547 5.46 1.548 5.454 0 9.895-4.373 9.899-9.75.002-2.605-1.01-5.053-2.853-6.89C17.21 2.85 14.766 1.838 12.16 1.838c-5.46 0-9.902 4.375-9.906 9.75-.002 2.03.541 4.02 1.568 5.793l-1.026 3.748 3.761-1.002zM17.487 14.39c-.3-.15-1.774-.875-2.048-.975-.274-.1-.474-.15-.674.15-.2.3-.774.975-.95 1.175-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.413-1.487-.893-.795-1.495-1.778-1.67-1.978-.175-.2-.019-.307.13-.456.136-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.674-1.625-.924-2.225-.244-.588-.492-.51-.674-.52-.174-.007-.374-.007-.574-.007-.2 0-.524.075-.798.375-.274.3-1.048 1.025-1.048 2.5 0 1.475 1.074 2.9 1.224 3.1.15.2 2.11 3.22 5.116 4.52 1.018.44 1.815.7 2.435.897 1.02.324 1.95.277 2.68.168.815-.12 1.774-.725 2.023-1.39.248-.665.248-1.238.174-1.39-.075-.15-.275-.25-.575-.4z"/></svg>
 </a>
+
+<!-- Floating Back to Top Button -->
+<button id="back-to-top-btn" class="ep-back-to-top hidden" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 </body>
 </html>
