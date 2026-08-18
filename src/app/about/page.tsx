@@ -2,8 +2,9 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Swift Sail Shipping LLC",
-  description: "Learn about Swift Sail Shipping LLC - our history, mission, and commitment to excellence in global logistics and shipping services.",
+  title: "About Us • Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
+  description:
+    "Founded in Dubai, Swift Sail Shipping L.L.C. provides premier international freight forwarding, ocean charters, customs brokerage, and supply chain logistics across the UAE and GCC.",
   alternates: {
     canonical: "https://swiftsailship.com/about",
   },
@@ -11,210 +12,171 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <header className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-swift-secondary to-swift-secondary/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-swift-secondary/90 to-swift-secondary/60" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block py-1 px-3 rounded-full bg-swift-primary/20 border border-swift-primary/40 text-swift-primary text-xs font-semibold tracking-widest uppercase mb-4 backdrop-blur-sm">
-            Our Story
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
-            About <span className="text-swift-primary">Swift Sail</span>
+    <div className="flex flex-col bg-[#FBF9F5]">
+      {/* Editorial Header */}
+      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="editorial-stamp text-[#C5A47E]">
+              CORPORATE MONOGRAPH • ESTABLISHED IN DUBAI
+            </span>
+            <span className="text-xs font-mono text-gray-400">
+              UAE LICENSED FREIGHT OPERATOR
+            </span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight mb-6">
+            The Maritime Heritage of <br />
+            <span className="gold-gradient-text">Swift Sail Shipping</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-            Discover our journey, values, and commitment to excellence in global shipping and logistics.
+
+          <p className="text-lg text-gray-300 font-sans font-light max-w-3xl leading-relaxed">
+            Forged at the epicenter of international commerce in Dubai, we unite deep local customs mastery with seamless global ocean and air networks.
           </p>
         </div>
       </header>
 
-      <main className="relative z-20 -mt-10">
-        {/* Who We Are Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="bg-swift-surface-light dark:bg-swift-surface-dark rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800 p-8 md:p-12 mb-16 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-swift-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-swift-primary/5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-sm font-bold text-swift-primary uppercase tracking-widest mb-3">Who We Are</h2>
-              <h3 className="text-3xl md:text-4xl font-display font-bold text-swift-secondary dark:text-white mb-4">
-                A Premier UAE Logistics Partner
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                Founded with a vision to revolutionize freight forwarding in the Gulf, Swift Sail Shipping L.L.C. has grown into a cornerstone of the UAE's supply chain infrastructure. We are dedicated to streamlining global trade through efficient UAE gateways, providing end-to-end freight solutions that are as reliable as they are swift.
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
-                Our operational coverage extends extensively around major ports like Sharjah and Jebel Ali, where our expert customs brokerage and on-ground teams ensure your cargo moves without delay. We don't just ship goods; we navigate complexities to deliver peace of mind.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-full flex items-center justify-center text-white mb-4 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300 mx-auto">
-                  <i className="fas fa-calendar-alt text-2xl" />
-                </div>
-                <p className="text-3xl font-display font-bold text-swift-primary mb-2">15+</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Years Experience</p>
-              </div>
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-full flex items-center justify-center text-white mb-4 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300 mx-auto">
-                  <i className="fas fa-map-marked-alt text-2xl" />
-                </div>
-                <p className="text-3xl font-display font-bold text-swift-primary mb-2">12</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Ports Covered</p>
-              </div>
-              <div className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-full flex items-center justify-center text-white mb-4 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300 mx-auto">
-                  <i className="fas fa-weight text-2xl" />
-                </div>
-                <p className="text-3xl font-display font-bold text-swift-primary mb-2">500k+</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 uppercase tracking-wider">Tons Shipped</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mission, Vision, Values */}
-        <section className="relative py-24 bg-swift-secondary overflow-hidden">
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-sm font-bold text-swift-primary uppercase tracking-widest mb-3">Our Driving Force</h2>
-              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Mission, Vision & Values</h3>
-              <p className="text-gray-300">The principles that guide every shipment, every contract, and every handshake at Swift Sail Shipping.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                  <i className="fas fa-flag text-2xl" />
-                </div>
-                <h3 className="text-white text-xl font-display font-bold mb-3">Our Mission</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  To simplify the complexities of global logistics for UAE businesses by providing reliable, transparent, and efficient freight solutions that empower growth.
-                </p>
-              </div>
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                  <i className="fas fa-eye text-2xl" />
-                </div>
-                <h3 className="text-white text-xl font-display font-bold mb-3">Our Vision</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  To become the undisputed leader in Gulf maritime logistics, recognized for our commitment to innovation, sustainability, and customer-centric service.
-                </p>
-              </div>
-              <div className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
-                <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                  <i className="fas fa-gem text-2xl" />
-                </div>
-                <h3 className="text-white text-xl font-display font-bold mb-3">Our Values</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  <span className="text-swift-primary font-medium">Precision:</span> In documentation and delivery.<br />
-                  <span className="text-swift-primary font-medium">Integrity:</span> Honest pricing and transparency.<br />
-                  <span className="text-swift-primary font-medium">Agility:</span> Adapting to the dynamic needs of trade.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Swift Sail Section */}
-        <section className="bg-gradient-to-br from-swift-surface-light to-white dark:from-swift-surface-dark dark:to-swift-background-dark py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <span className="inline-block py-1.5 px-4 rounded-sm border border-swift-primary/60 text-swift-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">
-                Why Choose Us
+      {/* Main Editorial Story */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 space-y-20">
+        {/* Monograph Lead Story */}
+        <section className="bg-white border border-gray-300 rounded-lg p-8 sm:p-14 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <span className="editorial-stamp text-[#A37F55] border-[#A37F55]">
+                HISTORICAL VANTAGE
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-swift-secondary dark:text-white mb-6">
-                Why Swift Sail
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+                Architects of Resilient Gulf Trade Flows
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Trust and expertise that set us apart in the competitive UAE logistics landscape.
+              <p className="text-slate-700 leading-relaxed font-sans text-base broadsheet-dropcap">
+                Swift Sail Shipping L.L.C. was established with an uncompromising mandate: to eliminate the friction, opacity, and regulatory delays that so often impede international commerce in the Middle East. Over more than 15 years of operational excellence, our teams have anchored supply chains connecting major manufacturers in Asia and Europe with rapidly growing markets across the GCC and East Africa.
+              </p>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                Operating with direct electronic access to Dubai Customs’ Mirsal 2 system and maintaining active terminal operations at Jebel Ali Port, Port Khalid Sharjah, and Dubai World Central, we provide our enterprise clients with immediate priority clearance and unhindered onward delivery.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="group relative bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-swift-primary/10 rounded-bl-full transition-all group-hover:bg-swift-primary/20" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-lg flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                    <i className="fa-solid fa-bolt text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-display font-bold text-swift-secondary dark:text-white mb-3">Fast Response</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Quick response times and clear communication throughout your shipping journey.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-swift-primary/10 rounded-bl-full transition-all group-hover:bg-swift-primary/20" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-lg flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                    <i className="fa-solid fa-file-alt text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-display font-bold text-swift-secondary dark:text-white mb-3">Documentation Accuracy</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Meticulous focus on documentation accuracy to avoid costly clearance delays.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-swift-primary/10 rounded-bl-full transition-all group-hover:bg-swift-primary/20" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-lg flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                    <i className="fa-solid fa-anchor text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-display font-bold text-swift-secondary dark:text-white mb-3">UAE Port Expertise</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Extensive experience with Sharjah and Jebel Ali ports and free zones.
-                  </p>
-                </div>
-              </div>
-              <div className="group relative bg-white dark:bg-swift-surface-dark border border-gray-200 dark:border-gray-700 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-swift-primary/10 rounded-bl-full transition-all group-hover:bg-swift-primary/20" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-swift-primary to-swift-primary-hover rounded-lg flex items-center justify-center text-white mb-6 shadow-lg shadow-swift-primary/30 group-hover:scale-110 transition-transform duration-300">
-                    <i className="fa-solid fa-exchange-alt text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-display font-bold text-swift-secondary dark:text-white mb-3">Re-Export Support</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    Specialized support for re-export and free zone movements across the UAE.
-                  </p>
+
+            <div className="lg:col-span-5">
+              <div className="rounded-lg overflow-hidden border border-gray-300 shadow-xl relative">
+                <img
+                  src="/assets/img/office_image_1776261439512.png"
+                  alt="Swift Sail Shipping Executive Logistics Desk"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-4 bg-[#070E18] text-white text-xs font-mono">
+                  <span className="text-[#C5A47E] font-bold block">DUBAI OPERATIONS COMMAND:</span>
+                  <span>Tanvi Business Centre, Abu Hail, Dubai, UAE</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="bg-swift-background-light dark:bg-swift-surface-dark py-16 border-t border-gray-200 dark:border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
-              <div className="relative z-10 lg:w-2/3">
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-swift-secondary dark:text-white mb-2">
-                  Ready to Move Your Cargo?
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Experience the Swift Sail difference today. Get in touch for a personalized quote tailored to your specific logistics needs.
-                </p>
+        {/* The 3 Core Tenets */}
+        <section>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
+              FOUNDATIONAL ETHOS
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+              The Sovereign Tenets of Swift Sail
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                01
               </div>
-              <div className="relative z-10 lg:w-1/3 w-full">
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/get-quote"
-                    className="bg-swift-primary hover:bg-swift-primary-hover text-white px-6 py-3 rounded-md font-medium transition-all shadow-lg hover:shadow-swift-primary/30 uppercase tracking-wide text-sm flex items-center justify-center gap-2"
-                  >
-                    Get a Free Quote <i className="fa-solid fa-arrow-right" />
-                  </Link>
-                  <Link
-                    href="/get-quote"
-                    className="border border-gray-300 dark:border-gray-600 hover:border-swift-primary text-gray-700 dark:text-gray-300 hover:text-swift-primary px-6 py-3 rounded-md font-medium transition-all uppercase tracking-wide text-sm flex items-center justify-center"
-                  >
-                    Contact Operations
-                  </Link>
-                </div>
+              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+                Absolute Documentation Rigor
+              </h3>
+              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+                In logistics, paperwork accuracy is speed. We rigorously review Bills of Lading, Certificates of Origin, and commercial invoices before goods arrive to eliminate customs holds.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                02
               </div>
+              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+                Transparent Itemized Economics
+              </h3>
+              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+                No hidden destination surcharges or unexpected detention penalties. Every quote clearly specifies ocean/air carriage, terminal handling, customs brokerage, and local delivery.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                03
+              </div>
+              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+                Direct On-Ground Presence
+              </h3>
+              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+                We are not a distant call center. Our licensed brokers and operations staff are physically on-site at Jebel Ali Port, Sharjah Port Khalid, and DXB Air Cargo terminals daily.
+              </p>
             </div>
           </div>
         </section>
+
+        {/* Official Credentials Ledger */}
+        <section className="bg-[#070E18] text-white rounded-lg p-8 sm:p-12 border border-[#C5A47E]/30">
+          <div className="border-b border-[#C5A47E]/20 pb-6 mb-8 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <span className="editorial-stamp text-[#C5A47E] mb-1 block">
+                STATUTORY ACCREDITATION
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                Official Licensing & Compliance Register
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-emerald-400">
+              ● GOOD STANDING WITH UAE AUTHORITIES
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs font-mono">
+            <div className="p-4 bg-[#112236] rounded border border-gray-800 space-y-1">
+              <span className="text-gray-400 block">Commercial Entity</span>
+              <strong className="text-white text-sm block">Swift Sail Shipping L.L.C.</strong>
+              <span className="text-[#C5A47E]">Dubai Economic Department</span>
+            </div>
+
+            <div className="p-4 bg-[#112236] rounded border border-gray-800 space-y-1">
+              <span className="text-gray-400 block">Customs Authority</span>
+              <strong className="text-white text-sm block">Licensed Brokerage</strong>
+              <span className="text-emerald-400">Mirsal 2 Port Gate Pass Code</span>
+            </div>
+
+            <div className="p-4 bg-[#112236] rounded border border-gray-800 space-y-1">
+              <span className="text-gray-400 block">Terminal Access</span>
+              <strong className="text-white text-sm block">DP World Jebel Ali</strong>
+              <span className="text-gray-300">Sharjah Port Khalid & Khalifa Port</span>
+            </div>
+
+            <div className="p-4 bg-[#112236] rounded border border-gray-800 space-y-1">
+              <span className="text-gray-400 block">Operating Headquarters</span>
+              <strong className="text-white text-sm block">Tanvi Business Centre</strong>
+              <span className="text-gray-300">M - 101, Abu Hail, Dubai, UAE</span>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="text-center pt-8">
+          <Link
+            href="/get-quote"
+            className="btn-editorial-gold px-8 py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"
+          >
+            <span>Consult Our Logistics Officers</span>
+            <i className="fa-solid fa-arrow-right text-[10px]" />
+          </Link>
+        </div>
       </main>
     </div>
   );
