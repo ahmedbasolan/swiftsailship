@@ -6,7 +6,22 @@ export const metadata: Metadata = {
   description:
     "Comprehensive maritime freight forwarding, ocean container charters, aviation express velocity, UAE customs brokerage (Mirsal 2), and project cargo handling.",
   alternates: {
-    canonical: "https://swiftsailship.com/services",
+    canonical: "https://www.swiftsailship.com/services",
+  },
+  openGraph: {
+    type: "website",
+    title: "Services & Freight Solutions | Swift Sail Shipping L.L.C.",
+    description:
+      "Comprehensive maritime freight forwarding, ocean container charters, aviation express velocity, UAE customs brokerage (Mirsal 2), and project cargo handling.",
+    url: "https://www.swiftsailship.com/services",
+    images: ["/assets/img/og-default.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services & Freight Solutions | Swift Sail Shipping L.L.C.",
+    description:
+      "Comprehensive maritime freight forwarding, ocean container charters, aviation express velocity, UAE customs brokerage (Mirsal 2), and project cargo handling.",
+    images: ["/assets/img/og-default.jpg"],
   },
 };
 
@@ -309,6 +324,69 @@ export default function ServicesPage() {
           </div>
         </section>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Freight Forwarding, Customs Brokerage & Logistics",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Swift Sail Shipping L.L.C.",
+              "url": "https://www.swiftsailship.com",
+              "telephone": "+971553424700",
+              "email": "info@swiftsailship.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Tanvi Business Centre, M - 101, Abu Hail",
+                "addressLocality": "Dubai",
+                "addressCountry": "AE"
+              }
+            },
+            "areaServed": ["AE", "GCC", "Middle East", "Africa", "Indian Subcontinent", "Europe"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Swift Sail Shipping Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ocean Freight & Vessel Chartering",
+                    "description": "FCL/LCL consolidation, reefer, flat rack, open top containers calling Jebel Ali, Port Khalid, and Khalifa Port."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Air Cargo Velocity & Charters",
+                    "description": "Next-Flight-Out express booking, temperature-controlled pharma logistics, and IATA dangerous goods handling via DXB and DWC."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "UAE Customs Brokerage & Free Zone Entry",
+                    "description": "Mirsal 2 electronic declarations, MOIAT industrial duty exemptions, and free zone inward/outward transfers."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Project Cargo & Heavy Lift Operations",
+                    "description": "Out-of-gauge and breakbulk transport, route surveys, police escorts, and mobile crane loading."
+                  }
+                }
+              ]
+            }
+          })
+        }}
+      />
     </div>
   );
 }

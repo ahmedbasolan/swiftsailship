@@ -2,11 +2,26 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us • Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
+  title: "About Us  Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
   description:
     "Founded in Dubai, Swift Sail Shipping L.L.C. provides premier international freight forwarding, ocean charters, customs brokerage, and supply chain logistics across the UAE and GCC.",
   alternates: {
-    canonical: "https://swiftsailship.com/about",
+    canonical: "https://www.swiftsailship.com/about",
+  },
+  openGraph: {
+    type: "website",
+    title: "About Us  Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
+    description:
+      "Founded in Dubai, Swift Sail Shipping L.L.C. provides premier international freight forwarding, ocean charters, customs brokerage, and supply chain logistics across the UAE and GCC.",
+    url: "https://www.swiftsailship.com/about",
+    images: ["/assets/img/og-default.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us  Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
+    description:
+      "Founded in Dubai, Swift Sail Shipping L.L.C. provides premier international freight forwarding, ocean charters, customs brokerage, and supply chain logistics across the UAE and GCC.",
+    images: ["/assets/img/og-default.jpg"],
   },
 };
 
@@ -61,8 +76,12 @@ export default function AboutPage() {
             <div className="lg:col-span-5">
               <div className="rounded-lg overflow-hidden border border-gray-300 shadow-xl relative">
                 <img
-                  src="/assets/img/office_image_1776261439512.png"
+                  src="/assets/img/office_image_1776261439512.webp"
                   alt="Swift Sail Shipping Executive Logistics Desk"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover"
                 />
                 <div className="p-4 bg-[#070E18] text-white text-xs font-mono">
