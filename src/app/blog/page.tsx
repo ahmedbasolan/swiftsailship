@@ -85,10 +85,28 @@ export default function BlogPage() {
           </h1>
 
           <p className="text-lg text-gray-300 font-sans font-light max-w-3xl leading-relaxed">
-            Essential operational briefings, regulatory breakdowns, and supply chain analysis written by practicing maritime and customs officers in Dubai.
+            Essential operational briefings, regulatory breakdowns, and supply chain analysis written by practicing maritime and customs officers in Dubai. If you move cargo through the UAE — by sea or air — these dispatches are the intelligence your forwarder should already be giving you.
           </p>
         </div>
       </header>
+
+      {/* Editorial Intro */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+          <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
+            FROM THE TRADE INTELLIGENCE DESK
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 mb-4">
+            Why We Publish These Dispatches
+          </h2>
+          <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+            Freight rates, customs procedures, and maritime routing shift faster than most suppliers can track. Each dispatch in the journal addresses a decision importers and exporters actually face — whether that is choosing between FOB and CIF terms, claiming a MOIAT duty exemption, or weighing a Cape of Good Hope routing against convoy escorting through the Red Sea.
+          </p>
+          <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+            Every analysis is written by the same licensed brokers, marine surveyors, and operations officers who execute our clearances and book our vessels at Jebel Ali, Port Khalid, and DXB. New issues are published monthly; the archive below tracks the current edition and the issues that preceded it.
+          </p>
+        </div>
+      </section>
 
       {/* Main Journal Grid */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
@@ -153,6 +171,30 @@ export default function BlogPage() {
           <NewsletterForm />
         </div>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.swiftsailship.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Dispatch Journal",
+                "item": "https://www.swiftsailship.com/blog"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }

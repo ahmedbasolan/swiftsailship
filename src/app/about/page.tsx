@@ -93,6 +93,75 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Heritage, Network & Expertise */}
+        <section>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
+              OPERATIONAL FOOTPRINT
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+              A Network Built Around the UAE&apos;s Sovereign Gateways
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+              <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
+                NETWORK & INFRASTRUCTURE
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-slate-950 mb-4">
+                From a Single Desk in Abu Hail to 50+ Direct Port Corridors
+              </h3>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+                Swift Sail Shipping was founded in Abu Hail, Dubai as a specialist customs brokerage and freight coordination desk. From that single operating office, we grew into a full-service freight forwarder with active terminal operations at Jebel Ali Port — the largest marine terminal in the Middle East — as well as Port Khalid Sharjah and Khalifa Port, and air cargo hubs at Dubai International (DXB) and Dubai World Central (DWC).
+              </p>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+                Our agent and partner network spans 50+ direct sovereign port corridors across Asia, the Indian Subcontinent, Africa, and Europe. Every corridor is supported by vetted overseas co-loaders and destination agents, so consignments retain a single accountable operator from origin stuffing to final consignee handover — never a hand-off to an unknown third party mid-transit.
+              </p>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                For UAE importers and re-exporters, this footprint translates directly into practical advantages: bonded warehousing options in Jebel Ali Free Zone (JAFZA) and Dubai South, automated Sea-Air transfers through DWC for schedule recovery, and a 24/7 port clearance desk that files Mirsal 2 declarations the same day a vessel berths.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+              <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
+                LEADERSHIP & EXPERTISE
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-slate-950 mb-4">
+                Practitioners, Not Intermediaries
+              </h3>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+                Our operations are led by licensed customs brokers, marine surveyors, and logistics engineers who have spent their careers at UAE terminals — not by sales desks. Team leadership holds direct certifications in UAE customs brokerage under Mirsal 2, IATA dangerous goods (DGR) handling, SOLAS Verified Gross Mass (VGM) compliance, and project cargo route engineering.
+              </p>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+                This hands-on pedigree is the reason our trade intelligence desk publishes operational guidance — on Red Sea routing, MOIAT industrial duty exemptions, and Incoterms risk allocation — rather than generic marketing. Every dispatch is written by the same officers who execute the clearances and book the vessels.
+              </p>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                Because we operate our own brokerage licenses and maintain direct carrier allocations, clients receive transparent, itemized economics: ocean or air carriage, terminal handling, customs brokerage, and local delivery, each priced separately and none buried in a bundled margin.
+              </p>
+            </div>
+
+            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+              <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
+                INDUSTRY PROTOCOLS
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-slate-950 mb-4">
+                Compliance-First Operating Standards
+              </h3>
+              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+                Freight in the UAE is governed by a dense regulatory environment: Dubai Customs Mirsal 2 electronic declarations, ESMA and food-safety inspections, TDRA approvals, MOIAT industrial exemptions, and DP World terminal rules. Our standard operating procedures encode each of these requirements so documentation is prepared before cargo arrives — eliminating the holds, fines, and demurrage that arise from reactive compliance.
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans text-sm">
+                <li>Pre-arrival document vetting: Bills of Lading, Certificates of Origin, commercial invoices, HS classification</li>
+                <li>Mirsal 2 declarations lodged on the day of berthing, with VCC issuance for priority gate release</li>
+                <li>MOIAT industrial duty exemption management for qualifying manufacturers</li>
+                <li>IATA-compliant packaging and dangerous goods (DGR) coordination</li>
+                <li>SOLAS VGM certification and container stuffing supervision</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* The 3 Core Tenets */}
         <section>
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -197,6 +266,30 @@ export default function AboutPage() {
           </Link>
         </div>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.swiftsailship.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://www.swiftsailship.com/about"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
