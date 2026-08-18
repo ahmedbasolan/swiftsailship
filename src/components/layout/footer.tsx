@@ -15,8 +15,12 @@ export function Footer() {
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/img/Untitled design.png"
+                src="/assets/img/logo.webp"
                 alt="Swift Sail Shipping"
+                width={48}
+                height={48}
+                loading="lazy"
+                decoding="async"
                 className="h-12 w-auto"
               />
               <div>

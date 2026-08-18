@@ -3,11 +3,26 @@ import { Metadata } from "next";
 import QuoteForm from "@/components/quote-form";
 
 export const metadata: Metadata = {
-  title: "Request a Quotation • Logistics Desk | Swift Sail Shipping L.L.C.",
+  title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
   description:
     "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
   alternates: {
-    canonical: "https://swiftsailship.com/get-quote",
+    canonical: "https://www.swiftsailship.com/get-quote",
+  },
+  openGraph: {
+    type: "website",
+    title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
+    description:
+      "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
+    url: "https://www.swiftsailship.com/get-quote",
+    images: ["/assets/img/og-default.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
+    description:
+      "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
+    images: ["/assets/img/og-default.jpg"],
   },
 };
 
@@ -125,7 +140,97 @@ export default function GetQuotePage() {
             </div>
           </div>
         </div>
+
+        {/* FAQ */}
+        <section className="mt-20" id="faq">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
+              FREQUENTLY ASKED
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+              Cargo & Quotation Questions, Answered
+            </h2>
+          </div>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                How quickly will I receive a freight quotation?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours during working hours (Mon–Fri 08:00–18:00 GST).
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                What information do I need to provide for a quote?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Origin and destination, cargo type, total weight and volume (CBM), number of packages, Incoterms preference, and whether you require customs clearance or warehousing in the UAE.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                Do you handle UAE customs clearance and duty exemption?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Yes. Our in-house licensed brokers file directly through Dubai Customs Mirsal 2, including MOIAT industrial duty exemptions for qualifying manufacturers and free zone transfers.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                What ports and airports do you operate from?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                We operate from Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port for ocean freight, and Dubai International (DXB) and Dubai World Central (DWC) for air cargo.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How quickly will I receive a freight quotation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours during working hours (Mon–Fri 08:00–18:00 GST)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What information do I need to provide for a quote?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Origin and destination, cargo type, total weight and volume (CBM), number of packages, Incoterms preference, and whether you require customs clearance or warehousing in the UAE."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you handle UAE customs clearance and duty exemption?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Our in-house licensed brokers file directly through Dubai Customs Mirsal 2, including MOIAT industrial duty exemptions for qualifying manufacturers and free zone transfers."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What ports and airports do you operate from?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We operate from Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port for ocean freight, and Dubai International (DXB) and Dubai World Central (DWC) for air cargo."
+                }
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }

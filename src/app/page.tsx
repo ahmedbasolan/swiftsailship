@@ -10,7 +10,22 @@ export const metadata: Metadata = {
   description:
     "Publication-grade freight forwarding, ocean charters, air cargo velocity, and UAE customs brokerage operating from Dubai Maritime City, Jebel Ali Port, and Port Khalid.",
   alternates: {
-    canonical: "https://swiftsailship.com",
+    canonical: "https://www.swiftsailship.com",
+  },
+  openGraph: {
+    type: "website",
+    title: "Swift Sail Shipping L.L.C. | Sovereign Freight Forwarding & Logistics UAE",
+    description:
+      "Publication-grade freight forwarding, ocean charters, air cargo velocity, and UAE customs brokerage operating from Dubai Maritime City, Jebel Ali Port, and Port Khalid.",
+    url: "https://www.swiftsailship.com",
+    images: ["/assets/img/og-default.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Swift Sail Shipping L.L.C. | Sovereign Freight Forwarding & Logistics UAE",
+    description:
+      "Publication-grade freight forwarding, ocean charters, air cargo velocity, and UAE customs brokerage operating from Dubai Maritime City, Jebel Ali Port, and Port Khalid.",
+    images: ["/assets/img/og-default.jpg"],
   },
 };
 
@@ -22,8 +37,12 @@ export default function Home() {
         {/* Subtle Background Maritime Image & Grain */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/assets/img/cargo_ship_port_uae_1776336267613.png"
+            src="/assets/img/cargo_ship_port_uae_1776336267613.webp"
             alt="UAE Maritime Port & Cargo Vessel"
+            width={1024}
+            height={1024}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center opacity-25 mix-blend-luminosity filter contrast-125"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#070E18] via-[#070E18]/80 to-[#070E18]/90" />
@@ -410,8 +429,12 @@ export default function Home() {
             <div className="lg:col-span-6 relative">
               <div className="rounded-lg overflow-hidden border border-gray-300 shadow-2xl relative">
                 <img
-                  src="/assets/img/dubai_skyline_containers_1776336296901.png"
+                  src="/assets/img/dubai_skyline_containers_1776336296901.webp"
                   alt="Dubai Maritime City and Container Port"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white text-xs font-mono">

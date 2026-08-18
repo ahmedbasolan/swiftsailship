@@ -78,8 +78,12 @@ export function Navbar() {
           {/* Brand Masthead */}
           <Link href="/" className="flex items-center gap-3.5 group">
             <img
-              src="/assets/img/Untitled design.png"
+              src="/assets/img/logo.webp"
               alt="Swift Sail Shipping Logo"
+              width={48}
+              height={48}
+              loading="eager"
+              decoding="async"
               className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
             <div className="flex flex-col">

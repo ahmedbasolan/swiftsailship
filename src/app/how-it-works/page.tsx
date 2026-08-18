@@ -2,11 +2,26 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How It Works • The Freight Lifecycle | Swift Sail Shipping L.L.C.",
+  title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
   description:
-    "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping — from cargo engineering and booking to UAE customs clearance and final consignee handover.",
+    "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
   alternates: {
-    canonical: "https://swiftsailship.com/how-it-works",
+    canonical: "https://www.swiftsailship.com/how-it-works",
+  },
+  openGraph: {
+    type: "website",
+    title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
+    description:
+      "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
+    url: "https://www.swiftsailship.com/how-it-works",
+    images: ["/assets/img/og-default.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
+    description:
+      "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
+    images: ["/assets/img/og-default.jpg"],
   },
 };
 
