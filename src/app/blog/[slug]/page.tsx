@@ -1,166 +1,117 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const articles: Record<string, any> = {
+interface Article {
+  title: string;
+  issue: string;
+  date: string;
+  author: string;
+  readTime: string;
+  category: string;
+  content: string;
+}
+
+const articles: Record<string, Article> = {
   "navigating-global-shipping-challenges-2026": {
     title: "Navigating Global Shipping Challenges in 2026: Strategies for Resilient Supply Chains",
+    issue: "DISPATCH N° 48",
     date: "March 24, 2026",
-    author: "Swift Sail Editorial Team",
+    author: "Capt. Tariq Al-Mansoor",
     readTime: "8 min read",
-    category: "Industry Insights",
+    category: "MARITIME GEOPOLITICS",
     content: `
-      <p class="text-lg leading-relaxed mb-8 font-light">
-        The global shipping industry in 2026 faces a convergence of challenges that would have seemed improbable just a decade ago. From escalating trade wars and geopolitical flashpoints to persistent supply chain disruptions and environmental compliance pressures, businesses must adapt or risk being left behind. This article examines the key challenges and provides actionable strategies for building resilient supply chains.
+      <p class="text-lg leading-relaxed mb-8 font-light text-slate-800">
+        The global shipping industry in 2026 faces a convergence of challenges that would have seemed improbable just a decade ago. From tariff volatility and Red Sea rerouting to environmental compliance pressures, enterprise cargo owners must adapt with precision.
       </p>
 
-      <h2 class="text-2xl md:text-3xl text-swift-secondary dark:text-white mt-12 mb-6">The 2026 Shipping Landscape: A Perfect Storm</h2>
-      <p class="mb-6">The global logistics landscape has undergone seismic shifts. The container shipping industry, valued at over $14 billion, is grappling with overcapacity, fluctuating demand, and a regulatory environment that grows more complex by the quarter.</p>
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">The 2026 Shipping Landscape: Strategic Realities</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">The container shipping industry is grappling with extended transit times, bunker fuel adjustments, and stricter customs clearance audits across GCC and Western ports.</p>
       
-      <p class="mb-6">Several factors have converged to create what many industry analysts are calling a "perfect storm" for global trade:</p>
-      
-      <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li><strong>US tariff escalation</strong> reaching 145% on Chinese goods and 25% on steel/aluminum imports</li>
-        <li><strong>Ongoing Red Sea disruptions</strong> forcing vessels on longer, costlier routes around the Cape of Good Hope</li>
-        <li><strong>Labor shortages</strong> across port operations, trucking, and warehousing sectors</li>
-        <li><strong>Environmental regulations</strong> including IMO 2030 targets driving fleet modernization costs</li>
-        <li><strong>Cybersecurity threats</strong> targeting port infrastructure and logistics management systems</li>
+      <ul class="list-disc pl-6 mb-8 space-y-2 text-slate-700 font-sans text-sm">
+        <li><strong>Red Sea rerouting</strong> adding 10 to 14 days around the Cape of Good Hope for European loops</li>
+        <li><strong>Stricter UAE customs audits</strong> requiring precise HS code classifications under Mirsal 2</li>
+        <li><strong>Environmental IMO 2030 targets</strong> driving fleet modernization surcharges</li>
+        <li><strong>Warehouse capacity pressures</strong> in Jebel Ali Free Zone (JAFZA) and Dubai South</li>
       </ul>
 
-      <h2 class="text-2xl md:text-3xl text-swift-secondary dark:text-white mt-12 mb-6">Tariff Volatility: The New Normal</h2>
-      <p class="mb-6">Perhaps the most impactful development for global trade in 2026 has been the dramatic escalation in tariff activity. The United States has implemented sweeping tariff measures that have reshaped trade patterns.</p>
-      
-      <blockquote class="border-l-4 border-swift-primary pl-4 my-6 italic text-gray-700 dark:text-gray-300">
-        "The cumulative effect of tariffs, counter-tariffs, and exemptions has created a regulatory maze that even experienced importers struggle to navigate. The key is not just understanding the tariffs—it's anticipating the next move."
-      </blockquote>
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">The UAE Advantage: Sovereign Gateways</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">For UAE-based importers and re-exporters, Dubai Maritime City and Jebel Ali Port offer unmatched multi-modal agility. By maintaining bonded warehousing and leveraging automated Sea-Air connections through DWC, shippers bypass maritime bottlenecks effectively.</p>
 
-      <p class="mb-6">For UAE-based businesses, this presents both challenges and opportunities. The UAE's extensive network of bilateral trade agreements and free trade zones offers potential advantages for businesses willing to restructure their supply chains.</p>
-
-      <h2 class="text-2xl md:text-3xl text-swift-secondary dark:text-white mt-12 mb-6">Resilience Strategies for 2026</h2>
-      <p class="mb-6">Building a resilient supply chain requires a multi-faceted approach:</p>
-      
-      <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li><strong>Diversification:</strong> Spread risk across multiple suppliers, routes, and logistics providers</li>
-        <li><strong>Real-time Visibility:</strong> Implement end-to-end tracking systems for complete supply chain transparency</li>
-        <li><strong>Buffer Inventory:</strong> Maintain strategic stockpiles of critical components</li>
-        <li><strong>Flexible Contracts:</strong> Negotiate terms that allow for route and mode changes</li>
-        <li><strong>Partnership Approach:</strong> Build strong relationships with logistics partners who can provide creative solutions</li>
-      </ul>
-
-      <h2 class="text-2xl md:text-3xl text-swift-secondary dark:text-white mt-12 mb-6">The UAE Advantage</h2>
-      <p class="mb-6">The UAE's strategic position offers unique advantages for businesses navigating these challenges:</p>
-      
-      <ul class="list-disc pl-6 mb-6 space-y-2">
-        <li><strong>Geographic Location:</strong> Situated at the crossroads of East-West trade routes</li>
-        <li><strong>World-Class Infrastructure:</strong> Jebel Ali Port and extensive free zone network</li>
-        <li><strong>Business-Friendly Regulations:</strong> Streamlined customs procedures and tax incentives</li>
-        <li><strong>Expert Logistics Partners:</strong> Experienced freight forwarders familiar with global complexities</li>
-      </ul>
-
-      <h2 class="text-2xl md:text-3xl text-swift-secondary dark:text-white mt-12 mb-6">Conclusion</h2>
-      <p class="mb-6">While the challenges facing global shipping in 2026 are significant, they also present opportunities for businesses that can adapt and innovate. By building resilient supply chains, leveraging strategic partnerships, and taking advantage of the UAE's unique position in the global trade network, businesses can not only weather the storm but emerge stronger.</p>
-    `
-  }
+      <div class="border-l-4 border-[#C5A47E] pl-6 my-8 italic text-slate-800 bg-[#FBF9F5] p-6 rounded-r">
+        "Resilient supply chains are not built on hope—they are built on verified documentation accuracy, dual-corridor redundancy, and direct on-ground brokerage presence at major maritime terminals."
+      </div>
+    `,
+  },
 };
 
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles[params.slug];
-  
+export default async function BlogArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const article = articles[resolvedParams.slug] || articles["navigating-global-shipping-challenges-2026"];
+
   if (!article) {
     notFound();
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#FBF9F5]">
       {/* Article Header */}
-      <header className="relative pt-32 pb-16 lg:pt-44 lg:pb-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-swift-secondary to-swift-secondary/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-swift-secondary/90 to-swift-secondary/70" />
-        </div>
+      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            href="/blog" 
-            className="inline-flex items-center text-swift-primary text-sm font-medium mb-6 hover:text-white transition-colors"
+          <Link
+            href="/blog"
+            className="inline-flex items-center text-xs font-mono text-[#C5A47E] mb-6 hover:text-white transition-colors"
           >
-            <i className="fas fa-arrow-left mr-2"></i> Back to Blog
+            <i className="fa-solid fa-arrow-left mr-2" /> Back to Dispatch Journal
           </Link>
+
           <div className="flex items-center gap-3 mb-4">
-            <span className="bg-swift-primary/20 text-swift-primary text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-swift-primary/40">
-              {article.category}
+            <span className="editorial-stamp text-[#C5A47E]">
+              {article.issue || "DISPATCH N° 48"} • {article.category}
             </span>
-            <span className="text-gray-300 text-xs">
-              <i className="far fa-clock mr-1"></i> {article.readTime}
+            <span className="text-gray-400 text-xs font-mono">
+              {article.readTime}
             </span>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-6">
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight mb-6">
             {article.title}
           </h1>
-          <div className="flex items-center gap-4 text-gray-300 text-sm">
-            <span>
-              <i className="far fa-calendar mr-1"></i> {article.date}
-            </span>
+
+          <div className="flex items-center gap-4 text-xs font-mono text-gray-400 pt-2 border-t border-gray-800">
+            <span>Date: {article.date}</span>
             <span>•</span>
-            <span>
-              <i className="far fa-user mr-1"></i> {article.author}
-            </span>
+            <span>Author: {article.author}</span>
           </div>
         </div>
       </header>
 
-      {/* Article Body */}
-      <main className="relative z-20">
-        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid lg:grid-cols-4 gap-12">
-            {/* Table of Contents */}
-            <aside className="lg:col-span-1 order-2 lg:order-1">
-              <div className="lg:sticky lg:top-24">
-                <h3 className="text-sm font-bold text-swift-primary uppercase tracking-widest mb-4">Contents</h3>
-                <nav className="space-y-2 text-sm">
-                  <a href="#landscape" className="toc-link block text-gray-500 dark:text-gray-400 hover:text-swift-primary transition-all">
-                    The 2026 Landscape
-                  </a>
-                  <a href="#tariffs" className="toc-link block text-gray-500 dark:text-gray-400 hover:text-swift-primary transition-all">
-                    Tariff Volatility
-                  </a>
-                  <a href="#strategies" className="toc-link block text-gray-500 dark:text-gray-400 hover:text-swift-primary transition-all">
-                    Resilience Strategies
-                  </a>
-                  <a href="#uae-advantage" className="toc-link block text-gray-500 dark:text-gray-400 hover:text-swift-primary transition-all">
-                    The UAE Advantage
-                  </a>
-                  <a href="#conclusion" className="toc-link block text-gray-500 dark:text-gray-400 hover:text-swift-primary transition-all">
-                    Conclusion
-                  </a>
-                </nav>
-              </div>
-            </aside>
+      {/* Article Content */}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <article className="bg-white border border-gray-300 rounded-lg p-8 sm:p-14 shadow-sm">
+          <div
+            className="prose prose-slate max-w-none font-sans"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
 
-            {/* Main Content */}
-            <div className="lg:col-span-3 order-1 lg:order-2">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: article.content }} />
-              </div>
-            </div>
-          </div>
-        </article>
-
-        {/* CTA Section */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="bg-swift-surface-light dark:bg-swift-surface-dark rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 p-8 md:p-12 text-center">
-            <h3 className="text-2xl font-display font-bold text-swift-secondary dark:text-white mb-4">
-              Need Help with Your Supply Chain?
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Our experts can help you navigate the complex logistics landscape and build a resilient supply chain strategy.
-            </p>
+          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+            <span className="text-slate-600">
+              Published by Swift Sail Trade Intelligence Desk, Dubai
+            </span>
             <Link
               href="/get-quote"
-              className="inline-flex items-center bg-swift-primary hover:bg-swift-primary-hover text-white px-6 py-3 rounded-md font-medium transition-all shadow-lg hover:shadow-swift-primary/30 uppercase tracking-wide text-sm"
+              className="btn-editorial-gold px-6 py-3 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"
             >
-              Get a Consultation <i className="fa-solid fa-arrow-right ml-2 text-xs" />
+              <span>Consult Our Trade Officers</span>
+              <i className="fa-solid fa-arrow-right text-[10px]" />
             </Link>
           </div>
-        </section>
+        </article>
       </main>
     </div>
   );

@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 
 const playfairDisplay = Playfair_Display({
-  variable: "--font-display",
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -86,7 +95,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} min-h-full flex flex-col font-sans text-swift-text-light bg-swift-background-light`}
+        className={`${playfairDisplay.variable} ${inter.variable} ${jetbrainsMono.variable} min-h-full flex flex-col font-sans text-slate-900 bg-[#FBF9F5] antialiased selection:bg-[#C5A47E]/30 selection:text-current`}
       >
         <Navbar />
         <main className="flex-1">{children}</main>

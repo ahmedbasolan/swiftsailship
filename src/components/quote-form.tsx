@@ -1,50 +1,117 @@
-"use client"
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function QuoteForm() {
+  const searchParams = useSearchParams();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
-    cargoType: "",
+    serviceMode: "ocean-fcl",
+    incoterm: "CIF",
     origin: "",
     destination: "",
+    cbm: "",
     weight: "",
-    message: ""
+    readyDate: "",
+    hsCodeOrCommodity: "",
+    notes: "",
   });
+
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Pre-fill from URL query parameters (e.g. from Calculator or Corridor click)
+  useEffect(() => {
+    const cbm = searchParams.get("cbm");
+    const weight = searchParams.get("weight");
+    const mode = searchParams.get("mode");
+    const incoterm = searchParams.get("incoterm");
+    const origin = searchParams.get("origin");
+    const destination = searchParams.get("destination");
+    const service = searchParams.get("service");
+
+    setFormData((prev) => ({
+      ...prev,
+      cbm: cbm || prev.cbm,
+      weight: weight || prev.weight,
+      serviceMode: service || (mode === "air" ? "air-freight" : prev.serviceMode),
+      incoterm: incoterm || prev.incoterm,
+      origin: origin || prev.origin,
+      destination: destination || prev.destination,
+    }));
+  }, [searchParams]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
-    // In a real app, this would send to a backend
-    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const whatsappMessage = encodeURIComponent(
+    `*Swift Sail Shipping Quotation Request*\n\n` +
+      `• *Client Name:* ${formData.name || "N/A"}\n` +
+      `• *Company:* ${formData.company || "N/A"}\n` +
+      `• *Phone:* ${formData.phone || "N/A"}\n` +
+      `• *Service Mode:* ${formData.serviceMode}\n` +
+      `• *Incoterm:* ${formData.incoterm}\n` +
+      `• *Origin:* ${formData.origin || "Not specified"}\n` +
+      `• *Destination:* ${formData.destination || "Not specified"}\n` +
+      `• *Cargo Volume:* ${formData.cbm ? `${formData.cbm} CBM` : "N/A"}\n` +
+      `• *Gross Weight:* ${formData.weight ? `${formData.weight} kg` : "N/A"}\n` +
+      `• *Commodity/HS Code:* ${formData.hsCodeOrCommodity || "General Cargo"}\n` +
+      `• *Additional Notes:* ${formData.notes || "None"}`
+  );
 
   if (isSubmitted) {
     return (
-      <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
-        <i className="fas fa-check-circle text-4xl text-green-500 mb-4" />
-        <h3 className="text-lg font-semibold text-green-800 dark:text-green-400 mb-2">Thank You!</h3>
-        <p className="text-green-700 dark:text-green-300">We'll get back to you within 24 hours.</p>
+      <div className="bg-[#070E18] border border-[#C5A47E]/40 rounded-lg p-8 text-center text-white space-y-4">
+        <div className="w-16 h-16 bg-emerald-950/80 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-2xl">
+          <i className="fa-solid fa-check" />
+        </div>
+        <h3 className="text-2xl font-serif font-bold text-white">
+          Quotation Request Dispatched
+        </h3>
+        <p className="text-sm font-sans text-gray-300 max-w-md mx-auto leading-relaxed">
+          Thank you. Your cargo dossier has been assigned to our on-duty Dubai logistics desk. We will respond with an itemized commercial rate sheet within 2 business hours.
+        </p>
+        <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+          <a
+            href={`https://wa.me/971553424700?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
+          >
+            <i className="fa-brands fa-whatsapp text-base" /> Expedite on WhatsApp
+          </a>
+          <button
+            onClick={() => setIsSubmitted(false)}
+            className="text-xs font-mono text-gray-400 hover:text-white px-4 py-3"
+          >
+            Submit Another Request
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-6 text-xs font-mono">
+      {/* Client Identity */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
             Full Name *
           </label>
           <input
@@ -53,13 +120,30 @@ export default function QuoteForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="John Doe"
+            placeholder="e.g. Captain Tariq Al-Mansoor"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Email *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Company / Trading Entity
+          </label>
+          <input
+            type="text"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            placeholder="e.g. Gulf Petrochemical FZE"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Contact Details */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Corporate Email *
           </label>
           <input
             type="email"
@@ -67,15 +151,13 @@ export default function QuoteForm() {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="john@example.com"
+            placeholder="procurement@company.com"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           />
         </div>
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Phone Number *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Phone / Mobile (with country code) *
           </label>
           <input
             type="tel"
@@ -83,63 +165,58 @@ export default function QuoteForm() {
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="+971 XX XXX XXXX"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Company Name
-          </label>
-          <input
-            type="text"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="Your Company"
+            placeholder="+971 50 123 4567"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           />
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
+
+      {/* Service Mode & Incoterm */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Cargo Type *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Required Service Mode *
           </label>
           <select
-            name="cargoType"
-            required
-            value={formData.cargoType}
+            name="serviceMode"
+            value={formData.serviceMode}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           >
-            <option value="">Select type</option>
-            <option value="fcl">FCL (Full Container)</option>
-            <option value="lcl">LCL (Less than Container)</option>
-            <option value="air">Air Freight</option>
-            <option value="project">Project Cargo</option>
-            <option value="other">Other</option>
+            <option value="ocean-fcl">Ocean Freight — Full Container (FCL)</option>
+            <option value="ocean-lcl">Ocean Freight — LCL Consolidation</option>
+            <option value="air-freight">Air Cargo Velocity & Charters</option>
+            <option value="customs-clearance">UAE Customs Clearance Only (Mirsal 2)</option>
+            <option value="project-cargo">Project Cargo & Heavy Lift</option>
+            <option value="warehousing-reexport">Free Zone Storage & Re-Export</option>
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Weight (kg) *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Incoterms® 2020 Protocol
           </label>
-          <input
-            type="number"
-            name="weight"
-            required
-            value={formData.weight}
+          <select
+            name="incoterm"
+            value={formData.incoterm}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="1000"
-          />
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          >
+            <option value="CIF">CIF — Cost, Insurance & Freight (Standard GCC)</option>
+            <option value="FOB">FOB — Free On Board</option>
+            <option value="EXW">EXW — Ex Works (Door Pickup)</option>
+            <option value="DDP">DDP — Delivered Duty Paid (Turnkey Door)</option>
+            <option value="DAP">DAP — Delivered At Place</option>
+            <option value="CFR">CFR — Cost and Freight</option>
+            <option value="FCA">FCA — Free Carrier</option>
+          </select>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
+
+      {/* Origin & Destination */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Origin *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Port / City of Origin *
           </label>
           <input
             type="text"
@@ -147,13 +224,13 @@ export default function QuoteForm() {
             required
             value={formData.origin}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="Dubai, UAE"
+            placeholder="e.g. Shanghai, China (CNSHA)"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Destination *
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Port / City of Destination *
           </label>
           <input
             type="text"
@@ -161,30 +238,105 @@ export default function QuoteForm() {
             required
             value={formData.destination}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-            placeholder="London, UK"
+            placeholder="e.g. Jebel Ali Port, Dubai (AEJEA)"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
           />
         </div>
       </div>
+
+      {/* Cargo Dimensions (CBM & Weight) */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Total Volume (CBM)
+          </label>
+          <input
+            type="number"
+            step="any"
+            name="cbm"
+            value={formData.cbm}
+            onChange={handleChange}
+            placeholder="e.g. 28.5"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Gross Weight (kg)
+          </label>
+          <input
+            type="number"
+            step="any"
+            name="weight"
+            value={formData.weight}
+            onChange={handleChange}
+            placeholder="e.g. 18500"
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          />
+        </div>
+        <div>
+          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+            Cargo Readiness Date
+          </label>
+          <input
+            type="date"
+            name="readyDate"
+            value={formData.readyDate}
+            onChange={handleChange}
+            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Commodity & Notes */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Additional Details
+        <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          Commodity Description / HS Code
         </label>
-        <textarea
-          name="message"
-          value={formData.message}
+        <input
+          type="text"
+          name="hsCodeOrCommodity"
+          value={formData.hsCodeOrCommodity}
           onChange={handleChange}
-          rows={4}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-swift-primary focus:border-transparent dark:bg-gray-800 dark:text-white transition-all"
-          placeholder="Any special requirements or instructions..."
+          placeholder="e.g. Industrial Valves & Pumps (HS 8481.80) - Non-Hazmat"
+          className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
         />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-swift-primary hover:bg-swift-primary-hover text-white px-6 py-4 rounded-md font-medium transition-all shadow-lg hover:shadow-swift-primary/30 uppercase tracking-wide text-sm"
-      >
-        Submit Request
-      </button>
+
+      <div>
+        <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          Special Handling / Storage Instructions
+        </label>
+        <textarea
+          name="notes"
+          rows={3}
+          value={formData.notes}
+          onChange={handleChange}
+          placeholder="e.g. Reefer temperature set at +4°C, requires Jebel Ali bonded warehousing for 14 days before re-export..."
+          className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+        />
+      </div>
+
+      {/* Action Buttons */}
+      <div className="pt-2 flex flex-col sm:flex-row gap-4">
+        <button
+          type="submit"
+          className="flex-1 btn-editorial-gold py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+        >
+          <span>Transmit Quotation Request</span>
+          <i className="fa-solid fa-paper-plane text-[11px]" />
+        </button>
+
+        <a
+          href={`https://wa.me/971553424700?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors inline-flex items-center justify-center gap-2"
+        >
+          <i className="fa-brands fa-whatsapp text-lg" />
+          <span>Send via WhatsApp Desk</span>
+        </a>
+      </div>
     </form>
   );
 }
