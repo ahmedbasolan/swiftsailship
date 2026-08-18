@@ -118,6 +118,107 @@ const articles: Record<string, Article> = {
       </div>
     `,
   },
+  "sea-freight-vs-air-freight-cost-decision-framework": {
+    slug: "sea-freight-vs-air-freight-cost-decision-framework",
+    title: "Sea Freight vs Air Freight: A Cost & Time Decision Framework for UAE Importers",
+    description:
+      "A practical cost-per-kilo, transit-time, and cash-flow framework for choosing between sea freight and air freight into Dubai, Jebel Ali, and DWC — including when air is actually cheaper.",
+    issue: "DISPATCH N° 45",
+    date: "30 JANUARY 2026",
+    dateISO: "2026-01-30",
+    author: "Cargo Economics Desk",
+    readTime: "7 MIN READ",
+    category: "FREIGHT ECONOMICS",
+    content: `
+      <p class="text-lg leading-relaxed mb-8 font-light text-slate-800">
+        The sea-versus-air decision is rarely about the headline rate. For UAE importers, the real question is total landed cost per unit of time — freight, terminal handling, customs clearance, warehousing, and the cost of capital tied up in transit inventory.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">The Economics, Plainly</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">As a rule of thumb, sea freight costs a fraction of air freight per kilo but adds two to six weeks of transit. That comparison only holds when your cargo can wait. For high-value, time-sensitive, or perishable goods — electronics, pharma, fashion, fresh food — air freight into DXB or DWC can be the cheaper option once financing, stockout, and spoilage costs are priced in.</p>
+
+      <ul class="list-disc pl-6 mb-8 space-y-2 text-slate-700 font-sans text-sm">
+        <li><strong>High volume, low value, no rush</strong> → ocean FCL or LCL via Jebel Ali (Khalifa and Port Khalid as alternatives)</li>
+        <li><strong>High value per kilo or urgent</strong> → air freight via DXB/DWC, with Next-Flight-Out options</li>
+        <li><strong>Mid-range and flexible</strong> → Sea-Air via Dubai World Central: the UAE&apos;s signature multimodal compromise</li>
+        <li><strong>Seasonal or stockout risk</strong> → model the cost of lost sales, not just the freight rate</li>
+      </ul>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">Build the Decision Model</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">Compare total landed cost: freight + insurance + terminal handling + customs brokerage + UAE storage + working-capital cost of transit days. Our cargo desk runs this model against live carrier loops and freighter allocations before recommending a routing — so the recommendation is economic, not habitual.</p>
+
+      <div class="border-l-4 border-[#C5A47E] pl-6 my-8 italic text-slate-800 bg-[#FBF9F5] p-6 rounded-r">
+        "Air is not expensive when the alternative is a lost sale. Sea is not cheap when the cargo sits in JAFZA accruing storage. Model the outcome, not the rate."
+      </div>
+    `,
+  },
+  "choosing-the-right-container-type-uae-shipment": {
+    slug: "choosing-the-right-container-type-uae-shipment",
+    title: "20ft GP, 40ft HC, Reefer, Flat Rack: Choosing the Right Container for Your UAE Shipment",
+    description:
+      "A plain-language guide to container types available at Jebel Ali and Port Khalid — 20' GP, 40' GP, 40' HC, reefer, flat rack, open top, and RoRo — with the cargo each is built for.",
+    issue: "DISPATCH N° 44",
+    date: "16 JANUARY 2026",
+    dateISO: "2026-01-16",
+    author: "Equipment & Packing Desk",
+    readTime: "6 MIN READ",
+    category: "CONTAINER EQUIPMENT",
+    content: `
+      <p class="text-lg leading-relaxed mb-8 font-light text-slate-800">
+        Choosing the wrong container type is one of the most common—and most expensive—mistakes in UAE imports. It drives up freight cost per cubic meter, wastes usable volume, and can force an entire shipment onto a flat rack or open top you never budgeted for.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">The Standard Fleet</h2>
+      <ul class="list-disc pl-6 mb-8 space-y-2 text-slate-700 font-sans text-sm">
+        <li><strong>20&apos; GP (General Purpose):</strong> ~33 CBM, ~28-ton payload. The workhorse for dense, heavy cargo.</li>
+        <li><strong>40&apos; GP:</strong> ~67 CBM. Best for voluminous but lighter general cargo.</li>
+        <li><strong>40&apos; HC (High Cube):</strong> ~76 CBM with ~30cm extra height. For tall pallets and racks.</li>
+        <li><strong>45&apos; Pallet Wide:</strong> wider interior fits 33 Euro-pallets. Premium space, premium slots.</li>
+        <li><strong>Reefer:</strong> temperature-controlled 20&apos; and 40&apos;. For pharma, food, and temperature-critical freight.</li>
+        <li><strong>Flat rack &amp; open top:</strong> for out-of-gauge, machinery, and breakbulk cargo that cannot fit a box.</li>
+      </ul>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">Match the Box to the Cargo</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">General rule: if your cargo weighs out before it fills — steel, stone, machinery — a 20&apos; GP is almost always right. If it fills before it weighs — furniture, plastics, garments — a 40&apos; HC maximizes volume. If it is tall, wide, or needs power, neither standard box works and you should flag the shipment to your forwarder before booking, so equipment and route engineering happen up front.</p>
+
+      <div class="border-l-4 border-[#C5A47E] pl-6 my-8 italic text-slate-800 bg-[#FBF9F5] p-6 rounded-r">
+        "A container booked by weight when the cargo is volumetric is money left on the carrier&apos;s table. Match the box to the cargo, not to the habit."
+      </div>
+    `,
+  },
+  "uae-customs-import-process-guide": {
+    slug: "uae-customs-import-process-guide",
+    title: "UAE Customs Import Process: A Step-by-Step Guide to Clearing Cargo at Jebel Ali",
+    description:
+      "From bill of lading to Mirsal 2 declaration and gate pass release — the exact sequence UAE importers follow to clear ocean cargo at Jebel Ali, with the documents customs actually checks.",
+    issue: "DISPATCH N° 43",
+    date: "02 JANUARY 2026",
+    dateISO: "2026-01-02",
+    author: "Logistics Regulatory Desk",
+    readTime: "8 MIN READ",
+    category: "CUSTOMS COMPLIANCE",
+    content: `
+      <p class="text-lg leading-relaxed mb-8 font-light text-slate-800">
+        Clearing cargo through Dubai Customs at Jebel Ali is procedural, but the sequence matters. Get the order wrong and every step stalls — the vessel berths, the gate pass waits, and the importer pays for the delay. Here is the sequence our brokers execute daily.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">The Clearance Sequence</h2>
+      <ul class="list-disc pl-6 mb-8 space-y-2 text-slate-700 font-sans text-sm">
+        <li><strong>1. Pre-arrival documents:</strong> original Bill of Lading, commercial invoice, packing list, certificate of origin, HS classification confirmed</li>
+        <li><strong>2. Mirsal 2 declaration:</strong> lodged electronically with Dubai Customs using your licensed broker&apos;s code</li>
+        <li><strong>3. Duty &amp; VAT assessment:</strong> 5% VAT plus any applicable customs duty, or exemption proof (e.g., MOIAT) attached at lodgement</li>
+        <li><strong>4. Inspection (if triggered):</strong> physical or document inspection coordinated to avoid demurrage windows</li>
+        <li><strong>5. Gate pass &amp; release:</strong> VCC issuance and container collection from the terminal, with onward delivery or bonded storage</li>
+      </ul>
+
+      <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950 mt-12 mb-4">What Actually Causes Holds</h2>
+      <p class="text-slate-700 leading-relaxed mb-6 font-sans">In our experience, holds are rarely about the cargo — they are about the paperwork: mismatched HS codes between the invoice and the declaration, consignee name misalignment, missing certificate of origin, or a late-attached exemption reference. Each correction consumes terminal free time. That is why documentation vetting happens before the vessel berths, not after.</p>
+
+      <div class="border-l-4 border-[#C5A47E] pl-6 my-8 italic text-slate-800 bg-[#FBF9F5] p-6 rounded-r">
+        "Customs clearance is 90% preparation and 10% declaration. Prepare the file before the berth, and the gate pass follows the vessel off the quay."
+      </div>
+    `,
+  },
 };
 
 export function generateStaticParams() {

@@ -60,6 +60,39 @@ const dispatches = [
     excerpt:
       "Why relying blindly on CIF terms can expose buyers to uncoordinated carrier detention charges at Jebel Ali Port, and how FOB booking provides total demurrage transparency.",
   },
+  {
+    id: "sea-freight-vs-air-freight-cost-decision-framework",
+    issue: "DISPATCH N° 45",
+    title: "Sea Freight vs Air Freight: A Cost & Time Decision Framework for UAE Importers",
+    date: "30 JANUARY 2026",
+    category: "FREIGHT ECONOMICS",
+    readTime: "7 MIN READ",
+    author: "Cargo Economics Desk",
+    excerpt:
+      "A practical cost-per-kilo, transit-time, and cash-flow framework for choosing between sea freight and air freight into Dubai, Jebel Ali, and DWC — including when air is actually cheaper.",
+  },
+  {
+    id: "choosing-the-right-container-type-uae-shipment",
+    issue: "DISPATCH N° 44",
+    title: "20ft GP, 40ft HC, Reefer, Flat Rack: Choosing the Right Container for Your UAE Shipment",
+    date: "16 JANUARY 2026",
+    category: "CONTAINER EQUIPMENT",
+    readTime: "6 MIN READ",
+    author: "Equipment & Packing Desk",
+    excerpt:
+      "A plain-language guide to container types available at Jebel Ali and Port Khalid — 20' GP, 40' GP, 40' HC, reefer, flat rack, open top, and RoRo — with the cargo each is built for.",
+  },
+  {
+    id: "uae-customs-import-process-guide",
+    issue: "DISPATCH N° 43",
+    title: "UAE Customs Import Process: A Step-by-Step Guide to Clearing Cargo at Jebel Ali",
+    date: "02 JANUARY 2026",
+    category: "CUSTOMS COMPLIANCE",
+    readTime: "8 MIN READ",
+    author: "Logistics Regulatory Desk",
+    excerpt:
+      "From bill of lading to Mirsal 2 declaration and gate pass release — the exact sequence UAE importers follow to clear ocean cargo at Jebel Ali, with the documents customs actually checks.",
+  },
 ];
 
 export default function BlogPage() {
