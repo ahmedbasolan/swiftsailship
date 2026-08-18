@@ -323,7 +323,121 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="pt-8" id="faq">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
+              SERVICE FREQUENTLY ASKED
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+              Freight Services, Explained
+            </h2>
+          </div>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                What is the difference between FCL and LCL sea freight?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                FCL (Full Container Load) means your cargo occupies an entire container — 20&apos; GP, 40&apos; GP, or 40&apos; HC — with dedicated space and faster port handling. LCL (Less than Container Load) consolidates your goods with other shippers in a shared container, ideal for smaller volumes under roughly 15 CBM where you pay only for the space you use.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                Do you handle air freight from Dubai and Sharjah?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Yes. Our aviation desk coordinates scheduled freighter allocations and full or part charter flights via Dubai International (DXB) and Dubai World Central (DWC), including Next-Flight-Out priority booking, temperature-controlled pharma, and IATA dangerous goods handling.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                Can you clear customs and manage free zone transfers?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                Yes. In-house licensed brokers file directly through Dubai Customs Mirsal 2, covering import-for-consumption declarations, transit filings, free zone inward and outward transfers, and MOIAT industrial duty exemptions for qualifying manufacturers.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-300 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+                What containers do you offer for project and breakbulk cargo?
+              </h3>
+              <p className="text-sm text-slate-700 leading-relaxed">
+                For out-of-gauge and heavy-lift consignments we arrange flat rack and open top containers, roll-on/roll-off (RoRo) transport, multi-axle hydraulic trailers (SPMT) for 500+ tonne payloads, and tandem mobile crane lifts across UAE maritime facilities.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is the difference between FCL and LCL sea freight?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "FCL (Full Container Load) means your cargo occupies an entire container — 20' GP, 40' GP, or 40' HC — with dedicated space and faster port handling. LCL (Less than Container Load) consolidates your goods with other shippers in a shared container, ideal for smaller volumes under roughly 15 CBM where you pay only for the space you use."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you handle air freight from Dubai and Sharjah?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Our aviation desk coordinates scheduled freighter allocations and full or part charter flights via Dubai International (DXB) and Dubai World Central (DWC), including Next-Flight-Out priority booking, temperature-controlled pharma, and IATA dangerous goods handling."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can you clear customs and manage free zone transfers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. In-house licensed brokers file directly through Dubai Customs Mirsal 2, covering import-for-consumption declarations, transit filings, free zone inward and outward transfers, and MOIAT industrial duty exemptions for qualifying manufacturers."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What containers do you offer for project and breakbulk cargo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For out-of-gauge and heavy-lift consignments we arrange flat rack and open top containers, roll-on/roll-off (RoRo) transport, multi-axle hydraulic trailers (SPMT) for 500+ tonne payloads, and tandem mobile crane lifts across UAE maritime facilities."
+                }
+              }
+            ]
+          })
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.swiftsailship.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services & Freight Solutions",
+                "item": "https://www.swiftsailship.com/services"
+              }
+            ]
+          })
+        }}
+      />
 
       <script
         type="application/ld+json"

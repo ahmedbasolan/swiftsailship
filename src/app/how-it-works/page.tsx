@@ -214,6 +214,30 @@ export default function HowItWorksPage() {
           </div>
         </div>
       </main>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.swiftsailship.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "How It Works",
+                "item": "https://www.swiftsailship.com/how-it-works"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
