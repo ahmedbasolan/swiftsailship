@@ -125,7 +125,7 @@ img {
     display: block;
     width: 1px;
     height: 44px;
-    background: linear-gradient(to bottom, var(--ep-gold), transparent);
+    background: var(--ep-gold);
     transform-origin: top;
 }
 .ep-hero-scroll-hint__text {
@@ -202,37 +202,24 @@ img {
                 box-shadow 0.35s ease;
 }
 
-.hover-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -12px rgba(184, 146, 42, 0.2),
-                0 8px 16px -8px rgba(0, 0, 0, 0.1);
-}
+.hover-lift:hover { border-color: var(--ep-gold); }
 
 .hover-glow {
     transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-.hover-glow:hover {
-    box-shadow: 0 0 30px rgba(184, 146, 42, 0.25),
-                0 0 60px rgba(184, 146, 42, 0.1);
-    transform: translateY(-2px);
-}
+.hover-glow:hover { border-color: var(--ep-gold); }
 
 /* ===== NAV SCROLL EFFECT ===== */
 
-nav.nav-scrolled {
-    background-color: rgba(250, 247, 242, 0.97) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 2px 24px rgba(15, 22, 35, 0.10);
-}
+nav.nav-scrolled { background-color: var(--ep-cream) !important; border-bottom: 1px solid var(--ep-border); }
 
 /* ===== GOLDEN LINE DIVIDER ===== */
 
 .gold-line {
     width: 60px;
     height: 3px;
-    background: linear-gradient(to right, var(--ep-gold), var(--ep-gold-light));
+    background: var(--ep-gold);
     border-radius: 2px;
     margin: 0 auto;
 }
@@ -278,10 +265,7 @@ nav.nav-scrolled {
                 box-shadow 0.4s ease;
 }
 
-.blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-}
+.blog-card:hover { border-color: var(--ep-gold); }
 
 .blog-card:hover .blog-card-img {
     transform: scale(1.08);
@@ -343,12 +327,7 @@ nav.nav-scrolled {
 }
 
 /* ===== GOLD GRADIENT TEXT ===== */
-.gold-gradient-text {
-    background: linear-gradient(to right, var(--ep-gold), var(--ep-gold-light), var(--ep-gold));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+.gold-gradient-text { color: var(--ep-gold); }
 
 /* Print styles */
 @media print {
@@ -465,7 +444,7 @@ nav.nav-scrolled {
 }
 .ep-nav-stripe {
     height: 2px;
-    background: linear-gradient(90deg, var(--ep-navy) 0%, var(--ep-gold) 50%, var(--ep-navy) 100%);
+    background: var(--ep-gold);
 }
 .ep-nav-inner {
     max-width: 1280px;
@@ -614,19 +593,11 @@ nav.nav-scrolled {
     position: relative;
     overflow: hidden;
     /* Subtle dot-grid texture */
-    background-image: radial-gradient(circle, rgba(184,146,42,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
+    /* clean surface */
+    
 }
 /* Decorative radial glow — top-right corner */
-.ep-hero-left::after {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 420px; height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.10) 0%, rgba(184,146,42,0.03) 50%, transparent 70%);
-    pointer-events: none;
-}
+/* removed radial orb */
 .ep-hero-eyebrow {
     font-size: 10px;
     font-weight: 600;
@@ -680,16 +651,7 @@ nav.nav-scrolled {
     );
     z-index: 0;
 }
-.ep-hero-right::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; right: -40px;
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.18) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-}
+/* removed radial orb */
 .ep-hero-stat {
     text-align: center;
     padding: 32px 0;
@@ -836,7 +798,7 @@ nav.nav-scrolled {
     background: rgba(197,164,126,0.06);
     pointer-events: none;
 }
-.ep-svc-featured:hover { filter: brightness(1.08); }
+.ep-svc-featured:hover { filter: brightness(1.05); }
 .ep-svc-featured-icon {
     position: absolute;
     top: 32px; left: 36px;
@@ -886,7 +848,7 @@ nav.nav-scrolled {
 .ep-svc-featured-link:hover { letter-spacing: 2px; }
 
 .ep-svc-card {
-    background: #fff;
+    background: var(--ep-cream);
     border: 1px solid var(--ep-border);
     border-left: 3px solid var(--ep-gold);
     padding: 24px;
@@ -895,11 +857,7 @@ nav.nav-scrolled {
     gap: 10px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
 }
-.ep-svc-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(15,22,35,0.10);
-    border-left-color: var(--ep-gold-light);
-}
+.ep-svc-card:hover { border-color: var(--ep-gold); }
 .ep-svc-card--link {
     text-decoration: none;
     color: inherit;
@@ -943,24 +901,8 @@ nav.nav-scrolled {
     position: relative;
     overflow: hidden;
 }
-.ep-quote::before {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 480px; height: 480px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.14) 0%, rgba(184,146,42,0.04) 60%, transparent 100%);
-    pointer-events: none;
-}
-.ep-quote::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: -80px;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
+/* removed radial orb */
+/* removed radial orb */
 .ep-quote-inner {
     max-width: 1280px;
     margin: 0 auto;
@@ -1346,30 +1288,9 @@ nav.nav-scrolled {
     overflow: hidden;
 }
 /* Gold gradient accent strip at very top of each inner page */
-.ep-page-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(
-        90deg,
-        var(--ep-navy) 0%,
-        var(--ep-gold) 35%,
-        var(--ep-gold-light) 50%,
-        var(--ep-gold) 65%,
-        var(--ep-navy) 100%
-    );
-}
+.ep-page-hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--ep-gold); }
 /* Decorative background glow */
-.ep-page-hero::after {
-    content: '';
-    position: absolute;
-    top: -100px; right: -100px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.07) 0%, transparent 65%);
-    pointer-events: none;
-}
+/* removed radial orb */
 .ep-page-hero-inner { max-width: 1280px; margin: 0 auto; }
 .ep-page-h1 {
     font-family: 'Playfair Display', serif;
@@ -1454,7 +1375,7 @@ nav.nav-scrolled {
 .ep-footer-link:hover { color: rgba(255,255,255,0.75); }
 .ep-section-cream { background: var(--ep-cream); }
 .ep-section-navy { background: var(--ep-navy); }
-.ep-section-white { background: #fff; }
+.ep-section-white { background: var(--ep-cream); }
 
 .ep-section-label {
     font-family: 'DM Sans', sans-serif;
@@ -1506,12 +1427,12 @@ nav.nav-scrolled {
 .ep-cards-grid--2col { grid-template-columns: repeat(2, 1fr); }
 .ep-cards-grid--4col { grid-template-columns: repeat(4, 1fr); }
 .ep-card {
-    background: #fff;
+    background: var(--ep-cream);
     border: 1px solid var(--ep-border);
     padding: 32px 28px;
     transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
-.ep-card:hover { box-shadow: 0 16px 40px rgba(15,22,35,0.10); transform: translateY(-4px); border-color: rgba(184,146,42,0.35); }
+.ep-card:hover { border-color: var(--ep-gold); }
 .ep-card--cream { background: var(--ep-cream); }
 .ep-card--navy { background: var(--ep-navy-mid); border-color: rgba(197,164,126,0.15); }
 .ep-card-icon { width: 44px; height: 44px; margin-bottom: 20px; color: var(--ep-gold); }
@@ -1547,7 +1468,7 @@ nav.nav-scrolled {
 .ep-step-p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--ep-gray); line-height: 1.7; }
 
 .ep-faq-list { margin-top: 32px; display: flex; flex-direction: column; gap: 2px; }
-.ep-faq-item { border: 1px solid var(--ep-border); background: #fff; }
+.ep-faq-item { border: 1px solid var(--ep-border); background: var(--ep-cream); }
 .ep-faq-item summary {
     font-family: 'DM Sans', sans-serif;
     font-size: 15px; font-weight: 500; color: var(--ep-navy);
@@ -1561,7 +1482,7 @@ nav.nav-scrolled {
 .ep-faq-body { padding: 0 24px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--ep-gray); line-height: 1.75; }
 
 .ep-contact-grid { display: grid; grid-template-columns: 1fr 400px; gap: 0; border: 1px solid var(--ep-border); }
-.ep-contact-form-panel { padding: 48px 40px; background: #fff; }
+.ep-contact-form-panel { padding: 48px 40px; background: var(--ep-cream); }
 .ep-contact-info { background: var(--ep-navy); padding: 48px 36px; display: flex; flex-direction: column; gap: 28px; }
 .ep-contact-info-h { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; color: var(--ep-cream); margin-bottom: 4px; }
 .ep-contact-info-p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--ep-cream-dark); line-height: 1.7; }
@@ -1596,11 +1517,11 @@ nav.nav-scrolled {
 
 .ep-blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 40px; }
 .ep-blog-card {
-    background: #fff; border: 1px solid var(--ep-border);
+    background: var(--ep-cream); border: 1px solid var(--ep-border);
     display: flex; flex-direction: column;
     transition: box-shadow 0.25s, transform 0.25s; text-decoration: none;
 }
-.ep-blog-card:hover { box-shadow: 0 8px 32px rgba(15,22,35,0.08); transform: translateY(-3px); }
+.ep-blog-card:hover { border-color: var(--ep-gold); }
 .ep-blog-card-img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .ep-blog-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
 .ep-blog-card-tag { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ep-gold); }
@@ -1658,7 +1579,7 @@ nav.nav-scrolled {
 
 /* 1. DYNAMIC INTERACTIVE CARGO TRACKING ENGINE */
 .ep-tracking {
-    background: #fff;
+    background: var(--ep-cream);
     border-top: 1px solid var(--ep-border);
     border-bottom: 1px solid var(--ep-border);
     padding: 64px 0;
@@ -1699,7 +1620,7 @@ nav.nav-scrolled {
     color: var(--ep-gray);
 }
 .ep-tracking-input {
-    background: #fff;
+    background: var(--ep-cream);
     border: 1px solid var(--ep-border);
     border-bottom: 2px solid var(--ep-navy);
     color: var(--ep-navy);
@@ -1782,7 +1703,7 @@ nav.nav-scrolled {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--ep-cream);
     border: 3px solid var(--ep-border);
     display: flex;
     align-items: center;
@@ -1832,7 +1753,7 @@ nav.nav-scrolled {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    background: #fff;
+    background: var(--ep-cream);
     border: 1px solid var(--ep-border);
     padding: 24px;
     border-radius: 2px;
@@ -1942,17 +1863,7 @@ nav.nav-scrolled {
     overflow: hidden;
     border-bottom: 1px solid var(--ep-border);
 }
-.ep-testimonials::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(184, 146, 42, 0.07) 0%, transparent 60%);
-    pointer-events: none;
-}
+/* removed radial orb */
 .ep-testimonials-inner {
     max-width: 1280px;
     margin: 0 auto;
@@ -1988,8 +1899,8 @@ nav.nav-scrolled {
     padding: 48px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(197, 164, 126, 0.12);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* solid sovereign card */
+    -webkit-/* solid sovereign card */
     border-radius: 2px;
     text-align: center;
     display: flex;
@@ -2158,7 +2069,7 @@ nav.nav-scrolled {
     padding: 40px 24px;
     background: var(--ep-cream);
     border: 1px solid var(--ep-border);
-    border-radius: 8px;
+    border-radius: 2px;
     margin-top: 12px;
     box-shadow: 0 4px 20px rgba(15, 22, 35, 0.05);
     animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -2378,24 +2289,13 @@ nav.nav-scrolled {
     position: relative;
     overflow: hidden;
     /* Dot-grid texture like homepage */
-    background-image: radial-gradient(circle, rgba(184,146,42,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
+    /* clean surface */
+    
     background-color: var(--ep-cream);
     border-bottom: 1px solid var(--ep-border);
 }
 
-.ep-page-hero::after {
-    content: '';
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184,146,42,0.08) 0%, rgba(184,146,42,0.02) 50%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-}
+/* removed radial orb */
 
 /* Breadcrumbs inside page hero */
 .ep-breadcrumbs {
@@ -2436,20 +2336,10 @@ nav.nav-scrolled {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(to right, var(--ep-gold), var(--ep-gold-light), var(--ep-gold));
+    background: var(--ep-gold);
 }
 
-.ep-cta-band::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: -100px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(184, 146, 42, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
+/* removed radial orb */
 
 /* Card hover enhancements (top gold border reveal) */
 .ep-card {
@@ -2458,9 +2348,7 @@ nav.nav-scrolled {
     transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease !important;
 }
 
-.ep-card:hover {
-    border-top-color: var(--ep-gold);
-}
+.ep-card:hover { border-color: var(--ep-gold); }
 
 /* FAQ transitions with max-height instead of instant toggling */
 .ep-faq-list details {
@@ -2487,7 +2375,7 @@ nav.nav-scrolled {
 .ep-reading-progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(to right, var(--ep-gold), var(--ep-gold-light));
+    background: var(--ep-gold);
     transition: width 0.1s ease-out;
 }
 
@@ -2832,3 +2720,152 @@ nav.nav-scrolled {
         align-items: flex-start;
     }
 }
+
+/* ===== UI/UX DESIGN ENHANCEMENTS ===== */
+
+/* Ep Nav Link Glow & Hover Line Indicator */
+.ep-nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.ep-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ep-gold);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
+}
+
+.ep-nav-link:hover::after,
+.ep-nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Grid Stagger & Card Elevation Enhancements */
+.ep-svc-card,
+.ep-svc-featured {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease;
+}
+
+.ep-svc-card:hover { border-color: var(--ep-gold); }
+
+.ep-svc-featured:hover { filter: brightness(1.05); }
+
+/* Trust Bar Icon Micro Hover */
+.ep-trust-item {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
+    border-radius: 2px;
+    padding: 8px 12px;
+}
+
+.ep-trust-item:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.ep-trust-item:hover .ep-trust-icon {
+    transform: scale(1.12) rotate(4deg);
+    color: var(--ep-gold-dark);
+}
+
+.ep-trust-icon {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+}
+
+/* Staggered Delay Utilities */
+.ep-services-grid > *:nth-child(1) { transition-delay: 0.05s; }
+.ep-services-grid > *:nth-child(2) { transition-delay: 0.15s; }
+.ep-services-grid > *:nth-child(3) { transition-delay: 0.25s; }
+.ep-services-grid > *:nth-child(4) { transition-delay: 0.35s; }
+
+/* Tracking Demo Chips */
+.ep-tracking-demo-chips {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.ep-tracking-chips-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ep-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ep-tracking-chip {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 1px solid var(--ep-border);
+    background: var(--ep-cream);
+    color: var(--ep-navy);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.ep-tracking-chip:hover {
+    border-color: var(--ep-gold);
+    background: var(--ep-navy);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 22, 35, 0.15);
+}
+
+/* Floating Back to Top Button */
+.ep-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--ep-navy);
+    color: var(--ep-gold);
+    border: 1px solid rgba(184, 146, 42, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 998;
+    box-shadow: 0 8px 24px rgba(15, 22, 35, 0.25);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.3s ease,
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+}
+
+.ep-back-to-top.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.ep-back-to-top:hover {
+    background: var(--ep-gold);
+    color: var(--ep-navy);
+    border-color: var(--ep-gold-light);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(184, 146, 42, 0.4);
+}
+
+.ep-back-to-top svg {
+    width: 20px;
+    height: 20px;
+}
+

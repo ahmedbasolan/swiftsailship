@@ -658,6 +658,40 @@ document.addEventListener('DOMContentLoaded', function () {
         startAutoPlay();
     }
 
+    // ===== TRACKING DEMO CHIPS LISTENER =====
+    var trackingChips = document.querySelectorAll('.ep-tracking-chip');
+    trackingChips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            var code = this.getAttribute('data-code');
+            var inputField = document.getElementById('tracking-num-input');
+            var trackerForm = document.getElementById('tracking-simulator-form');
+            if (inputField && trackerForm && code) {
+                inputField.value = code;
+                trackerForm.dispatchEvent(new Event('submit', { cancelable: true }));
+            }
+        });
+    });
+
+    // ===== FLOATING BACK TO TOP BUTTON =====
+    var backToTopBtn = document.getElementById('back-to-top-btn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
 });
 
 })();
+
