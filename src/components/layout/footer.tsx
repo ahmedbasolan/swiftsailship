@@ -162,8 +162,16 @@ export function Footer() {
           <div>
             © {currentYear} Swift Sail Shipping L.L.C. All rights reserved. Registered under Dubai Economic Department & Port Authorities.
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
             <span>GST UTC+4 DUBAI</span>
+            <span>•</span>
+            <Link href="/terms" className="text-gray-400 hover:text-[#C5A47E]">
+              Terms of Service
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="text-gray-400 hover:text-[#C5A47E]">
+              Privacy Policy
+            </Link>
             <span>•</span>
             <Link href="/get-quote" className="text-gray-400 hover:text-[#C5A47E]">
               Request Quotation
