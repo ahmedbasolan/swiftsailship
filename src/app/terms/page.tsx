@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Editorial Hero */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-24 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,16 +45,16 @@ export default function TermsPage() {
 
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="bg-white border border-gray-200 rounded p-8 sm:p-12 text-slate-800 space-y-8 text-sm leading-relaxed">
+        <div className="bg-white dark:bg-[#0D1B2A] border border-gray-200 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 text-slate-800 dark:text-gray-300 space-y-8 text-sm leading-relaxed">
           <div>
-            <span className="text-xs font-mono text-gray-500 block mb-1">EFFECTIVE DATE: AUGUST 2026</span>
-            <p className="text-xs text-slate-600">
+            <span className="text-xs font-mono text-gray-500 dark:text-gray-400 block mb-1">EFFECTIVE DATE: AUGUST 2026</span>
+            <p className="text-xs text-slate-600 dark:text-gray-400">
               These Standard Trading Terms and Conditions govern all commercial freight forwarding, maritime agency, customs brokerage, stevedoring, and warehousing operations performed by <strong>Swift Sail Shipping L.L.C.</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;), a licensed maritime and logistics entity registered under the Department of Economy and Tourism (DET), Dubai, United Arab Emirates.
             </p>
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               1. Scope of Application & Role as Agent
             </h2>
             <p>
@@ -63,11 +63,11 @@ export default function TermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               2. Shipper Warranties & Cargo Declarations
             </h2>
             <p>The Customer warrants and guarantees:</p>
-            <ul className="list-disc pl-5 space-y-1.5 text-slate-700">
+            <ul className="list-disc pl-5 space-y-1.5 text-slate-700 dark:text-gray-300">
               <li>All descriptions, values, gross weights, measurements (CBM), and Harmonized System (HS) classifications provided to Swift Sail are exact and complete.</li>
               <li>Cargo is properly packed, marked, labeled, and prepared to withstand standard maritime and multi-modal handling hazards in accordance with IMO and IATA standards.</li>
               <li>No prohibited, contraband, or undeclared Dangerous Goods (DG) under the IMDG Code or IATA DGR regulations are tendered without prior written disclosure and safety documentation (MSDS, DGD).</li>
@@ -75,11 +75,11 @@ export default function TermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               3. Customs Clearance & Regulatory Compliance
             </h2>
             <p>For customs brokerage engagements via Dubai Customs Mirsal 2 or Federal Customs Authority:</p>
-            <ul className="list-disc pl-5 space-y-1.5 text-slate-700">
+            <ul className="list-disc pl-5 space-y-1.5 text-slate-700 dark:text-gray-300">
               <li>The Customer is solely responsible for the authenticity of original commercial invoices, packing lists, and Certificates of Origin (CoO).</li>
               <li>All applicable customs duties, 5% UAE VAT, inspection fees, municipality charges, and regulatory permits (MOIAT, ESMA, MOCCAE, TDRA) are the sole liability of the Importer of Record.</li>
               <li>Swift Sail reserves the right to withhold cargo release until all statutory duties, port storage, and clearance disbursement charges are settled in full.</li>
@@ -87,7 +87,7 @@ export default function TermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               4. Quotations, Surcharges & Demurrage
             </h2>
             <p>
@@ -96,7 +96,7 @@ export default function TermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               5. Limitation of Liability & Marine Insurance
             </h2>
             <p>
@@ -105,7 +105,7 @@ export default function TermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-serif font-bold text-xl text-slate-950 border-b border-gray-100 pb-2">
+            <h2 className="font-serif font-bold text-xl text-slate-950 dark:text-white border-b border-gray-100 dark:border-white/10 pb-2">
               6. Governing Law & Jurisdiction
             </h2>
             <p>
@@ -113,7 +113,7 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <div className="pt-6 border-t border-gray-200 text-xs text-gray-500 font-mono">
+          <div className="pt-6 border-t border-gray-200 dark:border-white/10 text-xs text-gray-500 dark:text-gray-400 font-mono">
             <span>Swift Sail Shipping L.L.C. • Legal & Compliance Desk</span>
             <br />
             <span>Tanvi Business Centre, M-101, Abu Hail, Dubai, UAE • info@swiftsailship.com</span>

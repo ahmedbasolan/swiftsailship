@@ -76,14 +76,14 @@ export default function QuoteForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#070E18] border border-[#C5A47E]/40 rounded-lg p-8 text-center text-white space-y-4">
-        <div className="w-16 h-16 bg-emerald-950/80 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-emerald-400 text-2xl">
+      <div className="bg-white dark:bg-[#070E18] border border-gray-300 dark:border-[#C5A47E]/40 rounded-lg p-8 text-center text-slate-900 dark:text-white space-y-4">
+        <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-emerald-600 dark:text-emerald-400 text-2xl">
           <i className="fa-solid fa-check" />
         </div>
-        <h3 className="text-2xl font-serif font-bold text-white">
+        <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white">
           Quotation Request Dispatched
         </h3>
-        <p className="text-sm font-sans text-gray-300 max-w-md mx-auto leading-relaxed">
+        <p className="text-sm font-sans text-slate-600 dark:text-gray-300 max-w-md mx-auto leading-relaxed">
           Thank you. Your cargo dossier has been assigned to our on-duty Dubai logistics desk. We will respond with an itemized commercial rate sheet within 2 business hours.
         </p>
         <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
@@ -97,7 +97,7 @@ export default function QuoteForm() {
           </a>
           <button
             onClick={() => setIsSubmitted(false)}
-            className="text-xs font-mono text-gray-400 hover:text-white px-4 py-3"
+            className="text-xs font-mono text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white px-4 py-3"
           >
             Submit Another Request
           </button>
@@ -111,7 +111,7 @@ export default function QuoteForm() {
       {/* Client Identity */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Full Name *
           </label>
           <input
@@ -121,11 +121,11 @@ export default function QuoteForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="e.g. Captain Tariq Al-Mansoor"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Company / Trading Entity
           </label>
           <input
@@ -134,7 +134,7 @@ export default function QuoteForm() {
             value={formData.company}
             onChange={handleChange}
             placeholder="e.g. Gulf Petrochemical FZE"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
       </div>
@@ -142,7 +142,7 @@ export default function QuoteForm() {
       {/* Contact Details */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Corporate Email *
           </label>
           <input
@@ -152,11 +152,11 @@ export default function QuoteForm() {
             value={formData.email}
             onChange={handleChange}
             placeholder="procurement@company.com"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Phone / Mobile (with country code) *
           </label>
           <input
@@ -166,7 +166,7 @@ export default function QuoteForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="+971 50 123 4567"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
       </div>
@@ -174,14 +174,14 @@ export default function QuoteForm() {
       {/* Service Mode & Incoterm */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Required Service Mode *
           </label>
           <select
             name="serviceMode"
             value={formData.serviceMode}
             onChange={handleChange}
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           >
             <option value="ocean-fcl">Ocean Freight — Full Container (FCL)</option>
             <option value="ocean-lcl">Ocean Freight — LCL Consolidation</option>
@@ -192,14 +192,14 @@ export default function QuoteForm() {
           </select>
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Incoterms® 2020 Protocol
           </label>
           <select
             name="incoterm"
             value={formData.incoterm}
             onChange={handleChange}
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           >
             <option value="CIF">CIF — Cost, Insurance & Freight (Standard GCC)</option>
             <option value="FOB">FOB — Free On Board</option>
@@ -215,7 +215,7 @@ export default function QuoteForm() {
       {/* Origin & Destination */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Port / City of Origin *
           </label>
           <input
@@ -225,11 +225,11 @@ export default function QuoteForm() {
             value={formData.origin}
             onChange={handleChange}
             placeholder="e.g. Shanghai, China (CNSHA)"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Port / City of Destination *
           </label>
           <input
@@ -239,7 +239,7 @@ export default function QuoteForm() {
             value={formData.destination}
             onChange={handleChange}
             placeholder="e.g. Jebel Ali Port, Dubai (AEJEA)"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
       </div>
@@ -247,7 +247,7 @@ export default function QuoteForm() {
       {/* Cargo Dimensions (CBM & Weight) */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Total Volume (CBM)
           </label>
           <input
@@ -257,11 +257,11 @@ export default function QuoteForm() {
             value={formData.cbm}
             onChange={handleChange}
             placeholder="e.g. 28.5"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Gross Weight (kg)
           </label>
           <input
@@ -271,11 +271,11 @@ export default function QuoteForm() {
             value={formData.weight}
             onChange={handleChange}
             placeholder="e.g. 18500"
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
         <div>
-          <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
             Cargo Readiness Date
           </label>
           <input
@@ -283,14 +283,14 @@ export default function QuoteForm() {
             name="readyDate"
             value={formData.readyDate}
             onChange={handleChange}
-            className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
           />
         </div>
       </div>
 
       {/* Commodity & Notes */}
       <div>
-        <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
           Commodity Description / HS Code
         </label>
         <input
@@ -299,12 +299,12 @@ export default function QuoteForm() {
           value={formData.hsCodeOrCommodity}
           onChange={handleChange}
           placeholder="e.g. Industrial Valves & Pumps (HS 8481.80) - Non-Hazmat"
-          className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
         />
       </div>
 
       <div>
-        <label className="block text-gray-300 uppercase tracking-wider mb-1.5">
+        <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
           Special Handling / Storage Instructions
         </label>
         <textarea
@@ -313,7 +313,7 @@ export default function QuoteForm() {
           value={formData.notes}
           onChange={handleChange}
           placeholder="e.g. Reefer temperature set at +4°C, requires Jebel Ali bonded warehousing for 14 days before re-export..."
-          className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-white outline-none"
+          className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
         />
       </div>
 

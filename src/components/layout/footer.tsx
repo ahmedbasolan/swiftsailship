@@ -4,7 +4,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#04080F] text-white border-t border-[#C5A47E]/20 pt-16 pb-12 relative overflow-hidden">
+    <footer className="bg-[#F3EFE6] dark:bg-[#04080F] text-slate-800 dark:text-white border-t border-[#C5A47E]/20 pt-16 pb-12 relative overflow-hidden">
       {/* Background Grid Accent */}
       <div className="absolute inset-0 bg-grid-subtle opacity-20 pointer-events-none" />
 
@@ -24,7 +24,7 @@ export function Footer() {
                 className="h-12 w-auto"
               />
               <div>
-                <span className="font-serif font-bold text-xl text-white tracking-tight uppercase block leading-none">
+                <span className="font-serif font-bold text-xl text-slate-900 dark:text-white tracking-tight uppercase block leading-none">
                   Swift Sail
                 </span>
                 <span className="text-[10px] font-mono text-[#C5A47E] tracking-[0.2em] uppercase">
@@ -33,7 +33,7 @@ export function Footer() {
               </div>
             </div>
 
-            <p className="text-xs font-sans text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-xs font-sans text-slate-500 dark:text-gray-400 leading-relaxed max-w-sm">
               Sovereign freight forwarding, ocean charters, customs brokerage, and multi-modal logistics connecting the UAE with global trade corridors.
             </p>
 
@@ -41,7 +41,7 @@ export function Footer() {
               <span className="editorial-stamp text-[#C5A47E] text-[10px]">
                 UAE CUSTOMS LICENSED
               </span>
-              <span className="editorial-stamp text-gray-400 text-[10px]">
+              <span className="editorial-stamp text-slate-400 dark:text-gray-400 text-[10px]">
                 JEBEL ALI PORT OPERATOR
               </span>
             </div>
@@ -52,29 +52,29 @@ export function Footer() {
             <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
               Freight Solutions
             </h4>
-            <ul className="space-y-2 text-xs font-mono text-gray-400">
+            <ul className="space-y-2 text-xs font-mono text-slate-500 dark:text-gray-400">
               <li>
-                <Link href="/services#ocean-freight" className="hover:text-white transition-colors">
+                <Link href="/services#ocean-freight" className="hover:text-[#C5A47E] transition-colors">
                   • Ocean Freight (FCL / LCL)
                 </Link>
               </li>
               <li>
-                <Link href="/services#air-cargo" className="hover:text-white transition-colors">
+                <Link href="/services#air-cargo" className="hover:text-[#C5A47E] transition-colors">
                   • Air Cargo Velocity & Charters
                 </Link>
               </li>
               <li>
-                <Link href="/services#customs-clearance" className="hover:text-white transition-colors">
+                <Link href="/services#customs-clearance" className="hover:text-[#C5A47E] transition-colors">
                   • UAE Customs Clearance (Mirsal 2)
                 </Link>
               </li>
               <li>
-                <Link href="/services#breakbulk-project" className="hover:text-white transition-colors">
+                <Link href="/services#breakbulk-project" className="hover:text-[#C5A47E] transition-colors">
                   • Project Cargo & Heavy Lift
                 </Link>
               </li>
               <li>
-                <Link href="/services#warehousing-reexport" className="hover:text-white transition-colors">
+                <Link href="/services#warehousing-reexport" className="hover:text-[#C5A47E] transition-colors">
                   • Free Zone Storage & Re-Export
                 </Link>
               </li>
@@ -86,34 +86,34 @@ export function Footer() {
             <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
               Trade Tools
             </h4>
-            <ul className="space-y-2 text-xs font-mono text-gray-400">
+            <ul className="space-y-2 text-xs font-mono text-slate-500 dark:text-gray-400">
               <li>
-                <Link href="/#calculator" className="hover:text-white transition-colors">
+                <Link href="/#calculator" className="hover:text-[#C5A47E] transition-colors">
                   • CBM & Container Planner
                 </Link>
               </li>
               <li>
-                <Link href="/#customs-guide" className="hover:text-white transition-colors">
+                <Link href="/#customs-guide" className="hover:text-[#C5A47E] transition-colors">
                   • UAE Tariff & Duty Guide
                 </Link>
               </li>
               <li>
-                <Link href="/#incoterms" className="hover:text-white transition-colors">
+                <Link href="/#incoterms" className="hover:text-[#C5A47E] transition-colors">
                   • Incoterms® 2020 Matrix
                 </Link>
               </li>
               <li>
-                <Link href="/#corridors" className="hover:text-white transition-colors">
+                <Link href="/#corridors" className="hover:text-[#C5A47E] transition-colors">
                   • Global Trade Corridors
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="hover:text-white transition-colors">
+                <Link href="/how-it-works" className="hover:text-[#C5A47E] transition-colors">
                   • 6-Stage Process Workflow
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">
+                <Link href="/blog" className="hover:text-[#C5A47E] transition-colors">
                   • Dispatch Intelligence Journal
                 </Link>
               </li>
@@ -125,14 +125,14 @@ export function Footer() {
             <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
               Direct Operations Desk
             </h4>
-            <div className="space-y-2.5 text-xs font-mono text-gray-400">
+            <div className="space-y-2.5 text-xs font-mono text-slate-500 dark:text-gray-400">
               <div className="flex items-start gap-2">
                 <i className="fa-solid fa-location-dot text-[#C5A47E] mt-1" />
                 <span>Tanvi Business Centre, M - 101, Abu Hail, Dubai, United Arab Emirates</span>
               </div>
               <div className="flex items-center gap-2">
                 <i className="fa-solid fa-phone text-[#C5A47E]" />
-                <a href="tel:+971553424700" className="text-white hover:text-[#C5A47E] transition-colors">
+                <a href="tel:+971553424700" className="text-slate-800 dark:text-white hover:text-[#C5A47E] transition-colors">
                   +971 55 342 4700
                 </a>
               </div>
@@ -149,7 +149,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <i className="fa-solid fa-envelope text-[#C5A47E]" />
-                <a href="mailto:info@swiftsailship.com" className="text-white hover:text-[#C5A47E] transition-colors">
+                <a href="mailto:info@swiftsailship.com" className="text-slate-800 dark:text-white hover:text-[#C5A47E] transition-colors">
                   info@swiftsailship.com
                 </a>
               </div>
@@ -158,7 +158,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Colophon Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-gray-500">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-400 dark:text-gray-500">
           <div>
             © {currentYear} Swift Sail Shipping L.L.C. All rights reserved. Registered under Dubai Economic Department & Port Authorities.
           </div>

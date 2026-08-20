@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temp & audits
+.tmp/
+.superpowers/
+claude-seo/
+swiftsailship.com-audit/
+ui-ux-pro-max-skill/

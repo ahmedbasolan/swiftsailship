@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export const metadata: Metadata = {
   title: "About Us  Corporate Heritage & Infrastructure | Swift Sail Shipping L.L.C.",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Editorial Header */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
@@ -56,16 +57,16 @@ export default function AboutPage() {
       {/* Main Editorial Story */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 space-y-20">
         {/* Monograph Lead Story */}
-        <section className="bg-white border border-gray-300 rounded-lg p-8 sm:p-14 shadow-sm">
+        <section className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-14 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55]">
                 HISTORICAL VANTAGE
               </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950 dark:text-white">
                 Architects of Resilient Gulf Trade Flows
               </h2>
-              <p className="text-slate-700 leading-relaxed font-sans text-base broadsheet-dropcap">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-base broadsheet-dropcap">
                 Swift Sail Shipping L.L.C. was established with an uncompromising mandate: to eliminate the friction, opacity, and regulatory delays that so often impede international commerce in the Middle East. Over more than 15 years of operational excellence, our teams have anchored supply chains connecting major manufacturers in Asia and Europe with rapidly growing markets across the GCC and East Africa.
               </p>
               <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
@@ -74,7 +75,7 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="rounded-lg overflow-hidden border border-gray-300 shadow-xl relative">
+              <div className="rounded-lg overflow-hidden border border-gray-300 dark:border-[#C5A47E]/20 shadow-xl relative">
                 <img
                   src="/assets/img/office_image_1776261439512.webp"
                   alt="Swift Sail Shipping Executive Logistics Desk"
@@ -84,7 +85,7 @@ export default function AboutPage() {
                   decoding="async"
                   className="w-full h-auto object-cover"
                 />
-                <div className="p-4 bg-[#070E18] text-white text-xs font-mono">
+                <div className="p-4 bg-[#070E18] dark:bg-[#04080F] text-white text-xs font-mono">
                   <span className="text-[#C5A47E] font-bold block">DUBAI OPERATIONS COMMAND:</span>
                   <span>Tanvi Business Centre, Abu Hail, Dubai, UAE</span>
                 </div>
@@ -105,17 +106,17 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-8">
-            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-10 shadow-sm">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
                 NETWORK & INFRASTRUCTURE
               </span>
-              <h3 className="text-2xl font-serif font-bold text-slate-950 mb-4">
+              <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-4">
                 From a Single Desk in Abu Hail to 50+ Direct Port Corridors
               </h3>
-              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
                 Swift Sail Shipping was founded in Abu Hail, Dubai as a specialist customs brokerage and freight coordination desk. From that single operating office, we grew into a full-service freight forwarder with active terminal operations at Jebel Ali Port — the largest marine terminal in the Middle East — as well as Port Khalid Sharjah and Khalifa Port, and air cargo hubs at Dubai International (DXB) and Dubai World Central (DWC).
               </p>
-              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
                 Our agent and partner network spans 50+ direct sovereign port corridors across Asia, the Indian Subcontinent, Africa, and Europe. Every corridor is supported by vetted overseas co-loaders and destination agents, so consignments retain a single accountable operator from origin stuffing to final consignee handover — never a hand-off to an unknown third party mid-transit.
               </p>
               <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
@@ -123,17 +124,17 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-10 shadow-sm">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
                 LEADERSHIP & EXPERTISE
               </span>
-              <h3 className="text-2xl font-serif font-bold text-slate-950 mb-4">
+              <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-4">
                 Practitioners, Not Intermediaries
               </h3>
-              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
                 Our operations are led by licensed customs brokers, marine surveyors, and logistics engineers who have spent their careers at UAE terminals — not by sales desks. Team leadership holds direct certifications in UAE customs brokerage under Mirsal 2, IATA dangerous goods (DGR) handling, SOLAS Verified Gross Mass (VGM) compliance, and project cargo route engineering.
               </p>
-              <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
                 This hands-on pedigree is the reason our trade intelligence desk publishes operational guidance — on Red Sea routing, MOIAT industrial duty exemptions, and Incoterms risk allocation — rather than generic marketing. Every dispatch is written by the same officers who execute the clearances and book the vessels.
               </p>
               <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
@@ -141,7 +142,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-10 shadow-sm">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
                 INDUSTRY PROTOCOLS
               </span>
@@ -151,7 +152,7 @@ export default function AboutPage() {
               <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
                 Freight in the UAE is governed by a dense regulatory environment: Dubai Customs Mirsal 2 electronic declarations, ESMA and food-safety inspections, TDRA approvals, MOIAT industrial exemptions, and DP World terminal rules. Our standard operating procedures encode each of these requirements so documentation is prepared before cargo arrives — eliminating the holds, fines, and demurrage that arise from reactive compliance.
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-slate-700 font-sans text-sm">
+              <ul className="list-disc pl-6 space-y-2 text-slate-700 dark:text-gray-300 font-sans text-sm">
                 <li>Pre-arrival document vetting: Bills of Lading, Certificates of Origin, commercial invoices, HS classification</li>
                 <li>Mirsal 2 declarations lodged on the day of berthing, with VCC issuance for priority gate release</li>
                 <li>MOIAT industrial duty exemption management for qualifying manufacturers</li>
@@ -174,38 +175,38 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] dark:bg-[#C5A47E]/20 rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
                 01
               </div>
-              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+              <h3 className="text-xl font-serif font-bold text-slate-950 dark:text-white mb-3">
                 Absolute Documentation Rigor
               </h3>
-              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+              <p className="text-slate-600 dark:text-gray-400 text-sm font-sans leading-relaxed">
                 In logistics, paperwork accuracy is speed. We rigorously review Bills of Lading, Certificates of Origin, and commercial invoices before goods arrive to eliminate customs holds.
               </p>
             </div>
 
-            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] dark:bg-[#C5A47E]/20 rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
                 02
               </div>
-              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+              <h3 className="text-xl font-serif font-bold text-slate-950 dark:text-white mb-3">
                 Transparent Itemized Economics
               </h3>
-              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+              <p className="text-slate-600 dark:text-gray-400 text-sm font-sans leading-relaxed">
                 No hidden destination surcharges or unexpected detention penalties. Every quote clearly specifies ocean/air carriage, terminal handling, customs brokerage, and local delivery.
               </p>
             </div>
 
-            <div className="bg-white border border-gray-300 rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-[#070E18] rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm">
+              <div className="w-12 h-12 bg-[#070E18] dark:bg-[#C5A47E]/20 rounded text-[#C5A47E] flex items-center justify-center text-xl mb-6 font-mono font-bold">
                 03
               </div>
-              <h3 className="text-xl font-serif font-bold text-slate-950 mb-3">
+              <h3 className="text-xl font-serif font-bold text-slate-950 dark:text-white mb-3">
                 Direct On-Ground Presence
               </h3>
-              <p className="text-slate-600 text-sm font-sans leading-relaxed">
+              <p className="text-slate-600 dark:text-gray-400 text-sm font-sans leading-relaxed">
                 We are not a distant call center. Our licensed brokers and operations staff are physically on-site at Jebel Ali Port, Sharjah Port Khalid, and DXB Air Cargo terminals daily.
               </p>
             </div>
@@ -257,12 +258,18 @@ export default function AboutPage() {
 
         {/* CTA */}
         <div className="text-center pt-8">
-          <Link
-            href="/get-quote"
-            className="btn-editorial-gold px-8 py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"
-          >
-            <span>Consult Our Logistics Officers</span>
-            <i className="fa-solid fa-arrow-right text-[10px]" />
+          <Link href="/get-quote" className="inline-block">
+            <ShimmerButton
+              shimmerColor="#F5E6D3"
+              background="linear-gradient(135deg, #C5A47E 0%, #A37F55 100%)"
+              borderRadius="6px"
+              className="px-8 py-4 text-xs font-bold uppercase tracking-wider shadow-lg"
+            >
+              <span className="flex items-center gap-2 text-[#070E18]">
+                <span>Consult Our Logistics Officers</span>
+                <i className="fa-solid fa-arrow-right text-[10px]" />
+              </span>
+            </ShimmerButton>
           </Link>
         </div>
       </main>

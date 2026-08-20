@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { FontAwesomeLoader } from "@/components/layout/font-awesome-loader";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-serif",
@@ -139,11 +140,13 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} ${jetbrainsMono.variable} min-h-full flex flex-col font-sans text-slate-900 bg-[#FBF9F5] antialiased selection:bg-[#C5A47E]/30 selection:text-current`}
+        className={`${playfairDisplay.variable} ${inter.variable} ${jetbrainsMono.variable} min-h-full flex flex-col font-sans antialiased selection:bg-[#C5A47E]/30 selection:text-current`}
       >
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
