@@ -97,7 +97,7 @@ const dispatches = [
 
 export default function BlogPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Editorial Header */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
@@ -125,14 +125,14 @@ export default function BlogPage() {
 
       {/* Editorial Intro */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-10 shadow-sm">
+        <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-10 shadow-sm">
           <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
             FROM THE TRADE INTELLIGENCE DESK
           </span>
-          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 dark:text-white mb-4">
             Why We Publish These Dispatches
           </h2>
-          <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base mb-4">
+          <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
             Freight rates, customs procedures, and maritime routing shift faster than most suppliers can track. Each dispatch in the journal addresses a decision importers and exporters actually face — whether that is choosing between FOB and CIF terms, claiming a MOIAT duty exemption, or weighing a Cape of Good Hope routing against convoy escorting through the Red Sea.
           </p>
           <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
@@ -147,22 +147,22 @@ export default function BlogPage() {
           {dispatches.map((dispatch) => (
             <article
               key={dispatch.id}
-              className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gray-200 mb-6 text-xs font-mono">
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gray-200 dark:border-white/10 mb-6 text-xs font-mono">
                 <div className="flex items-center gap-3">
                   <span className="text-[#A37F55] font-bold">{dispatch.issue}</span>
                   <span className="text-gray-400">•</span>
-                  <span className="text-gray-600">{dispatch.category}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{dispatch.category}</span>
                 </div>
-                <div className="text-gray-500">
+                <div className="text-gray-500 dark:text-gray-400">
                   <span>{dispatch.date}</span>
                   <span className="mx-2">•</span>
                   <span>{dispatch.readTime}</span>
                 </div>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 mb-4">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 dark:text-white mb-4">
                 <Link
                   href={`/blog/${dispatch.id}`}
                   className="hover:text-[#A37F55] transition-colors"
@@ -171,12 +171,12 @@ export default function BlogPage() {
                 </Link>
               </h2>
 
-              <p className="text-slate-700 font-sans text-sm sm:text-base leading-relaxed mb-6">
+              <p className="text-slate-700 dark:text-gray-300 font-sans text-sm sm:text-base leading-relaxed mb-6">
                 {dispatch.excerpt}
               </p>
 
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gray-100 text-xs font-mono">
-                <span className="text-gray-500">Author: {dispatch.author}</span>
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gray-100 dark:border-white/10 text-xs font-mono">
+                <span className="text-gray-500 dark:text-gray-400">Author: {dispatch.author}</span>
                 <Link
                   href={`/blog/${dispatch.id}`}
                   className="text-[#A37F55] font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-1.5"

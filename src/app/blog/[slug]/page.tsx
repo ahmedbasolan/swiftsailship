@@ -283,7 +283,7 @@ export default async function BlogArticlePage({
   };
 
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
@@ -323,14 +323,14 @@ export default async function BlogArticlePage({
 
       {/* Article Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <article className="bg-white border border-gray-300 rounded-lg p-8 sm:p-14 shadow-sm">
+        <article className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-14 shadow-sm text-slate-900 dark:text-white">
           <div
-            className="prose prose-slate max-w-none font-sans"
+            className="prose prose-slate dark:prose-invert max-w-none font-sans"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
-          <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-            <span className="text-slate-600">
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+            <span className="text-slate-600 dark:text-gray-400">
               Published by Swift Sail Trade Intelligence Desk, Dubai
             </span>
             <Link

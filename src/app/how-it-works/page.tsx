@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export const metadata: Metadata = {
   title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
@@ -108,7 +109,7 @@ const stages = [
 
 export default function HowItWorksPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Hero Header */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
@@ -140,7 +141,7 @@ export default function HowItWorksPage() {
           {stages.map((stage) => (
             <div
               key={stage.number}
-              className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
+              className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
             >
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
                 {/* Stage Badge & Header */}
@@ -149,26 +150,26 @@ export default function HowItWorksPage() {
                     <span className="text-4xl sm:text-5xl font-serif font-bold text-[#A37F55]">
                       {stage.number}
                     </span>
-                    <span className="text-[11px] font-mono text-gray-500 uppercase tracking-widest block">
+                    <span className="text-[11px] font-mono text-gray-500 dark:text-gray-400 uppercase tracking-widest block">
                       {stage.phase}
                     </span>
                   </div>
-                  <h2 className="text-2xl font-serif font-bold text-slate-950 mt-2">
+                  <h2 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mt-2">
                     {stage.title}
                   </h2>
                 </div>
 
                 {/* Summary & Specific Operations */}
                 <div className="lg:w-2/3 space-y-4">
-                  <p className="text-slate-700 font-sans text-sm sm:text-base leading-relaxed">
+                  <p className="text-slate-700 dark:text-gray-300 font-sans text-sm sm:text-base leading-relaxed">
                     {stage.summary}
                   </p>
 
-                  <div className="pt-4 border-t border-gray-200">
+                  <div className="pt-4 border-t border-gray-200 dark:border-white/10">
                     <span className="text-xs font-mono text-[#A37F55] uppercase tracking-wider block mb-2">
                       Key Deliverables & Protocols:
                     </span>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-slate-700">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-slate-700 dark:text-gray-300">
                       {stage.details.map((detail, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                           <i className="fa-solid fa-check text-emerald-600 mt-0.5" />
@@ -196,11 +197,15 @@ export default function HowItWorksPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-2">
-            <Link
-              href="/get-quote"
-              className="btn-editorial-gold px-8 py-3.5 rounded text-xs font-bold uppercase tracking-wider"
-            >
-              Get Your Custom Shipping Plan
+            <Link href="/get-quote">
+              <ShimmerButton
+                shimmerColor="#F5E6D3"
+                background="linear-gradient(135deg, #C5A47E 0%, #A37F55 100%)"
+                borderRadius="6px"
+                className="px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-lg"
+              >
+                <span className="text-[#070E18]">Get Your Custom Shipping Plan</span>
+              </ShimmerButton>
             </Link>
             <a
               href="https://wa.me/971553424700"

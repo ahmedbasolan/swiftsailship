@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function GetQuotePage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Editorial Header */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
@@ -58,12 +58,12 @@ export default function GetQuotePage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column: Form */}
-          <div className="lg:col-span-8 bg-[#070E18] text-white border border-[#C5A47E]/30 rounded-lg p-8 sm:p-12 shadow-2xl">
+          <div className="lg:col-span-8 bg-white dark:bg-[#070E18] text-slate-900 dark:text-white border border-gray-300 dark:border-[#C5A47E]/30 rounded-lg p-8 sm:p-12 shadow-2xl">
             <div className="border-b border-[#C5A47E]/20 pb-6 mb-8">
               <span className="editorial-stamp text-[#C5A47E] mb-2 block">
                 INTAKE PROTOCOL 2026
               </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white">
                 Cargo Dossier & Quotation Intake
               </h2>
             </div>
@@ -76,29 +76,29 @@ export default function GetQuotePage() {
           {/* Right Column: Direct Contact & Office Dossier */}
           <div className="lg:col-span-4 space-y-8">
             {/* Direct Ops Desk */}
-            <div className="bg-[#070E18] text-white border border-[#C5A47E]/30 rounded-lg p-8 space-y-6">
+            <div className="bg-white dark:bg-[#070E18] text-slate-900 dark:text-white border border-gray-300 dark:border-[#C5A47E]/30 rounded-lg p-8 space-y-6">
               <div>
                 <span className="editorial-stamp text-[#C5A47E] mb-2 block">
                   DIRECT DESK HOTLINE
                 </span>
-                <h3 className="text-xl font-serif font-bold text-white">
+                <h3 className="text-xl font-serif font-bold text-slate-900 dark:text-white">
                   Speak Directly With Operations
                 </h3>
               </div>
 
-              <div className="space-y-4 text-xs font-mono text-gray-300">
-                <div className="p-3.5 bg-[#112236] rounded border border-gray-800">
-                  <span className="text-gray-400 block mb-1">Telephone (24/7):</span>
+              <div className="space-y-4 text-xs font-mono text-gray-600 dark:text-gray-300">
+                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
+                  <span className="text-gray-500 dark:text-gray-400 block mb-1">Telephone (24/7):</span>
                   <a
                     href="tel:+971553424700"
-                    className="text-white hover:text-[#C5A47E] font-bold text-sm"
+                    className="text-slate-900 dark:text-white hover:text-[#C5A47E] font-bold text-sm"
                   >
                     +971 55 342 4700
                   </a>
                 </div>
 
-                <div className="p-3.5 bg-[#112236] rounded border border-gray-800">
-                  <span className="text-gray-400 block mb-1">WhatsApp Dedicated Line:</span>
+                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
+                  <span className="text-gray-500 dark:text-gray-400 block mb-1">WhatsApp Dedicated Line:</span>
                   <a
                     href="https://wa.me/971553424700"
                     target="_blank"
@@ -109,11 +109,11 @@ export default function GetQuotePage() {
                   </a>
                 </div>
 
-                <div className="p-3.5 bg-[#112236] rounded border border-gray-800">
-                  <span className="text-gray-400 block mb-1">Corporate Communications:</span>
+                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
+                  <span className="text-gray-500 dark:text-gray-400 block mb-1">Corporate Communications:</span>
                   <a
                     href="mailto:info@swiftsailship.com"
-                    className="text-white hover:text-[#C5A47E]"
+                    className="text-slate-900 dark:text-white hover:text-[#C5A47E]"
                   >
                     info@swiftsailship.com
                   </a>
@@ -122,7 +122,7 @@ export default function GetQuotePage() {
             </div>
 
             {/* Dubai HQ Address */}
-            <div className="bg-white border border-gray-300 rounded-lg p-8 space-y-4 text-slate-900">
+            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 space-y-4 text-slate-900">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55]">
                 PHYSICAL HEADQUARTERS
               </span>
@@ -147,40 +147,40 @@ export default function GetQuotePage() {
             <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
               FREQUENTLY ASKED
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950 dark:text-white">
               Cargo & Quotation Questions, Answered
             </h2>
           </div>
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 How quickly will I receive a freight quotation?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours during working hours (Mon–Fri 08:00–18:00 GST).
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 What information do I need to provide for a quote?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 Origin and destination, cargo type, total weight and volume (CBM), number of packages, Incoterms preference, and whether you require customs clearance or warehousing in the UAE.
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 Do you handle UAE customs clearance and duty exemption?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 Yes. Our in-house licensed brokers file directly through Dubai Customs Mirsal 2, including MOIAT industrial duty exemptions for qualifying manufacturers and free zone transfers.
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 What ports and airports do you operate from?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 We operate from Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port for ocean freight, and Dubai International (DXB) and Dubai World Central (DWC) for air cargo.
               </p>
             </div>

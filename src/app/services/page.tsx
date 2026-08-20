@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* Editorial Header */}
       <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
         <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
@@ -57,41 +57,41 @@ export default function ServicesPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 space-y-24">
         {/* Service 1: Ocean Freight */}
         <section id="ocean-freight" className="scroll-mt-28">
-          <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 mb-8">
+          <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 dark:border-[#C5A47E]/20 mb-8">
               <span className="text-xs font-mono font-bold text-[#A37F55] uppercase tracking-wider">
                 01 // MARITIME LOGISTICS
               </span>
-              <span className="editorial-stamp text-gray-600 text-[10px]">
+              <span className="editorial-stamp text-gray-600 dark:text-gray-400 text-[10px]">
                 FCL • LCL • VESSEL CHARTER
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 space-y-6">
-                <h2 className="text-3xl font-serif font-bold text-slate-950">
+                <h2 className="text-3xl font-serif font-bold text-slate-950 dark:text-white">
                   Ocean Freight & Container Shipping
                 </h2>
-                <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base">
                   Operating with direct carrier contracts across major global alliances, Swift Sail provides guaranteed equipment availability and space allocation through Dubai’s Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port Abu Dhabi.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
-                  <div className="p-4 bg-[#FBF9F5] rounded border border-gray-200">
-                    <strong className="text-slate-950 block mb-1">Full Container Load (FCL)</strong>
-                    <p className="text-slate-600">20&apos; GP, 40&apos; GP, 40&apos; High Cube, Flat Racks & Open Top containers with carrier seal integrity.</p>
+                  <div className="p-4 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-white/10">
+                    <strong className="text-slate-950 dark:text-white block mb-1">Full Container Load (FCL)</strong>
+                    <p className="text-slate-600 dark:text-gray-400">20&apos; GP, 40&apos; GP, 40&apos; High Cube, Flat Racks & Open Top containers with carrier seal integrity.</p>
                   </div>
-                  <div className="p-4 bg-[#FBF9F5] rounded border border-gray-200">
-                    <strong className="text-slate-950 block mb-1">LCL Consolidation</strong>
-                    <p className="text-slate-600">Cost-effective groupage consolidation for smaller shipments with weekly scheduled CFS de-stuffing.</p>
+                  <div className="p-4 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-white/10">
+                    <strong className="text-slate-950 dark:text-white block mb-1">LCL Consolidation</strong>
+                    <p className="text-slate-600 dark:text-gray-400">Cost-effective groupage consolidation for smaller shipments with weekly scheduled CFS de-stuffing.</p>
                   </div>
-                  <div className="p-4 bg-[#FBF9F5] rounded border border-gray-200">
-                    <strong className="text-slate-950 block mb-1">Reefer Temperature Control</strong>
-                    <p className="text-slate-600">Precision refrigerated containers for perishables, dairy, pharmaceuticals, and sensitive chemicals.</p>
+                  <div className="p-4 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-white/10">
+                    <strong className="text-slate-950 dark:text-white block mb-1">Reefer Temperature Control</strong>
+                    <p className="text-slate-600 dark:text-gray-400">Precision refrigerated containers for perishables, dairy, pharmaceuticals, and sensitive chemicals.</p>
                   </div>
-                  <div className="p-4 bg-[#FBF9F5] rounded border border-gray-200">
-                    <strong className="text-slate-950 block mb-1">Vessel Husbandry & Agency</strong>
-                    <p className="text-slate-600">Complete port agency services, bunkering coordination, stevedoring, and marine documentation.</p>
+                  <div className="p-4 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-white/10">
+                    <strong className="text-slate-950 dark:text-white block mb-1">Vessel Husbandry & Agency</strong>
+                    <p className="text-slate-600 dark:text-gray-400">Complete port agency services, bunkering coordination, stevedoring, and marine documentation.</p>
                   </div>
                 </div>
               </div>
@@ -125,22 +125,22 @@ export default function ServicesPage() {
 
         {/* Service 2: Air Cargo Velocity */}
         <section id="air-cargo" className="scroll-mt-28">
-          <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 mb-8">
+          <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 dark:border-[#C5A47E]/20 mb-8">
               <span className="text-xs font-mono font-bold text-[#A37F55] uppercase tracking-wider">
                 02 // AVIATION LOGISTICS
               </span>
-              <span className="editorial-stamp text-gray-600 text-[10px]">
+              <span className="editorial-stamp text-gray-600 dark:text-gray-400 text-[10px]">
                 IATA • SCHEDULED FREIGHT • CHARTER
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 space-y-6">
-                <h2 className="text-3xl font-serif font-bold text-slate-950">
+                <h2 className="text-3xl font-serif font-bold text-slate-950 dark:text-white">
                   Air Cargo Velocity & Charters
                 </h2>
-                <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base">
                   Leveraging Dubai International Airport (DXB) and Al Maktoum International Airport (DWC) as primary global transshipment super-hubs, our air desk guarantees speed, security, and real-time flight tracking for high-value and time-critical consignments.
                 </p>
 
@@ -192,22 +192,22 @@ export default function ServicesPage() {
 
         {/* Service 3: Customs Clearance */}
         <section id="customs-clearance" className="scroll-mt-28">
-          <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 mb-8">
+          <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 dark:border-[#C5A47E]/20 mb-8">
               <span className="text-xs font-mono font-bold text-[#A37F55] uppercase tracking-wider">
                 03 // REGULATORY BROKERAGE
               </span>
-              <span className="editorial-stamp text-gray-600 text-[10px]">
+              <span className="editorial-stamp text-gray-600 dark:text-gray-400 text-[10px]">
                 MIRSAL 2 • DUBAI CUSTOMS LICENSED
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 space-y-6">
-                <h2 className="text-3xl font-serif font-bold text-slate-950">
+                <h2 className="text-3xl font-serif font-bold text-slate-950 dark:text-white">
                   UAE Customs Clearance & Brokerage
                 </h2>
-                <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base">
                   Avoid costly port demurrage and customs fines. Swift Sail’s licensed brokerage team operates on-site across Dubai, Sharjah, and Abu Dhabi ports with direct Mirsal 2 digital integration.
                 </p>
 
@@ -259,22 +259,22 @@ export default function ServicesPage() {
 
         {/* Service 4: Project Cargo & Heavy Lift */}
         <section id="breakbulk-project" className="scroll-mt-28">
-          <div className="bg-white border border-gray-300 rounded-lg p-8 sm:p-12 shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 mb-8">
+          <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-200 dark:border-[#C5A47E]/20 mb-8">
               <span className="text-xs font-mono font-bold text-[#A37F55] uppercase tracking-wider">
                 04 // INDUSTRIAL ENGINEERING
               </span>
-              <span className="editorial-stamp text-gray-600 text-[10px]">
+              <span className="editorial-stamp text-gray-600 dark:text-gray-400 text-[10px]">
                 OUT-OF-GAUGE • HEAVY LIFT • OIL & GAS
               </span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               <div className="lg:col-span-7 space-y-6">
-                <h2 className="text-3xl font-serif font-bold text-slate-950">
+                <h2 className="text-3xl font-serif font-bold text-slate-950 dark:text-white">
                   Project Cargo & Heavy Lift Transport
                 </h2>
-                <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
+                <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base">
                   When cargo exceeds standard container envelopes, our specialized logistics engineers execute custom multi-modal transport plans. We handle complex oilfield drilling rigs, transformers, industrial kilns, and luxury yachts.
                 </p>
 
@@ -330,40 +330,40 @@ export default function ServicesPage() {
             <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
               SERVICE FREQUENTLY ASKED
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950 dark:text-white">
               Freight Services, Explained
             </h2>
           </div>
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 What is the difference between FCL and LCL sea freight?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 FCL (Full Container Load) means your cargo occupies an entire container — 20&apos; GP, 40&apos; GP, or 40&apos; HC — with dedicated space and faster port handling. LCL (Less than Container Load) consolidates your goods with other shippers in a shared container, ideal for smaller volumes under roughly 15 CBM where you pay only for the space you use.
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 Do you handle air freight from Dubai and Sharjah?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 Yes. Our aviation desk coordinates scheduled freighter allocations and full or part charter flights via Dubai International (DXB) and Dubai World Central (DWC), including Next-Flight-Out priority booking, temperature-controlled pharma, and IATA dangerous goods handling.
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 Can you clear customs and manage free zone transfers?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 Yes. In-house licensed brokers file directly through Dubai Customs Mirsal 2, covering import-for-consumption declarations, transit filings, free zone inward and outward transfers, and MOIAT industrial duty exemptions for qualifying manufacturers.
               </p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 text-lg mb-2">
+            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
+              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
                 What containers do you offer for project and breakbulk cargo?
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
                 For out-of-gauge and heavy-lift consignments we arrange flat rack and open top containers, roll-on/roll-off (RoRo) transport, multi-axle hydraulic trailers (SPMT) for 500+ tonne payloads, and tandem mobile crane lifts across UAE maritime facilities.
               </p>
             </div>

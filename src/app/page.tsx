@@ -4,6 +4,7 @@ import { CargoCalculator } from "@/components/tools/cargo-calculator";
 import { CustomsDutyGuide } from "@/components/tools/customs-duty-guide";
 import { IncotermsMatrix } from "@/components/tools/incoterms-matrix";
 import { TradeCorridors } from "@/components/tools/trade-corridors";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export const metadata: Metadata = {
   title: "Swift Sail Shipping L.L.C. | Sovereign Freight Forwarding & Logistics UAE",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5]">
+    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
       {/* 1. BROADSHEET EDITORIAL HERO */}
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 bg-[#070E18] text-white overflow-hidden border-b border-[#C5A47E]/30">
         {/* Subtle Background Maritime Image & Grain */}
@@ -87,12 +88,18 @@ export default function Home() {
                 <span>Open Cargo Calculator</span>
               </a>
 
-              <Link
-                href="/get-quote"
-                className="bg-[#112236] hover:bg-[#1A3350] text-white border border-[#C5A47E]/40 px-7 py-4 rounded text-xs font-mono uppercase tracking-wider transition-all inline-flex items-center gap-2"
-              >
-                <span>Request Official Rate</span>
-                <i className="fa-solid fa-arrow-right text-[11px]" />
+              <Link href="/get-quote">
+                <ShimmerButton
+                  shimmerColor="#C5A47E"
+                  background="linear-gradient(135deg, #0D1B2A 0%, #070E18 100%)"
+                  borderRadius="6px"
+                  className="border border-[#C5A47E]/40 px-7 py-4 text-xs font-mono uppercase tracking-wider shadow-lg"
+                >
+                  <span className="flex items-center gap-2 text-white font-medium">
+                    Request Official Rate
+                    <i className="fa-solid fa-arrow-right text-[11px] text-[#C5A47E]" />
+                  </span>
+                </ShimmerButton>
               </Link>
 
               <a
@@ -137,16 +144,16 @@ export default function Home() {
       </section>
 
       {/* 2. REAL MATHEMATICAL CARGO CALCULATOR SECTION */}
-      <section id="calculator" className="py-20 lg:py-28 bg-[#04080F] scroll-mt-20">
+      <section id="calculator" className="py-20 lg:py-28 bg-[#F3EFE6] dark:bg-[#04080F] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="editorial-stamp text-[#C5A47E] mb-3 inline-block">
               PRECISION LOGISTICS TOOLING
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
               Calculate Your Exact Cargo Volumetrics & Container Fit
             </h2>
-            <p className="text-gray-400 text-sm mt-3 font-sans leading-relaxed">
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-3 font-sans leading-relaxed">
               No guesswork. Input your package dimensions to compute official CBM, CFT, Gross vs. Volumetric Chargeable Weight, and recommended container configuration.
             </p>
           </div>
@@ -156,16 +163,16 @@ export default function Home() {
       </section>
 
       {/* 3. VERIFIED TRADE CORRIDORS & PORT BENCHMARKS */}
-      <section id="corridors" className="py-20 lg:py-28 bg-[#070E18] border-t border-[#C5A47E]/20 scroll-mt-20">
+      <section id="corridors" className="py-20 lg:py-28 bg-[#FBF9F5] dark:bg-[#070E18] border-t border-[#C5A47E]/20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="editorial-stamp text-[#C5A47E] mb-3 inline-block">
               GLOBAL TRADE DIRECTORY
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
               Sovereign Trade Corridors & Port Transit Schedules
             </h2>
-            <p className="text-gray-400 text-sm mt-3 font-sans leading-relaxed">
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-3 font-sans leading-relaxed">
               Verified maritime sailing frequencies and air freight velocity windows connecting Jebel Ali (AEJEA) and Sharjah with leading international industrial hubs.
             </p>
           </div>
@@ -175,14 +182,14 @@ export default function Home() {
       </section>
 
       {/* 4. THE 4 SOVEREIGN FREIGHT PILLARS (EDITORIAL DOSSIERS) */}
-      <section id="services" className="py-20 lg:py-28 bg-[#FBF9F5] text-slate-900 border-t border-gray-300">
+      <section id="services" className="py-20 lg:py-28 bg-[#FBF9F5] dark:bg-[#0D1B2A] text-slate-900 dark:text-white border-t border-gray-300 dark:border-[#C5A47E]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-gray-300 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-gray-300 dark:border-[#C5A47E]/20 mb-16">
             <div>
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
                 CAPABILITIES & SPECIALIZATIONS
               </span>
-              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-950 tracking-tight">
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-950 dark:text-white tracking-tight">
                 The Four Pillars of Swift Sail Logistics
               </h2>
             </div>
@@ -197,19 +204,19 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* Pillar 1: Ocean Freight */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#112236] border border-gray-200 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500 mb-4 pb-3 border-b border-gray-100">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 pb-3 border-b border-gray-100 dark:border-white/10">
                   <span className="text-[#A37F55] font-bold">PILLAR 01 // MARITIME</span>
                   <span>FCL & LCL CONSOLIDATION</span>
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-slate-950 mb-3 group-hover:text-[#A37F55] transition-colors">
+                <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-3 group-hover:text-[#A37F55] transition-colors">
                   Ocean Freight & Vessel Chartering
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
                   Priority allocation on leading global shipping lines calling Jebel Ali Port, Port Khalid, and Khalifa Port. Handling dry standard containers, high cubes, flat racks, open tops, and refrigerated (reefer) cargo with complete bill of lading issuance.
                 </p>
-                <ul className="space-y-2 text-xs font-mono text-slate-700 mb-6">
+                <ul className="space-y-2 text-xs font-mono text-slate-700 dark:text-gray-300 mb-6">
                   <li className="flex items-center gap-2">
                     <i className="fa-solid fa-circle-check text-[#A37F55]" />
                     <span>20&apos; GP / 40&apos; GP / 40&apos; HC / 45&apos; Pallet Wide Containers</span>
@@ -233,19 +240,19 @@ export default function Home() {
             </div>
 
             {/* Pillar 2: Air Cargo */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#112236] border border-gray-200 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500 mb-4 pb-3 border-b border-gray-100">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 pb-3 border-b border-gray-100 dark:border-white/10">
                   <span className="text-[#A37F55] font-bold">PILLAR 02 // AVIATION</span>
                   <span>DXB & DWC HUBS</span>
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-slate-950 mb-3 group-hover:text-[#A37F55] transition-colors">
+                <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-3 group-hover:text-[#A37F55] transition-colors">
                   Air Cargo Velocity & Charters
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
                   When transit velocity is paramount, our aviation desk coordinates scheduled freighter allocations and full/part charter flights via Dubai International (DXB) and Dubai World Central (DWC) to all primary global destinations.
                 </p>
-                <ul className="space-y-2 text-xs font-mono text-slate-700 mb-6">
+                <ul className="space-y-2 text-xs font-mono text-slate-700 dark:text-gray-300 mb-6">
                   <li className="flex items-center gap-2">
                     <i className="fa-solid fa-circle-check text-[#A37F55]" />
                     <span>Next-Flight-Out (NFO) priority express booking</span>
@@ -269,19 +276,19 @@ export default function Home() {
             </div>
 
             {/* Pillar 3: UAE Customs Clearance */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#112236] border border-gray-200 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500 mb-4 pb-3 border-b border-gray-100">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 pb-3 border-b border-gray-100 dark:border-white/10">
                   <span className="text-[#A37F55] font-bold">PILLAR 03 // COMPLIANCE</span>
                   <span>MIRSAL 2 CUSTOMS DESK</span>
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-slate-950 mb-3 group-hover:text-[#A37F55] transition-colors">
+                <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-3 group-hover:text-[#A37F55] transition-colors">
                   UAE Customs Brokerage & Free Zone Entry
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
                   In-house licensed customs brokers directly connected to Dubai Customs Mirsal 2 and Sharjah Customs. Managing import for local consumption, transit declarations, free zone inward/outward transfers, and customs duty exemptions.
                 </p>
-                <ul className="space-y-2 text-xs font-mono text-slate-700 mb-6">
+                <ul className="space-y-2 text-xs font-mono text-slate-700 dark:text-gray-300 mb-6">
                   <li className="flex items-center gap-2">
                     <i className="fa-solid fa-circle-check text-[#A37F55]" />
                     <span>Fast electronic customs declaration & VCC issuance</span>
@@ -305,19 +312,19 @@ export default function Home() {
             </div>
 
             {/* Pillar 4: Project Cargo & Heavy Lift */}
-            <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+            <div className="bg-white dark:bg-[#112236] border border-gray-200 dark:border-[#C5A47E]/20 rounded-lg p-8 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-xs font-mono text-gray-500 mb-4 pb-3 border-b border-gray-100">
+                <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 pb-3 border-b border-gray-100 dark:border-white/10">
                   <span className="text-[#A37F55] font-bold">PILLAR 04 // ENGINEERING</span>
                   <span>OUT-OF-GAUGE & BREAKBULK</span>
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-slate-950 mb-3 group-hover:text-[#A37F55] transition-colors">
+                <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mb-3 group-hover:text-[#A37F55] transition-colors">
                   Project Cargo & Heavy Lift Operations
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
                   Specialized logistics engineering for oversized industrial components, oilfield equipment, manufacturing plant relocations, and superyachts. Comprehensive route surveys, police escorts, and mobile crane loading.
                 </p>
-                <ul className="space-y-2 text-xs font-mono text-slate-700 mb-6">
+                <ul className="space-y-2 text-xs font-mono text-slate-700 dark:text-gray-300 mb-6">
                   <li className="flex items-center gap-2">
                     <i className="fa-solid fa-circle-check text-[#A37F55]" />
                     <span>Flat rack, open top, and roll-on/roll-off (RoRo) transport</span>
@@ -344,16 +351,16 @@ export default function Home() {
       </section>
 
       {/* 5. UAE CUSTOMS DUTY & REGULATORY GUIDE */}
-      <section id="customs-guide" className="py-20 lg:py-28 bg-[#04080F] scroll-mt-20">
+      <section id="customs-guide" className="py-20 lg:py-28 bg-[#F3EFE6] dark:bg-[#04080F] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="editorial-stamp text-[#C5A47E] mb-3 inline-block">
               REGULATORY TRADE INTELLIGENCE
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
               UAE Customs Tariff & Document Clearance Guide
             </h2>
-            <p className="text-gray-400 text-sm mt-3 font-sans leading-relaxed">
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-3 font-sans leading-relaxed">
               Understand exact duty percentages, 5% UAE VAT obligations, and documentary requirements before your cargo berths at UAE ports.
             </p>
           </div>
@@ -363,16 +370,16 @@ export default function Home() {
       </section>
 
       {/* 6. INCOTERMS 2020 RISK MATRIX */}
-      <section id="incoterms" className="py-20 lg:py-28 bg-[#070E18] border-t border-[#C5A47E]/20 scroll-mt-20">
+      <section id="incoterms" className="py-20 lg:py-28 bg-[#FBF9F5] dark:bg-[#070E18] border-t border-[#C5A47E]/20 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="editorial-stamp text-[#C5A47E] mb-3 inline-block">
               COMMERCIAL CONTRACT STANDARD
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
               Incoterms® 2020 Buyer & Seller Responsibility
             </h2>
-            <p className="text-gray-400 text-sm mt-3 font-sans leading-relaxed">
+            <p className="text-slate-500 dark:text-gray-400 text-sm mt-3 font-sans leading-relaxed">
               Verify freight payment boundaries, marine insurance coverage, and risk transfer points for your international supplier agreements.
             </p>
           </div>
@@ -382,36 +389,36 @@ export default function Home() {
       </section>
 
       {/* 7. THE DUBAI ADVANTAGE & STRATEGIC GATEWAY */}
-      <section className="py-20 lg:py-28 bg-[#FBF9F5] text-slate-900 border-t border-gray-300">
+      <section className="py-20 lg:py-28 bg-[#FBF9F5] dark:bg-[#0D1B2A] text-slate-900 dark:text-white border-t border-gray-300 dark:border-[#C5A47E]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-6">
               <span className="editorial-stamp text-[#A37F55] border-[#A37F55]">
                 STRATEGIC GEOGRAPHIC VANTAGE
               </span>
-              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-950 leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-serif font-bold text-slate-950 dark:text-white leading-tight">
                 Operating at the Crossroads of East & West
               </h2>
-              <p className="text-slate-700 leading-relaxed font-sans text-base">
+              <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-base">
                 Headquartered in Dubai with operational presence at Jebel Ali Port (the largest marine terminal in the Middle East) and Port Khalid Sharjah, Swift Sail Shipping connects 2.4 billion consumers across the GCC, Africa, Indian Subcontinent, and Europe.
               </p>
 
-              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-200 text-xs font-mono">
+              <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-200 dark:border-white/10 text-xs font-mono">
                 <div className="space-y-1">
-                  <strong className="text-slate-950 text-sm block">Jebel Ali Port (DP World)</strong>
-                  <p className="text-slate-600">Immediate access to 150+ direct shipping line connections</p>
+                  <strong className="text-slate-950 dark:text-white text-sm block">Jebel Ali Port (DP World)</strong>
+                  <p className="text-slate-600 dark:text-gray-400">Immediate access to 150+ direct shipping line connections</p>
                 </div>
                 <div className="space-y-1">
-                  <strong className="text-slate-950 text-sm block">Dubai World Central (DWC)</strong>
-                  <p className="text-slate-600">Seamless Sea-Air multi-modal corridor integration</p>
+                  <strong className="text-slate-950 dark:text-white text-sm block">Dubai World Central (DWC)</strong>
+                  <p className="text-slate-600 dark:text-gray-400">Seamless Sea-Air multi-modal corridor integration</p>
                 </div>
                 <div className="space-y-1">
-                  <strong className="text-slate-950 text-sm block">Sharjah Port Khalid</strong>
-                  <p className="text-slate-600">Specialized bulk, breakbulk & re-export gateways</p>
+                  <strong className="text-slate-950 dark:text-white text-sm block">Sharjah Port Khalid</strong>
+                  <p className="text-slate-600 dark:text-gray-400">Specialized bulk, breakbulk & re-export gateways</p>
                 </div>
                 <div className="space-y-1">
-                  <strong className="text-slate-950 text-sm block">Free Zone Bonded Storage</strong>
-                  <p className="text-slate-600">Duty-free transit storage and value-added sorting</p>
+                  <strong className="text-slate-950 dark:text-white text-sm block">Free Zone Bonded Storage</strong>
+                  <p className="text-slate-600 dark:text-gray-400">Duty-free transit storage and value-added sorting</p>
                 </div>
               </div>
 
@@ -427,7 +434,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="rounded-lg overflow-hidden border border-gray-300 shadow-2xl relative">
+              <div className="rounded-lg overflow-hidden border border-gray-300 dark:border-[#C5A47E]/20 shadow-2xl relative">
                 <img
                   src="/assets/img/dubai_skyline_containers_1776336296901.webp"
                   alt="Dubai Maritime City and Container Port"
@@ -448,7 +455,7 @@ export default function Home() {
       </section>
 
       {/* 8. DIRECT DISPATCH & QUOTE CTA */}
-      <section className="py-20 lg:py-24 bg-[#04080F] text-white border-t border-[#C5A47E]/30 relative overflow-hidden">
+      <section className="py-20 lg:py-24 bg-[#070E18] dark:bg-[#04080F] text-white border-t border-[#C5A47E]/30 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
           <span className="editorial-stamp text-[#C5A47E]">
             DIRECT LOGISTICS CONSULTATION
@@ -461,12 +468,18 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link
-              href="/get-quote"
-              className="w-full sm:w-auto btn-editorial-gold px-8 py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
-            >
-              <span>Submit Request for Quotation</span>
-              <i className="fa-solid fa-arrow-right text-[11px]" />
+            <Link href="/get-quote" className="w-full sm:w-auto">
+              <ShimmerButton
+                shimmerColor="#F5E6D3"
+                background="linear-gradient(135deg, #C5A47E 0%, #A37F55 100%)"
+                borderRadius="6px"
+                className="w-full sm:w-auto px-8 py-4 text-xs font-bold uppercase tracking-wider shadow-2xl"
+              >
+                <span className="flex items-center gap-2 text-[#070E18]">
+                  Submit Request for Quotation
+                  <i className="fa-solid fa-arrow-right text-[11px]" />
+                </span>
+              </ShimmerButton>
             </Link>
 
             <a
@@ -481,7 +494,7 @@ export default function Home() {
 
             <a
               href="tel:+971553424700"
-              className="w-full sm:w-auto bg-[#112236] hover:bg-[#1A3350] border border-gray-700 text-white font-mono text-xs uppercase tracking-wider px-6 py-4 rounded transition-colors inline-flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-[#112236] hover:bg-[#1A3350] border border-gray-700 dark:border-gray-700 text-white font-mono text-xs uppercase tracking-wider px-6 py-4 rounded transition-colors inline-flex items-center justify-center gap-2"
             >
               <i className="fa-solid fa-phone text-[#C5A47E]" />
               <span>+971 55 342 4700</span>
