@@ -1,29 +1,19 @@
 import Link from "next/link";
-import { Metadata } from "next";
-import { NewsletterForm } from "@/components/newsletter-form";
+import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/page-header";
+import Image from "next/image";
+import { Arrow } from "@/components/ui/arrow";
+import { postPhotos, site } from "@/lib/site";
+
+const title = "Freight and customs guides for UAE importers";
+const description =
+  "Plain guides to shipping through the UAE: customs clearance at Jebel Ali, FOB and CIF, sea freight against air freight, container types and duty exemptions.";
 
 export const metadata: Metadata = {
-  title: "Dispatch Journal • Trade Intelligence | Swift Sail Shipping L.L.C.",
-  description:
-    "Authoritative analysis on Red Sea routing, UAE customs updates, GCC tariffs, freight rate indices, and maritime supply chain developments.",
-  alternates: {
-    canonical: "https://www.swiftsailship.com/blog",
-  },
-  openGraph: {
-    type: "website",
-    title: "Dispatch Journal • Trade Intelligence | Swift Sail Shipping L.L.C.",
-    description:
-      "Authoritative analysis on Red Sea routing, UAE customs updates, GCC tariffs, freight rate indices, and maritime supply chain developments.",
-    url: "https://www.swiftsailship.com/blog",
-    images: ["/assets/img/og-default.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Dispatch Journal • Trade Intelligence | Swift Sail Shipping L.L.C.",
-    description:
-      "Authoritative analysis on Red Sea routing, UAE customs updates, GCC tariffs, freight rate indices, and maritime supply chain developments.",
-    images: ["/assets/img/og-default.jpg"],
-  },
+  title,
+  description,
+  alternates: { canonical: `${site.url}/blog` },
+  openGraph: { title, description, url: `${site.url}/blog` },
 };
 
 const dispatches = [
@@ -95,139 +85,72 @@ const dispatches = [
   },
 ];
 
+
+/** "12 MARCH 2026" and "CUSTOMS COMPLIANCE" are stored in capitals; show them in sentence case. */
+const sentence = (text: string) => text.charAt(0) + text.slice(1).toLowerCase();
+const dateLabel = (text: string) => text.replace(/^0/, "").replace(/[A-Z]+/, (m) => m.charAt(0) + m.slice(1).toLowerCase());
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${site.url}/blog` },
+  ],
+};
+
 export default function BlogPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
-      {/* Editorial Header */}
-      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
+    <>
+      <PageHeader
+        title="Freight and customs guides"
+        lead="Practical answers to the questions importers and exporters ask us most: how customs clearance works, which Incoterm to buy on, and when air freight beats sea."
+      />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="editorial-stamp text-[#C5A47E]">
-              MARITIME CHRONICLE • ISSUE ARCHIVE
-            </span>
-            <span className="text-xs font-mono text-gray-400">
-              TRADE INTELLIGENCE & ADVISORY
-            </span>
-          </div>
+      <section className="section">
+        <ul className="wrap rows">
+          {dispatches.map((post) => (
+            <li key={post.id}>
+              <Link
+                href={`/blog/${post.id}`}
+                className="group grid items-center gap-6 py-10 lg:grid-cols-12 lg:gap-6"
+              >
+                <div className="photo aspect-[4/3] lg:col-span-4">
+                  <Image
+                    src={postPhotos[post.id].src}
+                    alt={postPhotos[post.id].alt}
+                    fill
+                    sizes="(min-width: 1024px) 420px, 100vw"
+                  />
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="t-label">
+                    {sentence(post.category)} · {dateLabel(post.date)}
+                  </p>
+                  <h2 className="t-h3 mt-3 font-display text-[1.5rem] lg:text-[1.75rem]">{post.title}</h2>
+                  <p className="mt-3 text-ink-soft">{post.excerpt}</p>
+                </div>
+                <Arrow className="hidden justify-self-end text-accent transition-transform duration-200 group-hover:translate-x-1 lg:col-span-1 lg:block" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight mb-6">
-            Dispatch Journal & <br />
-            <span className="gold-gradient-text">Trade Intelligence</span>
-          </h1>
-
-          <p className="text-lg text-gray-300 font-sans font-light max-w-3xl leading-relaxed">
-            Essential operational briefings, regulatory breakdowns, and supply chain analysis written by practicing maritime and customs officers in Dubai. If you move cargo through the UAE — by sea or air — these dispatches are the intelligence your forwarder should already be giving you.
+      <section className="section ground-surface">
+        <div className="wrap">
+          <h2 className="t-h2">Prices for your shipment</h2>
+          <p className="t-lead muted measure mt-4">
+            Send the route, the weight and the volume. We reply with an itemised price within two business hours.
           </p>
-        </div>
-      </header>
-
-      {/* Editorial Intro */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-10 shadow-sm">
-          <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-3 inline-block">
-            FROM THE TRADE INTELLIGENCE DESK
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 dark:text-white mb-4">
-            Why We Publish These Dispatches
-          </h2>
-          <p className="text-slate-700 dark:text-gray-300 leading-relaxed font-sans text-sm sm:text-base mb-4">
-            Freight rates, customs procedures, and maritime routing shift faster than most suppliers can track. Each dispatch in the journal addresses a decision importers and exporters actually face — whether that is choosing between FOB and CIF terms, claiming a MOIAT duty exemption, or weighing a Cape of Good Hope routing against convoy escorting through the Red Sea.
-          </p>
-          <p className="text-slate-700 leading-relaxed font-sans text-sm sm:text-base">
-            Every analysis is written by the same licensed brokers, marine surveyors, and operations officers who execute our clearances and book our vessels at Jebel Ali, Port Khalid, and DXB. New issues are published monthly; the archive below tracks the current edition and the issues that preceded it.
-          </p>
+          <Link href={site.ctaHref} className="btn btn--primary mt-8">
+            {site.cta}
+            <Arrow />
+          </Link>
         </div>
       </section>
 
-      {/* Main Journal Grid */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-        <div className="space-y-12">
-          {dispatches.map((dispatch) => (
-            <article
-              key={dispatch.id}
-              className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-gray-200 dark:border-white/10 mb-6 text-xs font-mono">
-                <div className="flex items-center gap-3">
-                  <span className="text-[#A37F55] font-bold">{dispatch.issue}</span>
-                  <span className="text-gray-400">•</span>
-                  <span className="text-gray-600 dark:text-gray-400">{dispatch.category}</span>
-                </div>
-                <div className="text-gray-500 dark:text-gray-400">
-                  <span>{dispatch.date}</span>
-                  <span className="mx-2">•</span>
-                  <span>{dispatch.readTime}</span>
-                </div>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-950 dark:text-white mb-4">
-                <Link
-                  href={`/blog/${dispatch.id}`}
-                  className="hover:text-[#A37F55] transition-colors"
-                >
-                  {dispatch.title}
-                </Link>
-              </h2>
-
-              <p className="text-slate-700 dark:text-gray-300 font-sans text-sm sm:text-base leading-relaxed mb-6">
-                {dispatch.excerpt}
-              </p>
-
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-gray-100 dark:border-white/10 text-xs font-mono">
-                <span className="text-gray-500 dark:text-gray-400">Author: {dispatch.author}</span>
-                <Link
-                  href={`/blog/${dispatch.id}`}
-                  className="text-[#A37F55] font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-1.5"
-                >
-                  <span>Read Full Dispatch</span>
-                  <i className="fa-solid fa-arrow-right text-[10px]" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* Newsletter / Bulletin Subscription */}
-        <div className="mt-20 p-8 sm:p-12 bg-[#070E18] text-white rounded-lg border border-[#C5A47E]/30 text-center space-y-6">
-          <span className="editorial-stamp text-[#C5A47E]">
-            MARITIME INTELLIGENCE CIRCULAR
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-            Receive Weekly Gulf Shipping & Regulatory Bulletins
-          </h3>
-          <p className="text-sm text-gray-300 max-w-xl mx-auto font-sans leading-relaxed">
-            Directly to your inbox: fuel surcharges, port congestion indices, and UAE customs tariff notifications.
-          </p>
-
-          <NewsletterForm />
-        </div>
-      </main>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.swiftsailship.com"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Dispatch Journal",
-                "item": "https://www.swiftsailship.com/blog"
-              }
-            ]
-          })
-        }}
-      />
-    </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    </>
   );
 }

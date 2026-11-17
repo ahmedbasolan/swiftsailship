@@ -1,185 +1,162 @@
+import Image from "next/image";
 import Link from "next/link";
+import { services, site, tools } from "@/lib/site";
+
+const company = [
+  { name: "About", href: "/about" },
+  { name: "Process", href: "/how-it-works" },
+  { name: "Blog", href: "/blog" },
+  { name: "Get a quote", href: "/get-quote" },
+];
+
+const credits = [
+  {
+    title: "Aerial photograph of a cargo ship",
+    by: "Wilfredor",
+    licence: "CC BY-SA 3.0",
+    href: "https://commons.wikimedia.org/wiki/File:Aerial_photograph_of_a_cargo_ship.jpg",
+  },
+  {
+    title: "Container ship at the Hai Phong International Container Terminal",
+    by: "Nathan.cima",
+    licence: "CC BY-SA 4.0",
+    href: "https://commons.wikimedia.org/wiki/File:Container_Ship_at_the_Hai_Phong_International_Container_Terminal_01.jpg",
+  },
+  {
+    title: "Modern warehouse with pallet rack storage system",
+    by: "Axisadman",
+    licence: "CC BY-SA 3.0",
+    href: "https://commons.wikimedia.org/wiki/File:Modern_warehouse_with_pallet_rack_storage_system.jpg",
+  },
+  {
+    title: "Cargo-In-Cargo-Out",
+    by: "Lance Cheung, U.S. Air Force",
+    licence: "public domain",
+    href: "https://commons.wikimedia.org/wiki/File:Cargo-In-Cargo-Out_DVIDS171688.jpg",
+  },
+  {
+    title: "Jebel Ali Free Zone 11",
+    by: "Bjoertvedt",
+    licence: "CC BY-SA 3.0",
+    href: "https://commons.wikimedia.org/wiki/File:Jebel_Ali_Free_Zone_11.jpg",
+  },
+  {
+    title: "Baltic Container Terminal in Gdynia",
+    by: "Zalasem1",
+    licence: "CC BY 4.0",
+    href: "https://commons.wikimedia.org/wiki/File:Baltic_Container_Terminal_in_Gdynia.jpg",
+  },
+];
+
+function Column({ title, children, className = "" }: { title: string; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={className}>
+      <h3 className="t-label mb-4 font-sans">{title}</h3>
+      <ul className="space-y-3">{children}</ul>
+    </div>
+  );
+}
+
+const linkClass = "text-ink/85 transition-colors hover:text-accent";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F3EFE6] dark:bg-[#04080F] text-slate-800 dark:text-white border-t border-[#C5A47E]/20 pt-16 pb-12 relative overflow-hidden">
-      {/* Background Grid Accent */}
-      <div className="absolute inset-0 bg-grid-subtle opacity-20 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Top Editorial Row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#C5A47E]/20">
-          {/* Brand Colophon */}
-          <div className="md:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <img
-                src="/assets/img/logo.webp"
-                alt="Swift Sail Shipping"
-                width={48}
-                height={48}
-                loading="lazy"
-                decoding="async"
-                className="h-12 w-auto"
-              />
-              <div>
-                <span className="font-serif font-bold text-xl text-slate-900 dark:text-white tracking-tight uppercase block leading-none">
-                  Swift Sail
-                </span>
-                <span className="text-[10px] font-mono text-[#C5A47E] tracking-[0.2em] uppercase">
-                  Shipping L.L.C. • UAE
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xs font-sans text-slate-500 dark:text-gray-400 leading-relaxed max-w-sm">
-              Sovereign freight forwarding, ocean charters, customs brokerage, and multi-modal logistics connecting the UAE with global trade corridors.
+    <footer className="border-t border-line bg-paper pb-16 sm:pb-0">
+      <div className="wrap py-16 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label={`${site.name}, home`}>
+              <Image src="/assets/img/logo.webp" alt="" width={64} height={64} className="-my-2 h-16 w-16 object-contain" />
+              <span className="font-display text-2xl font-medium tracking-tight">Swift Sail Shipping</span>
+            </Link>
+            <p className="mt-5 max-w-xs text-ink-soft">
+              Freight forwarder and customs broker in Dubai. Sea freight, air freight, customs clearance and project
+              cargo.
             </p>
-
-            <div className="pt-2 flex flex-wrap gap-2">
-              <span className="editorial-stamp text-[#C5A47E] text-[10px]">
-                UAE CUSTOMS LICENSED
-              </span>
-              <span className="editorial-stamp text-slate-400 dark:text-gray-400 text-[10px]">
-                JEBEL ALI PORT OPERATOR
-              </span>
-            </div>
           </div>
 
-          {/* Core Services */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
-              Freight Solutions
-            </h4>
-            <ul className="space-y-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-              <li>
-                <Link href="/services#ocean-freight" className="hover:text-[#C5A47E] transition-colors">
-                  • Ocean Freight (FCL / LCL)
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#air-cargo" className="hover:text-[#C5A47E] transition-colors">
-                  • Air Cargo Velocity & Charters
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#customs-clearance" className="hover:text-[#C5A47E] transition-colors">
-                  • UAE Customs Clearance (Mirsal 2)
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#breakbulk-project" className="hover:text-[#C5A47E] transition-colors">
-                  • Project Cargo & Heavy Lift
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#warehousing-reexport" className="hover:text-[#C5A47E] transition-colors">
-                  • Free Zone Storage & Re-Export
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8">
+            <Column title="Services">
+              {services.map((s) => (
+                <li key={s.id}>
+                  <Link href={`/services#${s.id}`} className={linkClass}>
+                    {s.name}
+                  </Link>
+                </li>
+              ))}
+            </Column>
 
-          {/* Shippers Resources & Tools */}
-          <div className="md:col-span-2 space-y-3">
-            <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
-              Trade Tools
-            </h4>
-            <ul className="space-y-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-              <li>
-                <Link href="/#calculator" className="hover:text-[#C5A47E] transition-colors">
-                  • CBM & Container Planner
-                </Link>
-              </li>
-              <li>
-                <Link href="/#customs-guide" className="hover:text-[#C5A47E] transition-colors">
-                  • UAE Tariff & Duty Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="/#incoterms" className="hover:text-[#C5A47E] transition-colors">
-                  • Incoterms® 2020 Matrix
-                </Link>
-              </li>
-              <li>
-                <Link href="/#corridors" className="hover:text-[#C5A47E] transition-colors">
-                  • Global Trade Corridors
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works" className="hover:text-[#C5A47E] transition-colors">
-                  • 6-Stage Process Workflow
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-[#C5A47E] transition-colors">
-                  • Dispatch Intelligence Journal
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <Column title="Tools">
+              {tools.map((t) => (
+                <li key={t.id}>
+                  <Link href={`/tools#${t.id}`} className={linkClass}>
+                    {t.name}
+                  </Link>
+                </li>
+              ))}
+            </Column>
 
-          {/* Operational Contact */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-serif font-bold text-sm text-[#C5A47E] uppercase tracking-wider">
-              Direct Operations Desk
-            </h4>
-            <div className="space-y-2.5 text-xs font-mono text-slate-500 dark:text-gray-400">
-              <div className="flex items-start gap-2">
-                <i className="fa-solid fa-location-dot text-[#C5A47E] mt-1" />
-                <span>Tanvi Business Centre, M - 101, Abu Hail, Dubai, United Arab Emirates</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="fa-solid fa-phone text-[#C5A47E]" />
-                <a href="tel:+971553424700" className="text-slate-800 dark:text-white hover:text-[#C5A47E] transition-colors">
-                  +971 55 342 4700
+            <Column title="Company">
+              {company.map((c) => (
+                <li key={c.href}>
+                  <Link href={c.href} className={linkClass}>
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
+            </Column>
+
+            <Column title="Contact" className="col-span-2 sm:col-span-1">
+              <li>
+                <a href={site.phoneHref} className={linkClass}>
+                  {site.phone}
                 </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="fa-brands fa-whatsapp text-emerald-400" />
-                <a
-                  href="https://wa.me/971553424700"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline"
-                >
-                  WhatsApp Operations (24/7)
+              </li>
+              <li>
+                <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  WhatsApp
                 </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="fa-solid fa-envelope text-[#C5A47E]" />
-                <a href="mailto:info@swiftsailship.com" className="text-slate-800 dark:text-white hover:text-[#C5A47E] transition-colors">
-                  info@swiftsailship.com
+              </li>
+              <li>
+                <a href={site.emailHref} className={`${linkClass} sm:break-all`}>
+                  {site.email}
                 </a>
-              </div>
-            </div>
+              </li>
+              <li>
+                <a href={site.mapHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  {site.addressShort}
+                </a>
+              </li>
+            </Column>
           </div>
         </div>
 
-        {/* Bottom Colophon Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-400 dark:text-gray-500">
-          <div>
-            © {currentYear} Swift Sail Shipping L.L.C. All rights reserved. Registered under Dubai Economic Department & Port Authorities.
-          </div>
-          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-            <span>GST UTC+4 DUBAI</span>
-            <span>•</span>
-            <Link href="/terms" className="text-gray-400 hover:text-[#C5A47E]">
-              Terms of Service
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-6 text-sm text-ink-soft md:flex-row md:items-start md:justify-between">
+          <p>
+            © {year} {site.legalName}
+          </p>
+          <div className="flex flex-wrap items-start gap-x-6 gap-y-2">
+            <Link href="/privacy" className="hover:text-ink">
+              Privacy
             </Link>
-            <span>•</span>
-            <Link href="/privacy" className="text-gray-400 hover:text-[#C5A47E]">
-              Privacy Policy
+            <Link href="/terms" className="hover:text-ink">
+              Terms
             </Link>
-            <span>•</span>
-            <Link href="/get-quote" className="text-gray-400 hover:text-[#C5A47E]">
-              Request Quotation
-            </Link>
-            <span>•</span>
-            <Link href="/about" className="text-gray-400 hover:text-[#C5A47E]">
-              Company Registry
-            </Link>
+            <details className="group">
+              <summary className="cursor-pointer list-none hover:text-ink">Photographs via Wikimedia Commons</summary>
+              <ul className="mt-3 max-w-md space-y-2">
+                {credits.map((c) => (
+                  <li key={c.href}>
+                    <a href={c.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">
+                      {c.title}
+                    </a>
+                    , {c.by}, {c.licence}
+                  </li>
+                ))}
+              </ul>
+            </details>
           </div>
         </div>
       </div>
