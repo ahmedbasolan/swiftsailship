@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { NewsletterForm } from "@/components/newsletter-form";
 
 export const metadata: Metadata = {
   title: "Dispatch Journal • Trade Intelligence | Swift Sail Shipping L.L.C.",
@@ -187,21 +186,6 @@ export default function BlogPage() {
               </div>
             </article>
           ))}
-        </div>
-
-        {/* Newsletter / Bulletin Subscription */}
-        <div className="mt-20 p-8 sm:p-12 bg-[#070E18] text-white rounded-lg border border-[#C5A47E]/30 text-center space-y-6">
-          <span className="editorial-stamp text-[#C5A47E]">
-            MARITIME INTELLIGENCE CIRCULAR
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-            Receive Weekly Gulf Shipping & Regulatory Bulletins
-          </h3>
-          <p className="text-sm text-gray-300 max-w-xl mx-auto font-sans leading-relaxed">
-            Directly to your inbox: fuel surcharges, port congestion indices, and UAE customs tariff notifications.
-          </p>
-
-          <NewsletterForm />
         </div>
       </main>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useId } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface CargoItem {
@@ -13,7 +13,6 @@ interface CargoItem {
 }
 
 export function CargoCalculator() {
-  const defaultId = useId();
   const [items, setItems] = useState<CargoItem[]>([
     { id: "1", units: 10, length: 120, width: 80, height: 100, weightPerUnit: 150 },
   ]);
@@ -68,8 +67,6 @@ export function CargoCalculator() {
     0
   );
 
-  // Sea Chargeable Weight: In ocean freight, 1 CBM is conventionally 1000 kg (1 Ton) for LCL (W/M rule)
-  const seaVolumetricWeight = totalCBM * 1000;
 
   const chargeableAirWeight = Math.max(totalGrossWeight, airVolumetricWeight);
   const isAirVolumetricChargeable = airVolumetricWeight > totalGrossWeight;
