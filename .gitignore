@@ -46,3 +46,8 @@ next-env.d.ts
 claude-seo/
 swiftsailship.com-audit/
 ui-ux-pro-max-skill/
+
+# Local AI-agent instructions (kept on each machine, not part of the site)
+AGENTS.md
+CLAUDE.md
+GEMINI.md

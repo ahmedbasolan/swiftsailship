@@ -14,6 +14,10 @@ const ThemeContext = createContext<ThemeContextValue>({
   toggleTheme: () => {},
 });
 
+function applyTheme(t: Theme) {
+  document.documentElement.classList.toggle("dark", t === "dark");
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
@@ -22,19 +26,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Read saved preference from localStorage, default to light
     const saved = localStorage.getItem("swift-theme") as Theme | null;
     const initial = saved === "dark" ? "dark" : "light";
+    // Syncing from localStorage, which only exists after hydration, is what
+    // effects are for; a lazy initial state would mismatch the server render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(initial);
     applyTheme(initial);
     setMounted(true);
   }, []);
-
-  const applyTheme = (t: Theme) => {
-    const html = document.documentElement;
-    if (t === "dark") {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
-    }
-  };
 
   const toggleTheme = () => {
     setTheme((prev) => {

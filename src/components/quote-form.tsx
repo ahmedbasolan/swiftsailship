@@ -1,49 +1,36 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+
+const WHATSAPP_DESK = "971553424700";
+const EMAIL_DESK = "info@swiftsailship.com";
 
 export default function QuoteForm() {
   const searchParams = useSearchParams();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    serviceMode: "ocean-fcl",
-    incoterm: "CIF",
-    origin: "",
-    destination: "",
-    cbm: "",
-    weight: "",
-    readyDate: "",
-    hsCodeOrCommodity: "",
-    notes: "",
+  // Pre-fill from URL query parameters (e.g. from Calculator or Corridor click).
+  // Read once for the initial state rather than with setState in an effect.
+  const [formData, setFormData] = useState(() => {
+    const mode = searchParams.get("mode");
+    return {
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      serviceMode: searchParams.get("service") || (mode === "air" ? "air-freight" : "ocean-fcl"),
+      incoterm: searchParams.get("incoterm") || "CIF",
+      origin: searchParams.get("origin") || "",
+      destination: searchParams.get("destination") || "",
+      cbm: searchParams.get("cbm") || "",
+      weight: searchParams.get("weight") || "",
+      readyDate: "",
+      hsCodeOrCommodity: "",
+      notes: "",
+    };
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Pre-fill from URL query parameters (e.g. from Calculator or Corridor click)
-  useEffect(() => {
-    const cbm = searchParams.get("cbm");
-    const weight = searchParams.get("weight");
-    const mode = searchParams.get("mode");
-    const incoterm = searchParams.get("incoterm");
-    const origin = searchParams.get("origin");
-    const destination = searchParams.get("destination");
-    const service = searchParams.get("service");
-
-    setFormData((prev) => ({
-      ...prev,
-      cbm: cbm || prev.cbm,
-      weight: weight || prev.weight,
-      serviceMode: service || (mode === "air" ? "air-freight" : prev.serviceMode),
-      incoterm: incoterm || prev.incoterm,
-      origin: origin || prev.origin,
-      destination: destination || prev.destination,
-    }));
-  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -54,15 +41,11 @@ export default function QuoteForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-  };
-
-  const whatsappMessage = encodeURIComponent(
+  const message =
     `*Swift Sail Shipping Quotation Request*\n\n` +
       `• *Client Name:* ${formData.name || "N/A"}\n` +
       `• *Company:* ${formData.company || "N/A"}\n` +
+      `• *Email:* ${formData.email || "N/A"}\n` +
       `• *Phone:* ${formData.phone || "N/A"}\n` +
       `• *Service Mode:* ${formData.serviceMode}\n` +
       `• *Incoterm:* ${formData.incoterm}\n` +
@@ -71,8 +54,21 @@ export default function QuoteForm() {
       `• *Cargo Volume:* ${formData.cbm ? `${formData.cbm} CBM` : "N/A"}\n` +
       `• *Gross Weight:* ${formData.weight ? `${formData.weight} kg` : "N/A"}\n` +
       `• *Commodity/HS Code:* ${formData.hsCodeOrCommodity || "General Cargo"}\n` +
-      `• *Additional Notes:* ${formData.notes || "None"}`
-  );
+      `• *Additional Notes:* ${formData.notes || "None"}`;
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_DESK}?text=${encodeURIComponent(message)}`;
+  const emailUrl =
+    `mailto:${EMAIL_DESK}?subject=${encodeURIComponent(
+      `Quotation request: ${formData.origin || "origin"} to ${formData.destination || "destination"}`
+    )}` + `&body=${encodeURIComponent(message.replace(/\*/g, ""))}`;
+
+  // There is no backend: a request reaches the desk only when the customer sends
+  // it. The form used to say "dispatched" while sending nothing at all.
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setIsSubmitted(true);
+  };
 
   if (isSubmitted) {
     return (
@@ -81,19 +77,25 @@ export default function QuoteForm() {
           <i className="fa-solid fa-check" />
         </div>
         <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white">
-          Quotation Request Dispatched
+          Finish Sending in WhatsApp
         </h3>
         <p className="text-sm font-sans text-slate-600 dark:text-gray-300 max-w-md mx-auto leading-relaxed">
-          Thank you. Your cargo dossier has been assigned to our on-duty Dubai logistics desk. We will respond with an itemized commercial rate sheet within 2 business hours.
+          Your request is ready in a WhatsApp chat with our Dubai desk. Press send there and we will reply with an itemized rate sheet within 2 business hours. If WhatsApp did not open, use one of the buttons below.
         </p>
         <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
           <a
-            href={`https://wa.me/971553424700?text=${whatsappMessage}`}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
           >
-            <i className="fa-brands fa-whatsapp text-base" /> Expedite on WhatsApp
+            <i className="fa-brands fa-whatsapp text-base" /> Open WhatsApp
+          </a>
+          <a
+            href={emailUrl}
+            className="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-[#C5A47E]/40 text-slate-900 dark:text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
+          >
+            <i className="fa-solid fa-envelope text-base" /> Email Instead
           </a>
           <button
             onClick={() => setIsSubmitted(false)}
@@ -321,20 +323,18 @@ export default function QuoteForm() {
       <div className="pt-2 flex flex-col sm:flex-row gap-4">
         <button
           type="submit"
-          className="flex-1 btn-editorial-gold py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
-        >
-          <span>Transmit Quotation Request</span>
-          <i className="fa-solid fa-paper-plane text-[11px]" />
-        </button>
-
-        <a
-          href={`https://wa.me/971553424700?text=${whatsappMessage}`}
-          target="_blank"
-          rel="noopener noreferrer"
           className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors inline-flex items-center justify-center gap-2"
         >
           <i className="fa-brands fa-whatsapp text-lg" />
-          <span>Send via WhatsApp Desk</span>
+          <span>Send Request via WhatsApp</span>
+        </button>
+
+        <a
+          href={emailUrl}
+          className="flex-1 btn-editorial-gold py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
+        >
+          <i className="fa-solid fa-envelope text-[11px]" />
+          <span>Send by Email Instead</span>
         </a>
       </div>
     </form>
