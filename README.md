@@ -4,15 +4,16 @@
 
 **Live: [swiftsailship.com](https://www.swiftsailship.com)**
 
-The website of Swift Sail Shipping LLC, a Dubai-based freight forwarding and logistics company. Built with Next.js 16, Tailwind CSS v4 and Framer Motion, and deployed on Vercel from `main`.
+The website of Swift Sail Shipping LLC, a Dubai-based freight forwarding and logistics company. Built with Next.js 16 and Tailwind CSS v4, and deployed on Vercel from `main`.
 
-![Swift Sail homepage: hero, quote and cargo-calculator calls to action, and headline figures](docs/images/home.png)
+![Swift Sail homepage: "Freight forwarding and customs clearance in Dubai", quote and WhatsApp buttons, a container ship at port](docs/images/home.png)
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Landing page: hero, services, trade tools, interactive route globe |
+| `/` | Landing page: what we do, services, the shipment journey, quote call to action |
+| `/tools` | Trade tools (below) |
 | `/about` | Company information and team |
 | `/services` | Freight and logistics service offerings |
 | `/how-it-works` | Step-by-step process explanation |
@@ -22,14 +23,14 @@ The website of Swift Sail Shipping LLC, a Dubai-based freight forwarding and log
 
 ## Trade tools
 
-On the homepage, all client-side:
+On `/tools`, all client-side:
 
 - **Cargo calculator**: CBM, air volumetric and chargeable weight, ocean W/M revenue tons, and a container recommendation. "Get a quote" carries the figures into the quote form.
 - **Customs duty guide**, **Incoterms matrix** and **trade corridors**: reference tools for UAE importers.
 
 ## How quote requests reach the desk
 
-There is no backend. Submitting the quote form opens WhatsApp with the request pre-filled to the operations desk, and the customer presses send. **Send by Email Instead** opens the same request as an email to info@swiftsailship.com.
+There is no backend. **Send the request on WhatsApp** opens WhatsApp with the request pre-filled to the operations desk, and the customer presses send. **Send the request by email** opens the same request as an email to info@swiftsailship.com. Contact details live in `src/lib/site.ts`.
 
 ## Tech Stack
 
@@ -37,10 +38,7 @@ There is no backend. Submitting the quote form opens WhatsApp with the request p
 |-------|-----------|
 | Framework | Next.js 16 (App Router) |
 | Styling | Tailwind CSS v4 |
-| Animation | Framer Motion |
-| Globe | cobe |
 | Language | TypeScript |
-| UI Components | Radix UI + shadcn/ui |
 | Hosting | Vercel (production deploys from `main`) |
 
 ## Getting Started
