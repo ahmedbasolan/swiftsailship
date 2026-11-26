@@ -1,248 +1,142 @@
-import Link from "next/link";
-import { Metadata } from "next";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
+import type { Metadata } from "next";
+import { NextStep } from "@/components/layout/journey";
+import { PageHeader } from "@/components/layout/page-header";
+import { photos, site } from "@/lib/site";
+
+const title = "How freight forwarding works, in six stages";
+const description =
+  "The six stages of a shipment with Swift Sail Shipping: quote, booking, export documents, transit, UAE customs clearance and delivery to your door.";
 
 export const metadata: Metadata = {
-  title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
-  description:
-    "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
-  alternates: {
-    canonical: "https://www.swiftsailship.com/how-it-works",
-  },
-  openGraph: {
-    type: "website",
-    title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
-    description:
-      "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
-    url: "https://www.swiftsailship.com/how-it-works",
-    images: ["/assets/img/og-default.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "How It Works  The Freight Lifecycle | Swift Sail Shipping L.L.C.",
-    description:
-      "Explore the rigorous 6-stage international freight forwarding process managed by Swift Sail Shipping - from cargo engineering and booking to UAE customs clearance and final consignee handover.",
-    images: ["/assets/img/og-default.jpg"],
-  },
+  title,
+  description,
+  alternates: { canonical: `${site.url}/how-it-works` },
+  openGraph: { title, description, url: `${site.url}/how-it-works` },
 };
 
 const stages = [
   {
-    number: "01",
-    phase: "PHASE I: INITIATION & ROUTE ENGINEERING",
-    title: "Consignment Analysis & Rate Structure",
+    title: "Quote and route",
     summary:
-      "We review your cargo specifications (weight, volume, HS classification, hazardous class) and match them with optimal carrier loops and transit windows.",
+      "We look at the weight, the volume, the tariff code and any hazard class, then match the cargo to a carrier and a transit time.",
     details: [
-      "Volumetric CBM calculation & container stuffing optimization",
-      "Route feasibility comparison (Sea FCL/LCL vs. Air Express)",
-      "Incoterms® 2020 alignment (FOB, CIF, EXW, DDP)",
-      "Transparent itemized commercial freight quotation",
+      "Volume (CBM) and container plan",
+      "Sea FCL, sea LCL and air compared",
+      "Incoterm agreed: FOB, CIF, EXW or DDP",
+      "An itemised quote",
     ],
   },
   {
-    number: "02",
-    phase: "PHASE II: BOOKING & CARRIER ALLOCATION",
-    title: "Space Confirmation & Equipment Release",
-    summary:
-      "Securing priority vessel slot allocation with global shipping lines or airline freight charters.",
+    title: "Booking",
+    summary: "We confirm the space with the shipping line or the airline and release the container.",
     details: [
-      "Container Release Order (CRO) generation",
-      "Empty container pickup from port depot",
-      "Factory or warehouse stuffing supervision",
-      "VGM (Verified Gross Mass) SOLAS compliance certification",
+      "Container release order",
+      "Empty container collected from the depot",
+      "Loading supervised at the factory or warehouse",
+      "Verified gross mass (VGM) certificate",
     ],
   },
   {
-    number: "03",
-    phase: "PHASE III: EXPORT DOCUMENTATION",
-    title: "Regulatory Export Formalities",
-    summary:
-      "Precision preparation of all statutory export documents to ensure unhindered border crossings.",
+    title: "Export documents",
+    summary: "We prepare the documents the origin country and the UAE both ask for.",
     details: [
-      "Export declaration filing with origin customs authorities",
-      "Original Bill of Lading (B/L) or Master Air Waybill (MAWB) draft issuance",
-      "Certificate of Origin (COO) Chamber of Commerce attestation",
-      "Commercial Invoice and packing list notarization",
+      "Export declaration at origin",
+      "Bill of lading or air waybill draft",
+      "Certificate of origin attested by the chamber of commerce",
+      "Commercial invoice and packing list",
     ],
   },
   {
-    number: "04",
-    phase: "PHASE IV: TRANSIT & ACTIVE VOYAGE MONITORING",
-    title: "Sea & Air Transit Execution",
-    summary:
-      "Continuous tracking throughout international waters or flight paths with 24/7 client telemetry updates.",
+    title: "Transit",
+    summary: "We track the vessel or the flight and tell you when the dates change.",
     details: [
-      "Carrier milestone tracking (Origin Departure → Transshipment → ETA)",
-      "Reefer temperature sensor monitoring for perishables",
-      "Early arrival notices (NOA) sent to consignee",
-      "Pre-clearance documentation dispatched to UAE customs broker",
+      "Departure, transhipment and arrival updates",
+      "Temperature records for reefer cargo",
+      "Arrival notice sent to the consignee",
+      "Documents sent ahead for pre-clearance",
     ],
   },
   {
-    number: "05",
-    phase: "PHASE V: UAE PORT CUSTOMS CLEARANCE",
-    title: "Mirsal 2 Customs Declaration & Inspection",
-    summary:
-      "Immediate processing upon arrival at Jebel Ali Port, Port Khalid, or DXB Air Cargo Terminal.",
+    title: "UAE customs clearance",
+    summary: "On arrival at Jebel Ali, Port Khalid or the air cargo terminal we file the declaration and pay the duty.",
     details: [
-      "Digital submission on Dubai Customs Mirsal 2 portal",
-      "Duty assessment (5%) and 5% UAE VAT settlement",
-      "Dubai Municipality Food Safety or TDRA inspection liaison",
-      "Electronic Customs Gate Pass & VCC generation",
+      "Declaration filed in Dubai Customs' Mirsal 2 system",
+      "5% duty and 5% VAT settled",
+      "Dubai Municipality or TDRA inspection arranged",
+      "Customs gate pass issued",
     ],
   },
   {
-    number: "06",
-    phase: "PHASE VI: TERMINAL RELEASE & LAST-MILE DELIVERY",
-    title: "Consignee Handover & Final Proof of Delivery",
-    summary:
-      "Direct container haulage or palletized last-mile distribution across all UAE Emirates and GCC destinations.",
+    title: "Delivery",
+    summary: "We collect the cargo from the terminal and deliver it anywhere in the UAE or onward into the GCC.",
     details: [
-      "Port delivery order (D/O) collection & terminal handling charges (THC) settlement",
-      "Heavy-duty lowbed or curtain-side truck transport to client warehouse",
-      "Unloading supervision and container de-stuffing",
-      "Signed Proof of Delivery (POD) and commercial file archiving",
+      "Delivery order and terminal charges settled",
+      "Truck or low-bed trailer to your warehouse",
+      "Unloading supervised",
+      "Signed proof of delivery",
     ],
   },
 ];
 
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        { "@type": "ListItem", position: 2, name: "Process", item: `${site.url}/how-it-works` },
+      ],
+    },
+    {
+      "@type": "HowTo",
+      name: "How a shipment moves with Swift Sail Shipping",
+      step: stages.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.title,
+        text: s.summary,
+      })),
+    },
+  ],
+};
+
 export default function HowItWorksPage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
-      {/* Hero Header */}
-      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="editorial-stamp text-[#C5A47E]">
-              OPERATIONAL BLUEPRINT • REVISION 2026
-            </span>
-            <span className="text-xs font-mono text-gray-400">
-              END-TO-END FREIGHT EXECUTION
-            </span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight mb-6">
-            The Freight Lifecycle: <br />
-            <span className="gold-gradient-text">6 Stages of Precision</span>
-          </h1>
-
-          <p className="text-lg text-gray-300 font-sans font-light max-w-3xl leading-relaxed">
-            From initial cargo volumetric engineering to final UAE customs Gate Pass release, every single step is managed by dedicated logistics specialists.
-          </p>
-        </div>
-      </header>
-
-      {/* Main 6-Stage Visual Workflow */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-        <div className="space-y-12">
-          {stages.map((stage) => (
-            <div
-              key={stage.number}
-              className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-12 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
-            >
-              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
-                {/* Stage Badge & Header */}
-                <div className="lg:w-1/3">
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <span className="text-4xl sm:text-5xl font-serif font-bold text-[#A37F55]">
-                      {stage.number}
-                    </span>
-                    <span className="text-[11px] font-mono text-gray-500 dark:text-gray-400 uppercase tracking-widest block">
-                      {stage.phase}
-                    </span>
-                  </div>
-                  <h2 className="text-2xl font-serif font-bold text-slate-950 dark:text-white mt-2">
-                    {stage.title}
-                  </h2>
-                </div>
-
-                {/* Summary & Specific Operations */}
-                <div className="lg:w-2/3 space-y-4">
-                  <p className="text-slate-700 dark:text-gray-300 font-sans text-sm sm:text-base leading-relaxed">
-                    {stage.summary}
-                  </p>
-
-                  <div className="pt-4 border-t border-gray-200 dark:border-white/10">
-                    <span className="text-xs font-mono text-[#A37F55] uppercase tracking-wider block mb-2">
-                      Key Deliverables & Protocols:
-                    </span>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-slate-700 dark:text-gray-300">
-                      {stage.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <i className="fa-solid fa-check text-emerald-600 mt-0.5" />
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Action Callout */}
-        <div className="mt-20 p-8 sm:p-12 bg-[#070E18] text-white rounded-lg border border-[#C5A47E]/30 text-center space-y-6">
-          <span className="editorial-stamp text-[#C5A47E]">
-            READY TO COMMENCE YOUR SHIPMENT?
-          </span>
-          <h3 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-            Partner with Swift Sail for Flawless Execution
-          </h3>
-          <p className="text-sm text-gray-300 max-w-2xl mx-auto font-sans leading-relaxed">
-            Our operations team is available around the clock to calculate rates, review export paperwork, and manage customs clearance.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
-            <Link href="/get-quote">
-              <ShimmerButton
-                shimmerColor="#F5E6D3"
-                background="linear-gradient(135deg, #C5A47E 0%, #A37F55 100%)"
-                borderRadius="6px"
-                className="px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-lg"
-              >
-                <span className="text-[#070E18]">Get Your Custom Shipping Plan</span>
-              </ShimmerButton>
-            </Link>
-            <a
-              href="https://wa.me/971553424700"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold px-6 py-3.5 rounded uppercase tracking-wider transition-colors inline-flex items-center gap-2"
-            >
-              <i className="fa-brands fa-whatsapp text-base" />
-              <span>WhatsApp Operations</span>
-            </a>
-          </div>
-        </div>
-      </main>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.swiftsailship.com"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "How It Works",
-                "item": "https://www.swiftsailship.com/how-it-works"
-              }
-            ]
-          })
-        }}
+    <>
+      <PageHeader
+        step={2}
+        image={photos.gantry}
+        title="Six stages from quote to delivery"
+        lead="What happens to a shipment, in order, and what you receive from us at each stage."
       />
-    </div>
+
+      <section className="section">
+        <ol className="wrap rows">
+          {stages.map((stage, i) => (
+            <li key={stage.title} className="grid gap-6 py-10 lg:grid-cols-12 lg:gap-6">
+              <div className="lg:col-span-5">
+                <span className="step-num">{i + 1}</span>
+                <h2 className="t-h2 mt-3">{stage.title}</h2>
+              </div>
+              <div className="lg:col-span-6 lg:col-start-7">
+                <p className="t-lead">{stage.summary}</p>
+                <ul className="mt-5 grid gap-x-6 gap-y-2 text-ink-soft sm:grid-cols-2">
+                  {stage.details.map((d) => (
+                    <li key={d} className="border-t border-line pt-2">
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <NextStep step={2} />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    </>
   );
 }

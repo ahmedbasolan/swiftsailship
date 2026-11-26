@@ -111,157 +111,95 @@ export function TradeCorridors() {
   const active = CORRIDORS.find((c) => c.id === activeCorridorId) || CORRIDORS[0];
 
   return (
-    <div className="bg-[#070E18] text-white border border-[#C5A47E]/30 rounded-lg p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#C5A47E]/20 mb-8">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="editorial-stamp text-[#C5A47E]">
-                PORT & CORRIDOR DIRECTORY • MARITIME SCHEDULES
-              </span>
-              <span className="text-xs font-mono text-gray-400">VERIFIED TRANSIT BENCHMARKS</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-              Major Trade Corridors & Port Transit Benchmarks
-            </h3>
-            <p className="text-sm text-gray-300 mt-1">
-              Commercial sailing schedules and air freight transit windows connecting UAE sovereign gateways with the world.
-            </p>
-          </div>
-
-          {/* Region Filter */}
-          <div className="flex flex-wrap gap-1.5 self-start md:self-auto">
-            {regions.map((region) => (
-              <button
-                key={region}
-                onClick={() => setSelectedRegion(region)}
-                className={`px-3 py-1.5 text-[11px] font-mono uppercase tracking-wider rounded transition-all ${
-                  selectedRegion === region
-                    ? "bg-[#C5A47E] text-[#070E18] font-bold"
-                    : "bg-[#112236] text-gray-300 hover:text-white border border-gray-800"
-                }`}
-              >
-                {region}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 2-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-          {/* Corridor Selection List */}
-          <div className="lg:col-span-5 space-y-2">
-            {filtered.map((c) => {
-              const isSelected = c.id === active.id;
-              return (
-                <button
-                  key={c.id}
-                  onClick={() => setActiveCorridorId(c.id)}
-                  className={`w-full text-left p-4 rounded border transition-all ${
-                    isSelected
-                      ? "bg-[#112236] border-[#C5A47E] text-white shadow-lg"
-                      : "bg-[#0A1320] border-gray-800 text-gray-400 hover:border-gray-700 hover:text-gray-200"
-                  }`}
-                >
-                  <div className="flex items-center justify-between text-xs font-mono text-[#C5A47E] mb-1">
-                    <span>{c.originCode} ⇄ {c.destCode}</span>
-                    <span className="text-[10px] text-gray-500 uppercase">{c.region}</span>
-                  </div>
-                  <div className="font-serif font-bold text-sm text-white line-clamp-1">
-                    {c.destination}
-                  </div>
-                  <div className="text-xs font-mono text-emerald-400 mt-1 flex items-center gap-1.5">
-                    <i className="fa-solid fa-ship text-[10px]" />
-                    <span>Sea: {c.seaTransitDays.split("(")[0]}</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Corridor Dossier */}
-          <div className="lg:col-span-7 bg-[#0D1B2A] border border-[#C5A47E]/30 rounded-lg p-6 sm:p-8 space-y-6">
-            <div className="border-b border-[#C5A47E]/20 pb-4">
-              <div className="flex items-center gap-2 text-xs font-mono text-[#C5A47E] mb-1">
-                <span>TRADE LANE DOSSIER: {active.originCode} → {active.destCode}</span>
-              </div>
-              <h4 className="text-2xl font-serif font-bold text-white">
-                {active.origin} ⇄ {active.destination}
-              </h4>
-            </div>
-
-            {/* Transit Specs */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-[#112236] rounded border border-gray-800">
-                <div className="flex items-center gap-2 text-xs font-mono text-gray-400 mb-1">
-                  <i className="fa-solid fa-ship text-[#C5A47E]" />
-                  <span>Ocean Freight Transit</span>
-                </div>
-                <span className="text-lg font-serif font-bold text-emerald-400 block">
-                  {active.seaTransitDays}
-                </span>
-                <span className="text-[11px] font-mono text-gray-400 mt-1 block">
-                  FCL & LCL Consolidated Containers
-                </span>
-              </div>
-
-              <div className="p-4 bg-[#112236] rounded border border-gray-800">
-                <div className="flex items-center gap-2 text-xs font-mono text-gray-400 mb-1">
-                  <i className="fa-solid fa-plane text-[#C5A47E]" />
-                  <span>Air Cargo Velocity</span>
-                </div>
-                <span className="text-lg font-serif font-bold text-white block">
-                  {active.airTransitHours}
-                </span>
-                <span className="text-[11px] font-mono text-gray-400 mt-1 block">
-                  Direct Daily Cargo Freighters
-                </span>
-              </div>
-            </div>
-
-            {/* Sailing Frequency & Routing */}
-            <div className="space-y-3 text-xs font-mono">
-              <div className="p-3 bg-[#070E18] rounded border border-gray-800">
-                <span className="text-[#C5A47E] block uppercase mb-0.5">Carrier Sailing Frequency:</span>
-                <span className="text-gray-200">{active.frequency}</span>
-              </div>
-
-              <div className="p-3 bg-[#070E18] rounded border border-gray-800">
-                <span className="text-[#C5A47E] block uppercase mb-0.5">Navigational Routing Protocol:</span>
-                <span className="text-gray-200">{active.routing}</span>
-              </div>
-            </div>
-
-            {/* Key Commodities */}
-            <div>
-              <span className="text-xs font-mono text-[#C5A47E] uppercase tracking-wider block mb-2">
-                Typical Commodity Flow on this Corridor:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {active.keyCommodities.map((item, i) => (
-                  <span
-                    key={i}
-                    className="text-xs font-mono bg-[#112236] border border-gray-700 text-gray-300 px-3 py-1 rounded"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer Link */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#C5A47E]/20 text-xs font-mono text-gray-400">
-          <span>Looking for project breakbulk, chartering, or custom route rates?</span>
-          <Link
-            href={`/get-quote?origin=${encodeURIComponent(active.origin)}&destination=${encodeURIComponent(active.destination)}`}
-            className="btn-editorial-gold px-5 py-2.5 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5"
+    <div className="tool">
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Region">
+        {regions.map((region) => (
+          <button
+            key={region}
+            type="button"
+            className="chip"
+            aria-pressed={selectedRegion === region}
+            onClick={() => setSelectedRegion(region)}
           >
-            Inquire for this Corridor <i className="fa-solid fa-arrow-right text-[10px]" />
-          </Link>
+            {region === "All" ? "All regions" : region}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-6">
+        {/* Routes */}
+        <ul className="rows lg:col-span-5">
+          {filtered.map((c) => {
+            const isSelected = c.id === active.id;
+            return (
+              <li key={c.id}>
+                <button
+                  type="button"
+                  onClick={() => setActiveCorridorId(c.id)}
+                  aria-pressed={isSelected}
+                  className="group flex w-full items-center justify-between gap-4 py-4 text-left"
+                >
+                  <span>
+                    <span className={`block font-medium ${isSelected ? "text-accent" : "text-ink"}`}>
+                      {c.destination}
+                    </span>
+                    <span className="t-label">{c.seaTransitDays.split("(")[0].trim().toLowerCase()} by sea</span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`h-2 w-2 shrink-0 rounded-full ${isSelected ? "bg-accent" : "bg-transparent group-hover:bg-ink/20"}`}
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Detail */}
+        <div key={active.id} className="swap lg:col-span-6 lg:col-start-7" aria-live="polite">
+          <p className="t-label">
+            {active.originCode} to {active.destCode}
+          </p>
+          <h3 className="t-h3 mt-1">
+            {active.origin} to {active.destination}
+          </h3>
+
+          <dl className="mt-6 grid gap-6 rounded-lg bg-surface p-6 sm:grid-cols-2">
+            <div>
+              <dt className="t-label">By sea</dt>
+              <dd className="mt-1 font-medium">{active.seaTransitDays}</dd>
+            </div>
+            <div>
+              <dt className="t-label">By air, flying time</dt>
+              <dd className="mt-1 font-medium">{active.airTransitHours}</dd>
+            </div>
+          </dl>
+
+          <dl className="rows mt-6">
+            <div className="py-4">
+              <dt className="t-label">Sailings</dt>
+              <dd className="mt-1">{active.frequency}</dd>
+            </div>
+            <div className="py-4">
+              <dt className="t-label">Route</dt>
+              <dd className="mt-1">{active.routing}</dd>
+            </div>
+            <div className="py-4">
+              <dt className="t-label">Typical cargo</dt>
+              <dd className="mt-1">{active.keyCommodities.join(", ")}</dd>
+            </div>
+          </dl>
         </div>
+      </div>
+
+      <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-ink-soft">Typical times. Carriers change schedules, so ask us for the current sailing.</p>
+        <Link
+          href={`/get-quote?origin=${encodeURIComponent(active.origin)}&destination=${encodeURIComponent(active.destination)}`}
+          className="btn btn--primary"
+        >
+          Get a quote for this route
+        </Link>
       </div>
     </div>
   );

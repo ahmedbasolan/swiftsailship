@@ -1,30 +1,38 @@
 # Swift Sail Shipping L.L.C.
-> Licensed UAE freight forwarding, logistics, and customs brokerage company headquartered in Dubai.
+> Freight forwarder and customs broker in Dubai, United Arab Emirates, founded in 2011.
 
-Swift Sail Shipping L.L.C. is a Dubai-based sovereign freight forwarding and logistics operator providing ocean freight (FCL/LCL), air cargo, UAE customs brokerage (Mirsal 2), and project cargo/heavy-lift services. Operating from Dubai Maritime City, Jebel Ali Port, and Port Khalid Sharjah.
+Swift Sail Shipping L.L.C. arranges sea freight (FCL and LCL), air freight, UAE customs clearance and project cargo for importers, exporters and re-exporters. It works through Jebel Ali Port, Port Khalid Sharjah, Khalifa Port, Dubai International Airport (DXB) and Dubai World Central (DWC).
 
 ## Key facts
-- Phone: +971 55 342 4700
+- Phone and WhatsApp: +971 55 342 4700
 - Email: info@swiftsailship.com
-- Address: Tanvi Business Centre, M - 101, Abu Hail, Dubai, United Arab Emirates
-- Licenses: UAE Customs Brokerage (Mirsal 2), MOIAT industrial duty exemption
-- Coverage: Jebel Ali Port, Port Khalid Sharjah, Khalifa Port, DXB & DWC airports
+- Office: Tanvi Business Centre, M-101, Abu Hail, Dubai, United Arab Emirates
+- Hours: Monday to Friday 08:00 to 18:00, Saturday 09:00 to 14:00 (Dubai time)
+- Quotes: within two business hours during office hours
 
-## Core services
-- [Ocean Freight & Vessel Chartering](https://www.swiftsailship.com/services#ocean-freight): FCL/LCL consolidation, reefer, flat rack, open top
-- [Air Cargo Velocity & Charters](https://www.swiftsailship.com/services#air-cargo): NFO express, pharma/cold chain, IATA DG handling
-- [UAE Customs Brokerage & Free Zone Entry](https://www.swiftsailship.com/services#customs-clearance): Mirsal 2 declarations, duty exemptions
-- [Project Cargo & Heavy Lift Operations](https://www.swiftsailship.com/services#breakbulk-project): OOG, RoRo, route surveys
+## Services
+- [Sea freight](https://www.swiftsailship.com/services#ocean-freight): full container (FCL), shared container (LCL), reefer, flat rack and open top
+- [Air freight](https://www.swiftsailship.com/services#air-cargo): express and consolidated air cargo, temperature-controlled cargo, dangerous goods
+- [Customs clearance](https://www.swiftsailship.com/services#customs-clearance): Dubai Customs Mirsal 2 declarations, free zone transfers, permits, HS code classification
+- [Project cargo](https://www.swiftsailship.com/services#breakbulk-project): out-of-gauge containers, RoRo, heavy road transport
+
+## Tools
+- [CBM and container calculator](https://www.swiftsailship.com/tools#calculator)
+- [UAE customs duty and VAT guide](https://www.swiftsailship.com/tools#customs-guide)
+- [Incoterms 2020 comparison](https://www.swiftsailship.com/tools#incoterms)
+- [Transit times from Jebel Ali](https://www.swiftsailship.com/tools#corridors)
 
 ## Process
-- [How It Works](https://www.swiftsailship.com/how-it-works): 6-stage freight lifecycle
-- [Request a Quotation](https://www.swiftsailship.com/get-quote): rates within 2 business hours
+- [Six stages from quote to delivery](https://www.swiftsailship.com/how-it-works)
+- [Get a freight quote](https://www.swiftsailship.com/get-quote)
 
-## Trade intelligence (blog)
-- [Navigating Arabian Gulf & Red Sea Maritime Corridors in 2026](https://www.swiftsailship.com/blog/navigating-arabian-gulf-red-sea-maritime-corridors-2026)
-- [Mastering MOIAT Industrial Duty Exemptions under UAE Mirsal 2](https://www.swiftsailship.com/blog/mastering-moiat-industrial-duty-exemptions-uae-mirsal-2)
-- [FOB vs. CIF: Mitigating Demurrage Risk for GCC Importers](https://www.swiftsailship.com/blog/fob-vs-cif-mitigating-demurrage-risk-gcc-importers)
+## Guides
+- [UAE customs import process: clearing cargo at Jebel Ali](https://www.swiftsailship.com/blog/uae-customs-import-process-guide)
+- [Sea freight vs air freight for UAE importers](https://www.swiftsailship.com/blog/sea-freight-vs-air-freight-cost-decision-framework)
+- [Choosing the right container type](https://www.swiftsailship.com/blog/choosing-the-right-container-type-uae-shipment)
+- [FOB vs CIF: demurrage risk for GCC importers](https://www.swiftsailship.com/blog/fob-vs-cif-mitigating-demurrage-risk-gcc-importers)
+- [MOIAT industrial duty exemptions](https://www.swiftsailship.com/blog/mastering-moiat-industrial-duty-exemptions-uae-mirsal-2)
+- [Arabian Gulf and Red Sea shipping routes in 2026](https://www.swiftsailship.com/blog/navigating-arabian-gulf-red-sea-maritime-corridors-2026)
 
 ## Company
-- [About Swift Sail](https://www.swiftsailship.com/about)
-- [LinkedIn](https://www.linkedin.com/company/swift-sail-shipping)
+- [About Swift Sail Shipping](https://www.swiftsailship.com/about)

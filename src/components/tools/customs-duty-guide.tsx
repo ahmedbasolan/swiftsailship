@@ -42,7 +42,7 @@ const COMMODITIES: CommodityInfo[] = [
       "Bill of Lading",
       "VCC (Vehicle Clearance Certificate) issued by Dubai Customs upon release",
     ],
-    notes: "Swift Sail generates electronic VCCs directly through Dubai Customs Mirsal 2 integration for instant RTA registration.",
+    notes: "Dubai Customs issues the vehicle clearance certificate (VCC) through Mirsal 2 once the vehicle is released. The RTA needs it for registration.",
   },
   {
     category: "Electronics, Hardware & Semiconductors",
@@ -71,7 +71,7 @@ const COMMODITIES: CommodityInfo[] = [
       "Product Label Approval Certificate from Dubai Municipality",
       "Temperature Log Report (for Reefer containers)",
     ],
-    notes: "Strict cold-chain inspection at Jebel Ali Port and Port Khalid. Swift Sail arranges priority physical inspections to prevent demurrage on perishable reefer cargo.",
+    notes: "Chilled and frozen cargo is inspected at the port. Book the inspection early so the container does not sit on storage charges.",
   },
   {
     category: "Textiles, Garments & Footwear",
@@ -100,7 +100,7 @@ const COMMODITIES: CommodityInfo[] = [
       "Attested Commercial Invoice & COO",
       "Civil Defense Hazmat Transport Approval",
     ],
-    notes: "Swift Sail handles IMO Class 2 through 9 hazmat container movements directly through specialized Jebel Ali chemical gates.",
+    notes: "Dangerous goods need their approvals in place before the cargo arrives. The IMO class decides which authority signs off.",
   },
 ];
 
@@ -118,152 +118,91 @@ export function CustomsDutyGuide() {
   const active = filtered[selectedIdx] || COMMODITIES[0];
 
   return (
-    <div className="bg-[#070E18] text-white border border-[#C5A47E]/30 rounded-lg p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
-      <div className="relative z-10">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#C5A47E]/20 mb-8">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="editorial-stamp text-[#C5A47E]">
-                UAE CUSTOMS COMPLIANCE • GCC COMMON TARIFF
-              </span>
-              <span className="text-xs font-mono text-gray-400">MIRSAL 2 BROKERAGE DESK</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
-              UAE Customs Tariff & Document Clearance Guide
-            </h3>
-            <p className="text-sm text-gray-300 mt-1">
-              Official duty benchmarks, VAT application, and mandatory documentary prerequisites for seamless UAE port clearance.
-            </p>
-          </div>
+    <div className="tool">
+      <label htmlFor="duty-search" className="mb-1.5 block text-sm font-medium">
+        Search by type of goods or HS chapter
+      </label>
+      <input
+        id="duty-search"
+        type="search"
+        value={searchTerm}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+          setSelectedIdx(0);
+        }}
+        className="input max-w-md"
+      />
 
-          {/* Quick Search */}
-          <div className="relative w-full md:w-72">
-            <input
-              type="text"
-              placeholder="Search commodity or HS chapter..."
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                setSelectedIdx(0);
-              }}
-              className="w-full bg-[#112236] border border-gray-700 focus:border-[#C5A47E] rounded px-3 py-2 text-xs font-mono text-white placeholder-gray-500 outline-none pr-8"
-            />
-            <i className="fa-solid fa-magnifying-glass absolute right-3 top-2.5 text-xs text-gray-400" />
-          </div>
-        </div>
-
-        {/* 2-Column Editorial Explorer */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-          {/* Left Column: Commodity Selectors */}
-          <div className="lg:col-span-5 space-y-2 max-h-[480px] overflow-y-auto pr-1">
-            {filtered.map((item, idx) => {
-              const isSelected = item.category === active.category;
-              return (
+      <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-6">
+        {/* Goods */}
+        <ul className="rows lg:col-span-5">
+          {filtered.map((item, idx) => {
+            const isSelected = item.category === active.category;
+            return (
+              <li key={item.category}>
                 <button
-                  key={item.category}
+                  type="button"
                   onClick={() => setSelectedIdx(idx)}
-                  className={`w-full text-left p-4 rounded border transition-all text-xs font-mono ${
-                    isSelected
-                      ? "bg-[#112236] border-[#C5A47E] text-white shadow-lg"
-                      : "bg-[#0A1320] border-gray-800 text-gray-400 hover:border-gray-700 hover:text-gray-200"
-                  }`}
+                  aria-pressed={isSelected}
+                  className="group flex w-full items-center justify-between gap-4 py-4 text-left"
                 >
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[#C5A47E] font-bold">{item.hsChapter}</span>
-                    <span className="text-[10px] text-gray-500 uppercase">Tariff Schedule</span>
-                  </div>
-                  <div className="font-serif font-bold text-sm text-white line-clamp-1">
-                    {item.category}
-                  </div>
+                  <span>
+                    <span className={`block font-medium ${isSelected ? "text-accent" : "text-ink"}`}>
+                      {item.category}
+                    </span>
+                    <span className="t-label">{item.hsChapter}</span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`h-2 w-2 shrink-0 rounded-full ${isSelected ? "bg-accent" : "bg-transparent group-hover:bg-ink/20"}`}
+                  />
                 </button>
-              );
-            })}
-          </div>
+              </li>
+            );
+          })}
+          {filtered.length === 0 && <li className="py-4 text-ink-soft">No goods match that search.</li>}
+        </ul>
 
-          {/* Right Column: Detailed Regulatory Breakdown */}
-          <div className="lg:col-span-7 bg-[#0D1B2A] border border-[#C5A47E]/30 rounded-lg p-6 space-y-6">
-            <div className="border-b border-[#C5A47E]/20 pb-4">
-              <span className="text-xs font-mono text-[#C5A47E] uppercase tracking-wider block mb-1">
-                {active.hsChapter} • OFFICIAL UAE GCC TARIFF
-              </span>
-              <h4 className="text-xl sm:text-2xl font-serif font-bold text-white">
-                {active.category}
-              </h4>
+        {/* Detail */}
+        <div key={active.category} className="swap lg:col-span-6 lg:col-start-7" aria-live="polite">
+          <p className="t-label">{active.hsChapter}</p>
+          <h3 className="t-h3 mt-1">{active.category}</h3>
+
+          <dl className="mt-6 grid gap-6 rounded-lg bg-surface p-6 sm:grid-cols-2">
+            <div>
+              <dt className="t-label">Customs duty</dt>
+              <dd className="mt-1 font-medium">{active.dutyRate}</dd>
             </div>
-
-            {/* Duty & VAT Rates */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-3.5 bg-[#112236] rounded border border-gray-800">
-                <span className="text-[11px] font-mono uppercase text-gray-400 block mb-1">
-                  Customs Duty Rate
-                </span>
-                <span className="text-lg font-serif font-bold text-emerald-400">
-                  {active.dutyRate}
-                </span>
-              </div>
-              <div className="p-3.5 bg-[#112236] rounded border border-gray-800">
-                <span className="text-[11px] font-mono uppercase text-gray-400 block mb-1">
-                  UAE Value Added Tax (VAT)
-                </span>
-                <span className="text-lg font-serif font-bold text-[#C5A47E]">
-                  {active.vatRate}
-                </span>
-              </div>
+            <div>
+              <dt className="t-label">VAT</dt>
+              <dd className="mt-1 font-medium">{active.vatRate}</dd>
             </div>
-
-            {/* Special Regulatory Permit */}
             {active.specialPermit && (
-              <div className="p-3.5 bg-amber-950/20 border border-amber-500/30 rounded text-xs font-mono text-amber-200 flex items-start gap-2.5">
-                <i className="fa-solid fa-triangle-exclamation text-amber-400 mt-0.5" />
-                <div>
-                  <strong className="block text-white font-bold mb-0.5">
-                    Special Authority Approval Required:
-                  </strong>
-                  {active.specialPermit}
-                </div>
+              <div className="sm:col-span-2">
+                <dt className="t-label">Permit or approval</dt>
+                <dd className="mt-1">{active.specialPermit}</dd>
               </div>
             )}
+          </dl>
 
-            {/* Mandatory Documentation Checklist */}
-            <div>
-              <span className="text-xs font-mono text-[#C5A47E] uppercase tracking-wider block mb-2.5">
-                Mandatory Clearance Documentation Checklist:
-              </span>
-              <ul className="space-y-2 text-xs font-mono text-gray-300">
-                {active.mandatoryDocs.map((doc, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <i className="fa-solid fa-circle-check text-emerald-400 mt-0.5" />
-                    <span>{doc}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <h4 className="mt-8 font-sans text-base font-medium">Documents customs asks for</h4>
+          <ul className="rows mt-3">
+            {active.mandatoryDocs.map((doc) => (
+              <li key={doc} className="py-3 text-ink-soft">
+                {doc}
+              </li>
+            ))}
+          </ul>
 
-            {/* Operational Notes */}
-            <div className="text-xs font-sans text-gray-300 bg-[#070E18] p-3.5 rounded border border-gray-800 leading-relaxed">
-              <strong className="text-white font-mono text-xs uppercase block mb-1">
-                Customs Brokerage Insight:
-              </strong>
-              {active.notes}
-            </div>
-          </div>
+          <p className="mt-6 text-ink-soft">{active.notes}</p>
         </div>
+      </div>
 
-        {/* Footer Support Desk */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#C5A47E]/20 text-xs font-mono text-gray-400">
-          <div>
-            <span>Need Custom HS Classification or Duty Exemption Advice? </span>
-            <span className="text-white font-bold">Contact Swift Sail Customs Desk</span>
-          </div>
-
-          <Link
-            href="/get-quote?service=customs-clearance"
-            className="btn-editorial-gold px-5 py-2.5 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5"
-          >
-            Consult Customs Broker <i className="fa-solid fa-arrow-right text-[10px]" />
-          </Link>
-        </div>
+      <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-ink-soft">Rates are a guide. The HS code of your goods decides the duty.</p>
+        <Link href="/get-quote?service=customs-clearance" className="btn btn--primary">
+          Get a customs clearance quote
+        </Link>
       </div>
     </div>
   );

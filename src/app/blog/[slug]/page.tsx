@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Arrow } from "@/components/ui/arrow";
+import { postPhotos, site } from "@/lib/site";
 
 interface Article {
   slug: string;
@@ -221,6 +224,10 @@ const articles: Record<string, Article> = {
   },
 };
 
+/** Search results show about 155 characters; cut on a word and close the sentence. */
+const clip = (text: string) =>
+  text.length <= 158 ? text : text.slice(0, 155).replace(/[\s,;:—-]+\S*$/, "") + "...";
+
 export function generateStaticParams() {
   return Object.values(articles).map((a) => ({ slug: a.slug }));
 }
@@ -235,25 +242,25 @@ export async function generateMetadata({
   if (!article) return {};
 
   return {
-    title: article.title,
-    description: article.description,
+    title: { absolute: article.title },
+    description: clip(article.description),
     alternates: {
       canonical: `https://www.swiftsailship.com/blog/${article.slug}`,
     },
     openGraph: {
       type: "article",
-      title: `${article.title} | Swift Sail Shipping L.L.C.`,
+      title: article.title,
       description: article.description,
       url: `https://www.swiftsailship.com/blog/${article.slug}`,
       publishedTime: article.dateISO,
       authors: [article.author],
-      images: ["/assets/img/og-default.jpg"],
+      images: ["/assets/img/og-ship.jpg"],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${article.title} | Swift Sail Shipping L.L.C.`,
+      title: article.title,
       description: article.description,
-      images: ["/assets/img/og-default.jpg"],
+      images: ["/assets/img/og-ship.jpg"],
     },
   };
 }
@@ -276,73 +283,73 @@ export default async function BlogArticlePage({
     headline: article.title,
     description: article.description,
     datePublished: article.dateISO,
-    author: { "@type": "Organization", name: article.author },
-    publisher: { "@type": "Organization", name: "Swift Sail Shipping L.L.C." },
+    author: { "@type": "Organization", name: "Swift Sail Shipping L.L.C.", url: site.url },
+    publisher: { "@id": `${site.url}/#business` },
     mainEntityOfPage: `https://www.swiftsailship.com/blog/${article.slug}`,
-    image: "https://www.swiftsailship.com/assets/img/og-default.jpg",
+    image: "https://www.swiftsailship.com/assets/img/og-ship.jpg",
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${site.url}/blog` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${site.url}/blog/${article.slug}` },
+    ],
+  };
+
+  const sentence = (text: string) => text.charAt(0) + text.slice(1).toLowerCase();
+  const dateLabel = article.date.replace(/^0/, "").replace(/[A-Z]+/, (m) => m.charAt(0) + m.slice(1).toLowerCase());
+
   return (
-    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      {/* Article Header */}
-      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center text-xs font-mono text-[#C5A47E] mb-6 hover:text-white transition-colors"
-          >
-            <i className="fa-solid fa-arrow-left mr-2" /> Back to Dispatch Journal
-          </Link>
-
-          <div className="flex items-center gap-3 mb-4">
-            <span className="editorial-stamp text-[#C5A47E]">
-              {article.issue} • {article.category}
-            </span>
-            <span className="text-gray-400 text-xs font-mono">
-              {article.readTime}
-            </span>
+      <article>
+        <header className="border-b border-line">
+          <div className="wrap pb-14 pt-12 lg:pb-20 lg:pt-16">
+            <Link href="/blog" className="link">
+              All guides
+            </Link>
+            <h1 className="t-h1 mt-8 max-w-[24ch] !text-[clamp(2rem,2.4vw+1.2rem,3.5rem)]">{article.title}</h1>
+            <p className="t-label mt-6">
+              {sentence(article.category)} · <time dateTime={article.dateISO}>{dateLabel}</time> ·{" "}
+              {article.readTime.toLowerCase()}
+            </p>
           </div>
+        </header>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight mb-6">
-            {article.title}
-          </h1>
-
-          <div className="flex items-center gap-4 text-xs font-mono text-gray-400 pt-2 border-t border-gray-800">
-            <span>Date: {article.date}</span>
-            <span>•</span>
-            <span>Author: {article.author}</span>
+        <div className="wrap pt-12 lg:pt-16">
+          <div className="photo aspect-[16/9] sm:aspect-[21/9]">
+            <Image
+              src={postPhotos[article.slug].src}
+              alt={postPhotos[article.slug].alt}
+              fill
+              priority
+              sizes="(min-width: 1440px) 1280px, 100vw"
+            />
           </div>
         </div>
-      </header>
 
-      {/* Article Content */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-        <article className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 sm:p-14 shadow-sm text-slate-900 dark:text-white">
-          <div
-            className="prose prose-slate dark:prose-invert max-w-none font-sans"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+        <div className="wrap pb-24 pt-12 lg:pt-16">
+          <div className="article max-w-[68ch]" dangerouslySetInnerHTML={{ __html: article.content }} />
+        </div>
+      </article>
 
-          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-            <span className="text-slate-600 dark:text-gray-400">
-              Published by Swift Sail Trade Intelligence Desk, Dubai
-            </span>
-            <Link
-              href="/get-quote"
-              className="btn-editorial-gold px-6 py-3 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"
-            >
-              <span>Consult Our Trade Officers</span>
-              <i className="fa-solid fa-arrow-right text-[10px]" />
-            </Link>
-          </div>
-        </article>
-      </main>
-    </div>
+      <section className="section ground-surface">
+        <div className="wrap">
+          <h2 className="t-h2">Prices for your shipment</h2>
+          <p className="t-lead muted measure mt-4">
+            Send the route, the weight and the volume. We reply with an itemised price within two business hours.
+          </p>
+          <Link href={site.ctaHref} className="btn btn--primary mt-8">
+            {site.cta}
+            <Arrow />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

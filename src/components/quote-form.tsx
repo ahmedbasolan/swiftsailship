@@ -2,340 +2,260 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { site } from "@/lib/site";
 
-const WHATSAPP_DESK = "971553424700";
-const EMAIL_DESK = "info@swiftsailship.com";
+const serviceModes = [
+  ["ocean-fcl", "Sea freight, full container (FCL)"],
+  ["ocean-lcl", "Sea freight, shared container (LCL)"],
+  ["air-freight", "Air freight"],
+  ["customs-clearance", "UAE customs clearance only"],
+  ["project-cargo", "Project cargo"],
+  ["warehousing-reexport", "Free zone storage and re-export"],
+] as const;
+
+const incoterms = [
+  ["CIF", "CIF: cost, insurance and freight"],
+  ["FOB", "FOB: free on board"],
+  ["EXW", "EXW: ex works"],
+  ["DDP", "DDP: delivered duty paid"],
+  ["DAP", "DAP: delivered at place"],
+  ["CFR", "CFR: cost and freight"],
+  ["FCA", "FCA: free carrier"],
+  ["unsure", "Not sure yet"],
+] as const;
+
+/** A service id from another page's link, mapped to this form's options. */
+const serviceAlias: Record<string, string> = { "ocean-freight": "ocean-fcl" };
+
+const fieldClass =
+  "h-12 w-full rounded-lg border border-ink/25 bg-white px-3.5 text-base text-ink outline-none transition-colors focus:border-accent aria-[invalid=true]:border-[#b3261e]";
+const labelClass = "mb-1.5 block text-sm font-medium text-ink";
+
+type Field = "name" | "email" | "phone" | "origin" | "destination";
+
+const required: Record<Field, string> = {
+  name: "Write your name",
+  email: "Write an email address with an @",
+  phone: "Write a phone number with its country code",
+  origin: "Write the port or city the cargo leaves from",
+  destination: "Write the port or city the cargo goes to",
+};
 
 export default function QuoteForm() {
   const searchParams = useSearchParams();
 
-  // Pre-fill from URL query parameters (e.g. from Calculator or Corridor click).
-  // Read once for the initial state rather than with setState in an effect.
+  // Pre-filled from the link that brought the visitor here (a calculator result, a service page).
   const [formData, setFormData] = useState(() => {
-    const mode = searchParams.get("mode");
+    const get = (key: string) => searchParams.get(key) || "";
+    const service = get("service");
     return {
       name: "",
       email: "",
       phone: "",
       company: "",
-      serviceMode: searchParams.get("service") || (mode === "air" ? "air-freight" : "ocean-fcl"),
-      incoterm: searchParams.get("incoterm") || "CIF",
-      origin: searchParams.get("origin") || "",
-      destination: searchParams.get("destination") || "",
-      cbm: searchParams.get("cbm") || "",
-      weight: searchParams.get("weight") || "",
+      serviceMode: service
+        ? serviceAlias[service] || service
+        : get("mode") === "air"
+          ? "air-freight"
+          : "ocean-fcl",
+      incoterm: get("incoterm") || "CIF",
+      origin: get("origin"),
+      destination: get("destination"),
+      cbm: get("cbm"),
+      weight: get("weight"),
       readyDate: "",
       hsCodeOrCommodity: "",
       notes: "",
     };
   });
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
+  const [status, setStatus] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    const next: Partial<Record<Field, string>> = {};
+    (Object.keys(required) as Field[]).forEach((key) => {
+      const value = formData[key].trim();
+      if (!value || (key === "email" && !/^\S+@\S+\.\S+$/.test(value))) next[key] = required[key];
     });
+    setErrors(next);
+    const first = Object.keys(next)[0];
+    if (first) {
+      document.getElementById(`quote-${first}`)?.focus();
+      const count = Object.keys(next).length;
+      setStatus(`${count} ${count === 1 ? "field needs" : "fields need"} a look before this can be sent.`);
+      return false;
+    }
+    return true;
   };
 
-  const message =
-    `*Swift Sail Shipping Quotation Request*\n\n` +
-      `• *Client Name:* ${formData.name || "N/A"}\n` +
-      `• *Company:* ${formData.company || "N/A"}\n` +
-      `• *Email:* ${formData.email || "N/A"}\n` +
-      `• *Phone:* ${formData.phone || "N/A"}\n` +
-      `• *Service Mode:* ${formData.serviceMode}\n` +
-      `• *Incoterm:* ${formData.incoterm}\n` +
-      `• *Origin:* ${formData.origin || "Not specified"}\n` +
-      `• *Destination:* ${formData.destination || "Not specified"}\n` +
-      `• *Cargo Volume:* ${formData.cbm ? `${formData.cbm} CBM` : "N/A"}\n` +
-      `• *Gross Weight:* ${formData.weight ? `${formData.weight} kg` : "N/A"}\n` +
-      `• *Commodity/HS Code:* ${formData.hsCodeOrCommodity || "General Cargo"}\n` +
-      `• *Additional Notes:* ${formData.notes || "None"}`;
+  const label = (list: readonly (readonly [string, string])[], value: string) =>
+    list.find(([v]) => v === value)?.[1] ?? value;
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_DESK}?text=${encodeURIComponent(message)}`;
-  const emailUrl =
-    `mailto:${EMAIL_DESK}?subject=${encodeURIComponent(
-      `Quotation request: ${formData.origin || "origin"} to ${formData.destination || "destination"}`
-    )}` + `&body=${encodeURIComponent(message.replace(/\*/g, ""))}`;
+  const lines = [
+    `Name: ${formData.name}`,
+    formData.company && `Company: ${formData.company}`,
+    `Email: ${formData.email}`,
+    `Phone: ${formData.phone}`,
+    `Service: ${label(serviceModes, formData.serviceMode)}`,
+    `Incoterm: ${label(incoterms, formData.incoterm)}`,
+    `From: ${formData.origin}`,
+    `To: ${formData.destination}`,
+    formData.cbm && `Volume: ${formData.cbm} CBM`,
+    formData.weight && `Gross weight: ${formData.weight} kg`,
+    formData.readyDate && `Cargo ready: ${formData.readyDate}`,
+    formData.hsCodeOrCommodity && `Goods: ${formData.hsCodeOrCommodity}`,
+    formData.notes && `Notes: ${formData.notes}`,
+  ].filter(Boolean);
 
-  // There is no backend: a request reaches the desk only when the customer sends
-  // it. The form used to say "dispatched" while sending nothing at all.
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    setIsSubmitted(true);
+  // The request leaves through the visitor's own WhatsApp or mail app, so nothing
+  // is shown as sent until they have sent it themselves.
+  const send = (channel: "whatsapp" | "email") => {
+    if (!validate()) return;
+    const body = ["Freight quote request", "", ...lines].join("\n");
+    if (channel === "whatsapp") {
+      window.open(`${site.whatsappHref}?text=${encodeURIComponent(body)}`, "_blank", "noopener,noreferrer");
+      setStatus("WhatsApp has opened with your request. Press send there to reach us.");
+    } else {
+      window.location.href = `${site.emailHref}?subject=${encodeURIComponent(
+        `Freight quote request: ${formData.origin} to ${formData.destination}`
+      )}&body=${encodeURIComponent(body)}`;
+      setStatus("Your mail app has opened with your request. Press send there to reach us.");
+    }
   };
 
-  if (isSubmitted) {
+  const text = (
+    name: keyof typeof formData,
+    labelText: string,
+    props: React.InputHTMLAttributes<HTMLInputElement> = {}
+  ) => {
+    const error = errors[name as Field];
     return (
-      <div className="bg-white dark:bg-[#070E18] border border-gray-300 dark:border-[#C5A47E]/40 rounded-lg p-8 text-center text-slate-900 dark:text-white space-y-4">
-        <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-emerald-600 dark:text-emerald-400 text-2xl">
-          <i className="fa-solid fa-check" />
-        </div>
-        <h3 className="text-2xl font-serif font-bold text-slate-950 dark:text-white">
-          Finish Sending in WhatsApp
-        </h3>
-        <p className="text-sm font-sans text-slate-600 dark:text-gray-300 max-w-md mx-auto leading-relaxed">
-          Your request is ready in a WhatsApp chat with our Dubai desk. Press send there and we will reply with an itemized rate sheet within 2 business hours. If WhatsApp did not open, use one of the buttons below.
-        </p>
-        <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
-          >
-            <i className="fa-brands fa-whatsapp text-base" /> Open WhatsApp
-          </a>
-          <a
-            href={emailUrl}
-            className="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-[#C5A47E]/40 text-slate-900 dark:text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 rounded"
-          >
-            <i className="fa-solid fa-envelope text-base" /> Email Instead
-          </a>
-          <button
-            onClick={() => setIsSubmitted(false)}
-            className="text-xs font-mono text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white px-4 py-3"
-          >
-            Submit Another Request
-          </button>
-        </div>
+      <div>
+        <label htmlFor={`quote-${name}`} className={labelClass}>
+          {labelText}
+        </label>
+        <input
+          id={`quote-${name}`}
+          name={name}
+          value={formData[name]}
+          onChange={handleChange}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={error ? `quote-${name}-error` : undefined}
+          className={fieldClass}
+          {...props}
+        />
+        {error && (
+          <p id={`quote-${name}-error`} className="mt-1.5 text-sm text-[#b3261e]">
+            {error}
+          </p>
+        )}
       </div>
     );
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 text-xs font-mono">
-      {/* Client Identity */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Full Name *
-          </label>
-          <input
-            type="text"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="e.g. Captain Tariq Al-Mansoor"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Company / Trading Entity
-          </label>
-          <input
-            type="text"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            placeholder="e.g. Gulf Petrochemical FZE"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-      </div>
+    <form
+      noValidate
+      onSubmit={(e) => {
+        e.preventDefault();
+        send("whatsapp");
+      }}
+      className="space-y-10"
+    >
+      <fieldset className="grid gap-5 sm:grid-cols-2">
+        <legend className="t-h3 mb-5 font-display">Your details</legend>
+        {text("name", "Full name", { autoComplete: "name" })}
+        {text("company", "Company (optional)", { autoComplete: "organization" })}
+        {text("email", "Email", { type: "email", autoComplete: "email" })}
+        {text("phone", "Phone, with country code", { type: "tel", autoComplete: "tel" })}
+      </fieldset>
 
-      {/* Contact Details */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <fieldset className="grid gap-5 sm:grid-cols-2">
+        <legend className="t-h3 mb-5 font-display">The shipment</legend>
         <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Corporate Email *
-          </label>
-          <input
-            type="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="procurement@company.com"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Phone / Mobile (with country code) *
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="+971 50 123 4567"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-      </div>
-
-      {/* Service Mode & Incoterm */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Required Service Mode *
+          <label htmlFor="quote-serviceMode" className={labelClass}>
+            Service
           </label>
           <select
+            id="quote-serviceMode"
             name="serviceMode"
             value={formData.serviceMode}
             onChange={handleChange}
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
+            className={fieldClass}
           >
-            <option value="ocean-fcl">Ocean Freight — Full Container (FCL)</option>
-            <option value="ocean-lcl">Ocean Freight — LCL Consolidation</option>
-            <option value="air-freight">Air Cargo Velocity & Charters</option>
-            <option value="customs-clearance">UAE Customs Clearance Only (Mirsal 2)</option>
-            <option value="project-cargo">Project Cargo & Heavy Lift</option>
-            <option value="warehousing-reexport">Free Zone Storage & Re-Export</option>
+            {serviceModes.map(([value, name]) => (
+              <option key={value} value={value}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
         <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Incoterms® 2020 Protocol
+          <label htmlFor="quote-incoterm" className={labelClass}>
+            Incoterm
           </label>
           <select
+            id="quote-incoterm"
             name="incoterm"
             value={formData.incoterm}
             onChange={handleChange}
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
+            className={fieldClass}
           >
-            <option value="CIF">CIF — Cost, Insurance & Freight (Standard GCC)</option>
-            <option value="FOB">FOB — Free On Board</option>
-            <option value="EXW">EXW — Ex Works (Door Pickup)</option>
-            <option value="DDP">DDP — Delivered Duty Paid (Turnkey Door)</option>
-            <option value="DAP">DAP — Delivered At Place</option>
-            <option value="CFR">CFR — Cost and Freight</option>
-            <option value="FCA">FCA — Free Carrier</option>
+            {incoterms.map(([value, name]) => (
+              <option key={value} value={value}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
-      </div>
+        {text("origin", "From (port or city)")}
+        {text("destination", "To (port or city)")}
+      </fieldset>
 
-      {/* Origin & Destination */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Port / City of Origin *
+      <fieldset className="grid gap-5 sm:grid-cols-3">
+        <legend className="t-h3 mb-5 font-display">The cargo</legend>
+        {text("cbm", "Volume in CBM (optional)", { inputMode: "decimal" })}
+        {text("weight", "Gross weight in kg (optional)", { inputMode: "decimal" })}
+        {text("readyDate", "Cargo ready date (optional)", { type: "date" })}
+        <div className="sm:col-span-3">
+          {text("hsCodeOrCommodity", "What the goods are, or the HS code (optional)")}
+        </div>
+        <div className="sm:col-span-3">
+          <label htmlFor="quote-notes" className={labelClass}>
+            Anything else we should know (optional)
           </label>
-          <input
-            type="text"
-            name="origin"
-            required
-            value={formData.origin}
+          <textarea
+            id="quote-notes"
+            name="notes"
+            rows={3}
+            value={formData.notes}
             onChange={handleChange}
-            placeholder="e.g. Shanghai, China (CNSHA)"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
+            className={`${fieldClass} h-auto py-3`}
           />
         </div>
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Port / City of Destination *
-          </label>
-          <input
-            type="text"
-            name="destination"
-            required
-            value={formData.destination}
-            onChange={handleChange}
-            placeholder="e.g. Jebel Ali Port, Dubai (AEJEA)"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-      </div>
-
-      {/* Cargo Dimensions (CBM & Weight) */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Total Volume (CBM)
-          </label>
-          <input
-            type="number"
-            step="any"
-            name="cbm"
-            value={formData.cbm}
-            onChange={handleChange}
-            placeholder="e.g. 28.5"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Gross Weight (kg)
-          </label>
-          <input
-            type="number"
-            step="any"
-            name="weight"
-            value={formData.weight}
-            onChange={handleChange}
-            placeholder="e.g. 18500"
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-        <div>
-          <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-            Cargo Readiness Date
-          </label>
-          <input
-            type="date"
-            name="readyDate"
-            value={formData.readyDate}
-            onChange={handleChange}
-            className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-          />
-        </div>
-      </div>
-
-      {/* Commodity & Notes */}
-      <div>
-        <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-          Commodity Description / HS Code
-        </label>
-        <input
-          type="text"
-          name="hsCodeOrCommodity"
-          value={formData.hsCodeOrCommodity}
-          onChange={handleChange}
-          placeholder="e.g. Industrial Valves & Pumps (HS 8481.80) - Non-Hazmat"
-          className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-        />
-      </div>
+      </fieldset>
 
       <div>
-        <label className="block text-slate-700 dark:text-gray-300 uppercase tracking-wider mb-1.5 font-semibold">
-          Special Handling / Storage Instructions
-        </label>
-        <textarea
-          name="notes"
-          rows={3}
-          value={formData.notes}
-          onChange={handleChange}
-          placeholder="e.g. Reefer temperature set at +4°C, requires Jebel Ali bonded warehousing for 14 days before re-export..."
-          className="w-full bg-[#FBF9F5] dark:bg-[#112236] border border-gray-300 dark:border-gray-700 focus:border-[#C5A47E] rounded px-3.5 py-3 text-slate-900 dark:text-white outline-none"
-        />
-      </div>
-
-      {/* Action Buttons */}
-      <div className="pt-2 flex flex-col sm:flex-row gap-4">
-        <button
-          type="submit"
-          className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-4 rounded transition-colors inline-flex items-center justify-center gap-2"
-        >
-          <i className="fa-brands fa-whatsapp text-lg" />
-          <span>Send Request via WhatsApp</span>
-        </button>
-
-        <a
-          href={emailUrl}
-          className="flex-1 btn-editorial-gold py-4 rounded text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2"
-        >
-          <i className="fa-solid fa-envelope text-[11px]" />
-          <span>Send by Email Instead</span>
-        </a>
+        <div className="btn-row flex flex-col gap-3 sm:flex-row">
+          <button type="submit" className="btn btn--primary">
+            Send the request on WhatsApp
+          </button>
+          <button type="button" onClick={() => send("email")} className="btn btn--secondary">
+            Send the request by email
+          </button>
+        </div>
+        <p role="status" className="mt-4 min-h-6 text-ink">
+          {status}
+        </p>
+        <p className="mt-1 text-sm text-ink-soft">
+          We reply within two business hours during office hours: {site.hours}, Dubai time.
+        </p>
       </div>
     </form>
   );

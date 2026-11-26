@@ -1,259 +1,129 @@
 import { Suspense } from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/page-header";
 import QuoteForm from "@/components/quote-form";
+import { photos, site } from "@/lib/site";
+
+const title = "Get a freight quote from Dubai";
+const description =
+  "Send your route, weight and volume and get an itemised quote for sea freight, air freight, UAE customs clearance or project cargo within two business hours.";
 
 export const metadata: Metadata = {
-  title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
-  description:
-    "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
-  alternates: {
-    canonical: "https://www.swiftsailship.com/get-quote",
-  },
-  openGraph: {
-    type: "website",
-    title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
-    description:
-      "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
-    url: "https://www.swiftsailship.com/get-quote",
-    images: ["/assets/img/og-default.jpg"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Request a Quotation  Logistics Desk | Swift Sail Shipping L.L.C.",
-    description:
-      "Request an itemized freight forwarding quotation for ocean FCL/LCL, air express velocity, UAE customs clearance, or project breakbulk cargo.",
-    images: ["/assets/img/og-default.jpg"],
-  },
+  title,
+  description,
+  alternates: { canonical: `${site.url}/get-quote` },
+  openGraph: { title, description, url: `${site.url}/get-quote` },
 };
+
+const faqs = [
+  {
+    q: "How quickly will I receive a freight quotation?",
+    a: "Within two business hours during office hours: Monday to Friday 08:00 to 18:00 and Saturday 09:00 to 14:00, Dubai time.",
+  },
+  {
+    q: "What information do I need to provide for a quote?",
+    a: "The origin and destination, what the goods are, the total weight and volume (CBM), the number of packages, the Incoterm, and whether you need customs clearance or storage in the UAE.",
+  },
+  {
+    q: "Do you handle UAE customs clearance and duty exemption?",
+    a: "Yes. We file declarations through Dubai Customs' Mirsal 2 system, including free zone transfers and MOIAT industrial duty exemptions for manufacturers that qualify.",
+  },
+  {
+    q: "What ports and airports do you work through?",
+    a: "Jebel Ali Port, Port Khalid in Sharjah and Khalifa Port for sea freight, and Dubai International (DXB) and Dubai World Central (DWC) for air freight.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+        { "@type": "ListItem", position: 2, name: "Get a quote", item: `${site.url}/get-quote` },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
+const contacts = [
+  ["Phone", site.phone, site.phoneHref],
+  ["WhatsApp", site.phone, site.whatsappHref],
+  ["Email", site.email, site.emailHref],
+] as const;
 
 export default function GetQuotePage() {
   return (
-    <div className="flex flex-col bg-[#FBF9F5] dark:bg-[#070E18]">
-      {/* Editorial Header */}
-      <header className="relative pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#070E18] text-white border-b border-[#C5A47E]/30 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-subtle opacity-25 pointer-events-none" />
+    <>
+      <PageHeader
+        step={4}
+        image={photos.air}
+        title="Get a freight quote"
+        lead="Tell us the route and the cargo. We reply within two business hours with an itemised price for freight, customs and delivery."
+      />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="editorial-stamp text-[#C5A47E]">
-              COMMERCIAL INTAKE • CARGO DESK
-            </span>
-            <span className="text-xs font-mono text-gray-400">
-              DUBAI TIME GST (UTC+4)
-            </span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight mb-6">
-            Commercial Quotation & <br />
-            <span className="gold-gradient-text">Consignment Inquiries</span>
-          </h1>
-
-          <p className="text-lg text-gray-300 font-sans font-light max-w-3xl leading-relaxed">
-            Provide your route details and cargo specifications below. Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours.
-          </p>
-        </div>
-      </header>
-
-      {/* Main Intake Form & Operational Info */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Form */}
-          <div className="lg:col-span-8 bg-white dark:bg-[#070E18] text-slate-900 dark:text-white border border-gray-300 dark:border-[#C5A47E]/30 rounded-lg p-8 sm:p-12 shadow-2xl">
-            <div className="border-b border-[#C5A47E]/20 pb-6 mb-8">
-              <span className="editorial-stamp text-[#C5A47E] mb-2 block">
-                INTAKE PROTOCOL 2026
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-slate-900 dark:text-white">
-                Cargo Dossier & Quotation Intake
-              </h2>
-            </div>
-
-            <Suspense fallback={<div className="text-white text-xs font-mono">Loading cargo intake form...</div>}>
+      <section className="section">
+        <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-6">
+          <div className="lg:col-span-7">
+            <Suspense fallback={<p className="text-ink-soft">Loading the form</p>}>
               <QuoteForm />
             </Suspense>
           </div>
 
-          {/* Right Column: Direct Contact & Office Dossier */}
-          <div className="lg:col-span-4 space-y-8">
-            {/* Direct Ops Desk */}
-            <div className="bg-white dark:bg-[#070E18] text-slate-900 dark:text-white border border-gray-300 dark:border-[#C5A47E]/30 rounded-lg p-8 space-y-6">
-              <div>
-                <span className="editorial-stamp text-[#C5A47E] mb-2 block">
-                  DIRECT DESK HOTLINE
-                </span>
-                <h3 className="text-xl font-serif font-bold text-slate-900 dark:text-white">
-                  Speak Directly With Operations
-                </h3>
-              </div>
-
-              <div className="space-y-4 text-xs font-mono text-gray-600 dark:text-gray-300">
-                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
-                  <span className="text-gray-500 dark:text-gray-400 block mb-1">Telephone (24/7):</span>
-                  <a
-                    href="tel:+971553424700"
-                    className="text-slate-900 dark:text-white hover:text-[#C5A47E] font-bold text-sm"
-                  >
-                    +971 55 342 4700
-                  </a>
+          <aside className="self-start lg:col-span-4 lg:col-start-9 lg:rounded-[22px] lg:bg-surface lg:p-8">
+            <h2 className="t-h3">Talk to us directly</h2>
+            <dl className="rows mt-5">
+              {contacts.map(([term, value, href]) => (
+                <div key={term} className="py-4">
+                  <dt className="t-label">{term}</dt>
+                  <dd className="mt-1">
+                    <a
+                      href={href}
+                      className="link break-all"
+                      {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    >
+                      {value}
+                    </a>
+                  </dd>
                 </div>
-
-                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
-                  <span className="text-gray-500 dark:text-gray-400 block mb-1">WhatsApp Dedicated Line:</span>
-                  <a
-                    href="https://wa.me/971553424700"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-emerald-400 font-bold"
-                  >
-                    +971 55 342 4700 (Chat Now)
-                  </a>
-                </div>
-
-                <div className="p-3.5 bg-[#FBF9F5] dark:bg-[#112236] rounded border border-gray-200 dark:border-gray-800">
-                  <span className="text-gray-500 dark:text-gray-400 block mb-1">Corporate Communications:</span>
-                  <a
-                    href="mailto:info@swiftsailship.com"
-                    className="text-slate-900 dark:text-white hover:text-[#C5A47E]"
-                  >
-                    info@swiftsailship.com
-                  </a>
-                </div>
+              ))}
+              <div className="py-4">
+                <dt className="t-label">Office</dt>
+                <dd className="mt-1">{site.address}</dd>
               </div>
-            </div>
-
-            {/* Dubai HQ Address */}
-            <div className="bg-white dark:bg-[#0D1B2A] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-8 space-y-4 text-slate-900">
-              <span className="editorial-stamp text-[#A37F55] border-[#A37F55]">
-                PHYSICAL HEADQUARTERS
-              </span>
-              <h4 className="text-lg font-serif font-bold text-slate-950">
-                Dubai Operating Office
-              </h4>
-              <p className="text-xs font-mono text-slate-600 leading-relaxed">
-                Tanvi Business Centre, M - 101, Abu Hail, Dubai, United Arab Emirates
-              </p>
-              <div className="pt-2 text-xs font-mono text-gray-500">
-                <span>Working Hours: Mon – Fri: 08:00 – 18:00 GST</span>
-                <br />
-                <span>Port Clearance Desk: Active 24/7</span>
+              <div className="py-4">
+                <dt className="t-label">Hours</dt>
+                <dd className="mt-1">{site.hours}</dd>
               </div>
-            </div>
-          </div>
+            </dl>
+          </aside>
         </div>
+      </section>
 
-        {/* FAQ */}
-        <section className="mt-20" id="faq">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="editorial-stamp text-[#A37F55] border-[#A37F55] mb-2 inline-block">
-              FREQUENTLY ASKED
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-slate-950 dark:text-white">
-              Cargo & Quotation Questions, Answered
-            </h2>
-          </div>
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
-                How quickly will I receive a freight quotation?
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
-                Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours during working hours (Mon–Fri 08:00–18:00 GST).
-              </p>
-            </div>
-            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
-                What information do I need to provide for a quote?
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
-                Origin and destination, cargo type, total weight and volume (CBM), number of packages, Incoterms preference, and whether you require customs clearance or warehousing in the UAE.
-              </p>
-            </div>
-            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
-                Do you handle UAE customs clearance and duty exemption?
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
-                Yes. Our in-house licensed brokers file directly through Dubai Customs Mirsal 2, including MOIAT industrial duty exemptions for qualifying manufacturers and free zone transfers.
-              </p>
-            </div>
-            <div className="bg-white dark:bg-[#112236] border border-gray-300 dark:border-[#C5A47E]/20 rounded-lg p-6">
-              <h3 className="font-serif font-bold text-slate-950 dark:text-white text-lg mb-2">
-                What ports and airports do you operate from?
-              </h3>
-              <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed">
-                We operate from Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port for ocean freight, and Dubai International (DXB) and Dubai World Central (DWC) for air cargo.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
+      <section id="faq" className="section ground-surface">
+        <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-6">
+          <h2 className="t-h2 lg:col-span-5">Questions about quotes</h2>
+          <dl className="rows lg:col-span-6 lg:col-start-7">
+            {faqs.map((f) => (
+              <div key={f.q} className="py-6">
+                <dt className="t-h3 font-display">{f.q}</dt>
+                <dd className="mt-2 text-ink-soft">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "How quickly will I receive a freight quotation?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Our certified freight specialists analyze vessel availability and provide guaranteed rates within two business hours during working hours (Mon–Fri 08:00–18:00 GST)."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What information do I need to provide for a quote?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Origin and destination, cargo type, total weight and volume (CBM), number of packages, Incoterms preference, and whether you require customs clearance or warehousing in the UAE."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Do you handle UAE customs clearance and duty exemption?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. Our in-house licensed brokers file directly through Dubai Customs Mirsal 2, including MOIAT industrial duty exemptions for qualifying manufacturers and free zone transfers."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What ports and airports do you operate from?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We operate from Jebel Ali Port, Port Khalid Sharjah, and Khalifa Port for ocean freight, and Dubai International (DXB) and Dubai World Central (DWC) for air cargo."
-                }
-              }
-            ]
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.swiftsailship.com"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Request a Quotation",
-                "item": "https://www.swiftsailship.com/get-quote"
-              }
-            ]
-          })
-        }}
-      />
-    </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    </>
   );
 }
