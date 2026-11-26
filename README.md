@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Swift Sail Shipping LLC Website
+
+[![CI](https://github.com/ahmedbasolan/swiftsailship/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmedbasolan/swiftsailship/actions/workflows/ci.yml)
+
+**Live: [swiftsailship.com](https://www.swiftsailship.com)**
+
+The website of Swift Sail Shipping LLC, a Dubai-based freight forwarding and logistics company. Built with Next.js 16, Tailwind CSS v4 and Framer Motion, and deployed on Vercel from `main`.
+
+![Swift Sail homepage: hero, quote and cargo-calculator calls to action, and headline figures](docs/images/home.png)
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page: hero, services, trade tools, interactive route globe |
+| `/about` | Company information and team |
+| `/services` | Freight and logistics service offerings |
+| `/how-it-works` | Step-by-step process explanation |
+| `/get-quote` | Quote request form |
+| `/blog`, `/blog/[slug]` | Articles on Gulf shipping and UAE customs, statically generated |
+| `/privacy`, `/terms` | Privacy policy and terms of service |
+
+## Trade tools
+
+On the homepage, all client-side:
+
+- **Cargo calculator**: CBM, air volumetric and chargeable weight, ocean W/M revenue tons, and a container recommendation. "Get a quote" carries the figures into the quote form.
+- **Customs duty guide**, **Incoterms matrix** and **trade corridors**: reference tools for UAE importers.
+
+## How quote requests reach the desk
+
+There is no backend. Submitting the quote form opens WhatsApp with the request pre-filled to the operations desk, and the customer presses send. **Send by Email Instead** opens the same request as an email to info@swiftsailship.com.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion |
+| Globe | cobe |
+| Language | TypeScript |
+| UI Components | Radix UI + shadcn/ui |
+| Hosting | Vercel (production deploys from `main`) |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CI runs lint, `tsc --noEmit` and a production build on every push and pull request.
